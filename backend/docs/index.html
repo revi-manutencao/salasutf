@@ -172,7 +172,7 @@
 
 	<div id="content">
 		<span class="maintitle">
-			<h1>Luvi</h1>
+        	<span id="logo"></span>
 			<h2>
 				Foco na simplicidade.
 			</h2>
@@ -182,6 +182,15 @@
 		<br><br><br>
 
 		
+		<p class="obs">
+			<b>Atenção:</b> ao iniciar um projeto utilizando o Luvi, não se esqueça de definir 
+			as <a href="#sysconst">constantes do sistema</a> em 
+			<b>/app/<wbr>system/<wbr>SystemData.php</b> para que o sistema funcione 
+			corretamente.
+		</p>
+
+		<br>
+
 		<a name="basicstructure"><h2>Estrutura básica</h2></a>
 		<p>
 			Uma vez colocados os arquivos base do sistema em um diretório para iniciar o desenvolvimento,
@@ -193,7 +202,9 @@
 			cada componente esteja em seu devido lugar durante o desenvolvimento da aplicação.
 		</p>
 		<p>
-			A relação dos diretórios padrão é a seguinte: 
+			A relação dos diretórios padrão é a seguinte, podendo diferir dos de diretórios
+			e arquivos baixados do repositório, mas contendo o essencial e ideal para a 
+			execução do sistema:
 		</p>
 		<span class="dirtree">
 		<ul>
@@ -260,7 +271,7 @@
 					</ul>
 					<li>uploads</li>
 				</ul>
-				<li>doc <i class="comment">&nbsp;&nbsp;// Documentação do sistema</i></li>
+				<li>docs <i class="comment">&nbsp;&nbsp;// Documentação do sistema</i></li>
 				<ul>
 					<li class="treefile">docstyle.css</li>
 					<li class="treefile">index.html</li>
