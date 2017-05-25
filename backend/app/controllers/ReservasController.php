@@ -2,44 +2,44 @@
 
 class ReservasController extends Controller {
 
-	public function index() {
-		echo 'Chamando o router:<br>';
-		$this->router();
-	}
-
-	public function router(){
-		switch( $this->getRequest() ){
+	public function reservas($param){
+		switch( strtolower($this->getRequest()) ){
 			case 'get':
-				echo json_encode(["message" => "Aqui tem busca o registro com id " . $id]);
-				$this->get($id);
+				$this->get($param['id']);
 			break;
 			case 'post':
-				echo json_encode(["message" => "Aqui cria um objeto!"]);
 				$this->post();
 			break;
 			case 'put':
-				echo json_encode(["message" => "Aqui atualiza o registro de id " . $id]);
-				$this->put($id);
+				$this->put($param['id']);
 			break;
 			case 'delete':
-				echo json_encode(["message" => "Aqui exclui o registro de id " . $id]);
-				$this->delete($id);
+				$this->delete($param['id']);
 			break;
 		}
 	}
 
 	public function post(){
-		return "";
+		$reserva = new Reserva();
+		
+		$retorno['return'] = [
+			"type" => "success",
+			"message" => "Criado com sucesso!"
+		];
+
+		echo json_encode($retorno);
 	}
 
 	public function get($id = null){
-		return "";
+		echo json_encode(["return" => "Aqui mostra o registro de id " . $id]);
 	}
 
 	public function put($id = null){
+		echo json_encode(["return" => "Aqui atualiza o registro de id " . $id]);
 	}
 
 	public function delete($id = null){
+		echo json_encode(["return" => "Aqui exclui o registro de id " . $id]);
 	}
 
 }
