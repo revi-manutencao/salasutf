@@ -6,8 +6,8 @@
 	<meta name="author" content="Vinicius Baroni Soares">
 	<link rel="stylesheet" type="text/css" href="docstyle.css">
 	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="shortcut icon" type="image/png" href="../assets/images/favicon.png">
-	<link rel="apple-touch-icon" href="../assets/images/favicon.png" />
+	<link rel="shortcut icon" type="image/png" href="images/favicon.png">
+	<link rel="apple-touch-icon" href="images/favicon.png" />
 </head>
 <body>
 	<div id="sidebar">
@@ -172,7 +172,7 @@
 
 	<div id="content">
 		<span class="maintitle">
-        	<span id="logo"></span>
+        	<span id="logo">Luvi</span>
 			<h2>
 				Foco na simplicidade.
 			</h2>
@@ -183,10 +183,10 @@
 
 		
 		<p class="obs">
-			<b>Atenção:</b> ao iniciar um projeto utilizando o Luvi, não se esqueça de definir 
-			as <a href="#sysconst">constantes do sistema</a> em 
-			<b>/app/<wbr>system/<wbr>SystemData.php</b> para que o sistema funcione 
-			corretamente.
+			<b>Atenção:</b> ao iniciar um projeto utilizando o Luvi, não se esqueça de renomear o arquivo
+			<b>SystemData-Example.php</b> (localizado em <i>/app/<wbr>system/<wbr></i>) para 
+			<b>SystemData.php</b> e de definir nele as
+			<a href="#sysconst">constantes do sistema</a> para que o sistema funcione corretamente.
 		</p>
 
 		<br>
@@ -234,7 +234,7 @@
 						<ul>
 							<li class="treefile">App.php <i class="comment">&nbsp;&nbsp;// Classe principal do sistema</i></li>
 							<li class="treefile">Auth.php  <i class="comment">&nbsp;&nbsp;// Classe com os métodos de autenticação</i></li>
-							<li class="treefile">RequestInfo.php  <i class="comment">&nbsp;&nbsp;// Processa as URLs e direciona os conteúdos</i></li>
+							<li class="treefile">RequestRouter.php  <i class="comment">&nbsp;&nbsp;// Processa as URLs e direciona os conteúdos</i></li>
 							<li class="treefile">SystemFunctions.php  <i class="comment">&nbsp;&nbsp;// Globaliza as funções principais do sistema</i></li>
 						</ul>
 						<li>lib <i class="comment">&nbsp;&nbsp;// Contém as bibliotecas essenciais para o sistema</i></li>
@@ -245,7 +245,7 @@
 								</ul>
 							</ul>
 						<li class="treefile">Routes.php <i class="comment">&nbsp;&nbsp;// Contém as rotas personalizadas</i></li>
-						<li class="treefile">SystemData.php <i class="comment">&nbsp;&nbsp;// Contém as constantes do sistema</i></li>
+						<li class="treefile">SystemData-Example.php <i class="comment">&nbsp;&nbsp;// Arquivo base que contém as constantes do sistema</i></li>
 					</ul>
 					<li>views <i class="comment">&nbsp;&nbsp;// Destinada a armazenamento de views</i></li>
 					<ul>
@@ -327,8 +327,9 @@
 		
 		<a name="sysconst"><h2>Constantes do sistema</h2></a>
 		<p>
-			O arquivo <b>/app/<wbr>system/<wbr>SystemData.php</b> contém as constantes que são utilizadas pelo
-			sistema na configuração de determinados recursos.
+			O arquivo <b>/app/<wbr>system/<wbr>SystemData-Example.php</b> contém as constantes que são utilizadas pelo
+			sistema na configuração de determinados recursos. Deve ser renomeado para apenas <b>SystemData.php</b>
+			para que funcione corretamente.
 		</p>
 		<p>
 			Estas constantes devem ser alteradas de acordo com o projeto, definindo os parâmetros de
@@ -598,7 +599,7 @@
 		<br>
 		<a name="getrequest"><h3>getRequest()</h3></a>
 		<p>
-			Identifica o tipo de requisição realizada para a página (GET, POST, PUT, DELETE, etc.).
+			Identifica o tipo de requisição realizada para a página (get, post, put, delete, etc.).
 		</p>
 		<span class="pregroup">
 			<pre>string <b>getRequest (</b> <b>)</b></pre>
@@ -607,7 +608,7 @@
 			<pre>$requestType = getRequest ();</pre>
 		</span>
 		<p>
-			Retorna uma string contendo o tipo de requisição realizada.
+			Retorna uma string, em letras minúsculas, contendo o tipo de requisição realizada.
 		</p>
 		<br>
 		<a name="getparams"><h3>Parâmetros GET</h3></a>
@@ -626,7 +627,13 @@
 			<pre>public function something (<b> $params </b>) { ... }</pre>
 		</span>
 		<p>
-			Por outro lado, os parâmetros GET continuam podendo ser usados, tendo à disposição apenas
+			Ao utilizar uma variável, por exemplo, <b>$params</b>, para receber os dados vindos da URL
+			em um método, todos os parâmteros passados serão adicionados a ela, de forma que ela passa
+			a ter uma estrutura semelhante à da variável <b>$_GET</b>. Assim, os parâmetros são 
+			alcançados utilizando <b><i>$params["id"]</i></b>, <b><i>$params["param1"]</i></b>, etc.
+		</p>
+		<p>
+			Por outro lado, os parâmetros GET ($_GET) continuam podendo ser usados, tendo à disposição apenas
 			a função <a href="#filterget">filterGet()</a> para manuseio destes dados.
 		</p>
 		<p>
@@ -834,12 +841,12 @@
 		</p>
 		<p>
 			Caso o nome da chave primária de uma tabela seja diferente, pode-se definir, no próprio
-			model, a variável <b><i>private</i> $primarykey</b>, a qual indica o nome do campo a ser usado
+			model, a variável <b><i>public</i> $primarykey</b>, a qual indica o nome do campo a ser usado
 			para buscas por valores únicos na tabela de nome igual ao da classe.
 		</p>
 		<span class="pregroup">
 			<pre>class Animal extends <i>Model</i> { </pre>
-			<pre>    <b><i>private</i> $primarykey</b> = 'animal_id'; </pre>
+			<pre>    <b><i>public</i> $primarykey</b> = 'animal_id'; </pre>
 			<pre>}</pre>
 		</span>
 		<p>
@@ -1079,7 +1086,7 @@
 			</span>
 			<p>
 				Retorna um objeto do tipo da classe que originou a chamada à função em caso de sucesso
-				ou <b>FALSE</b> caso contrário.
+				ou <b>NULL</b> caso contrário.
 			</p>
 		</div>
 		<br>
@@ -1161,7 +1168,7 @@
 				<pre>DB::save ($objAnimal); <i class="comment">// Insere ou atualiza os dados atuais do objeto $objAnimal do banco</i></pre>
 			</span>
 			<p>
-				Retorna o objeto salvo em caso de sucesso ou <b>FALSE</b> caso contrário.
+				Retorna o objeto salvo em caso de sucesso ou <b>NULL</b> caso contrário.
 			</p>
 			<br>
 			<a name="dbclassdelete"><b><i>DB::delete()</i></b></a>

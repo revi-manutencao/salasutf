@@ -7,12 +7,7 @@ abstract class Model {
 	 */
 
 	public $primarykey = 'id';
-        
-        function getPrimarykey() {
-            return $this->primarykey;
-        }
 
-        
 	public function save () {
 		return DB::save($this);
 	}	
@@ -36,8 +31,8 @@ abstract class Model {
 	}
 
 	// Obtém um dado buscando pela sua $primarykey igual ao valor passado à função
-	public function get ($id) {
-		return $this->where($this->primarykey . ' = :id', array(':id' => $id))->find()[0];
+	public function get ($pk) {
+		return $this->where($this->primarykey . ' = :pk', array(':pk' => $pk))->find()[0];
 	}
 
 	// Converte o objeto e seus atributos (e valores) em uma string JSON
@@ -96,5 +91,9 @@ abstract class Model {
 		$class = get_class($backtrace['object']);
 
 		return lcfirst($class);
+	}
+
+	public function getPrimaryKey() {
+		return $this->primarykey;
 	}
 }

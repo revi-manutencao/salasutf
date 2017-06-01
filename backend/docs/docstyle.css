@@ -22,11 +22,11 @@ a, a:visited, .lv2-content a.normallink, .lv2-content a.normallink:visited {
 
 #logo{
 	display: block;
-	width: 345px;
 	height: 175px;
-	background: url(../assets/images/luvi.png) no-repeat center center;
+	background: url(images/luvi.png) no-repeat center center;
 	background-size: 170px auto;
 	margin: 0 auto;
+	color: transparent;
 }
 
 #sidebar a, #sidebar a:visited, .nolist a, .nolist a:visited, a h2, a h3,
@@ -54,7 +54,7 @@ p {
 #sidebar {
 	display: block;
 	position: fixed;
-	background: rgb(250,250,250);
+	background: rgb(245,245,245);
 	width: 240px;
 	min-height: 90%;
 	height: calc(100% - 60px);
@@ -66,7 +66,7 @@ p {
 	font-weight: lighter;
 	border-radius: 5px;
 	transition: 0.3s;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 	#sidebar h3 {
 		margin: 5px auto 0;
@@ -158,6 +158,7 @@ p {
 
 
 .dirtree {
+	background: rgb(250,250,250);
 	margin: 30px auto;
 	padding: 5px;
 	display: block;
