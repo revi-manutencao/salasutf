@@ -25,9 +25,9 @@ class BlocosController extends Controller {
         $recurso = new Bloco();
         $recurso->setAtivo(true);
         $recurso->setCodigo($_POST['codigo']);
-        $bloco = $recurso->save();
+        $rec = $recurso->save();
 
-        if ( is_null($bloco) || $bloco == false ) {
+        if ( is_null($rec) || $rec == false ) {
             $retorno['return'] = [
                 "type" => "error",
                 "message" => "Não foi possível registrar o bloco."
@@ -37,7 +37,7 @@ class BlocosController extends Controller {
             $retorno['return'] = [
                 "type" => "success",
                 "message" => "Bloco registrado com sucesso",
-                "object" => jsonSerialize($bloco)
+                "object" => jsonSerialize($rec)
             ];
         }
 

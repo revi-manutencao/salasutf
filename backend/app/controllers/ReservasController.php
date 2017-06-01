@@ -49,12 +49,14 @@ class ReservasController extends Controller {
     }
 
     public function get($id) {
-        if (is_null($id)) {
+        if (is_null($id) or $id == '') {
             //Listar uma coleção
-            echo json_encode(["return" => "Todas as reservas " . $id]);
+            $rec = new Reserva();
+            echo jsonSerialize($rec->all());
         } else {
             //Exibir detalhes de uma reserva
-            echo json_encode(["return" => "Aqui mostra o registro de id " . $id]);
+            $rec = new Reserva();
+            echo jsonSerialize($rec->where('id = ?', $id)->find());
         }
     }
 

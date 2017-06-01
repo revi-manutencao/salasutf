@@ -34,9 +34,9 @@ class UsuariosController extends Controller {
         if ($_POST['isAdmin'] == true) {
             $usuario->setTipoUsuario(TipoUsuario::PROF);
         }
-        $usu = $usuario->save();
+        $rec = $usuario->save();
 
-        if (is_null($usu) || $usu == false) {
+        if ( is_null($rec) || $rec == false ) {
             $retorno['return'] = [
                 "type" => "error",
                 "message" => "Não foi possível registrar o usuário."
@@ -46,7 +46,7 @@ class UsuariosController extends Controller {
             $retorno['return'] = [
                 "type" => "success",
                 "message" => "Usuário registrado com sucesso",
-                "object" => $usu
+                "object" => jsonSerialize($rec)
             ];
         }
 
@@ -54,12 +54,14 @@ class UsuariosController extends Controller {
     }
 
     public function get($id) {
-        if (is_null($id)) {
+        if (is_null($id) or $id == '') {
             //Listar uma coleção
-            echo json_encode(["return" => "Todas os usuários " . $id]);
+            $rec = new Usuario();
+            echo jsonSerialize($rec->all());
         } else {
             //Exibir detalhes de uma reserva
-            echo json_encode(["return" => "Aqui mostra o registro de id " . $id]);
+            $rec = new Usuario();
+            echo jsonSerialize($rec->where('id = ?', $id)->find());
         }
     }
 

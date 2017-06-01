@@ -35,13 +35,13 @@ class SalasController extends Controller {
         if (is_null($rec) || $rec == false) {
             $retorno['return'] = [
                 "type" => "error",
-                "message" => "Não foi possível registrar o usuário."
+                "message" => "Não foi possível registrar a sala."
             ];
         } else {
             //TODO: gravar Log
             $retorno['return'] = [
                 "type" => "success",
-                "message" => "Usuário registrado com sucesso",
+                "message" => "Sala registrada com sucesso",
                 "object" => $rec
             ];
         }

@@ -34,13 +34,13 @@ class ObservacoesDeSalaController extends Controller {
         if (is_null($rec) || $rec == false) {
             $retorno['return'] = [
                 "type" => "error",
-                "message" => "Não foi possível registrar o usuário."
+                "message" => "Não foi possível registrar a observação."
             ];
         } else {
             //TODO: gravar Log
             $retorno['return'] = [
                 "type" => "success",
-                "message" => "Usuário registrado com sucesso",
+                "message" => "Observação de sala registrada com sucesso",
                 "object" => $rec
             ];
         }
@@ -49,12 +49,14 @@ class ObservacoesDeSalaController extends Controller {
     }
 
     public function get($id) {
-        if (is_null($id)) {
+        if (is_null($id) or $id == '') {
             //Listar uma coleção
-            echo json_encode(["return" => "Todas os usuários " . $id]);
+            $rec = new ObservacaoSala();
+            echo jsonSerialize($rec->all());
         } else {
             //Exibir detalhes de uma reserva
-            echo json_encode(["return" => "Aqui mostra o registro de id " . $id]);
+            $rec = new ObservacaoSala();
+            echo jsonSerialize($rec->where('id = ?', $id)->find());
         }
     }
 
