@@ -7,7 +7,12 @@ abstract class Model {
 	 */
 
 	public $primarykey = 'id';
+        
+        function getPrimarykey() {
+            return $this->primarykey;
+        }
 
+        
 	public function save () {
 		return DB::save($this);
 	}	

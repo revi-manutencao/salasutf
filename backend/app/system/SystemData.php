@@ -12,7 +12,7 @@ define('SESSION_ACTIVITY_TIME', 2); // Set the time of inactivity before the use
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'teste');
+define('DB_NAME', 'mydb');
 
 
 // Email settings

@@ -25,23 +25,23 @@ class ReservasController extends Controller {
         
         $reserva = new Reserva();
         $reserva->setAtivo(true);
-        $reserva->setDataHoraReserva($_POST['dataHoraReserva']);
+        $reserva->setDataHoraReserva(date('Y-m-d H:i:s'));
         $reserva->setHorario($_POST['horario']);
         $reserva->setProfessor($_POST['professor']);
         $reserva->setSala($_POST['sala']);
         $res = $reserva->save();
 
-        if (is_null($res)) {
+        if ( is_null($res) || $res == false ) {
             $retorno['return'] = [
                 "type" => "error",
-                "message" => "Não foi possível registrar a reserva.",
-                "object" => $res
+                "message" => "Não foi possível registrar a reserva."
             ];
         } else {
             //TODO: gravar Log
             $retorno['return'] = [
                 "type" => "success",
-                "message" => "Reserva registrada com sucesso"
+                "message" => "Reserva registrada com sucesso",
+                "object" => $res
             ];
         }
 
