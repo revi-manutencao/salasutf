@@ -1,84 +1,71 @@
-<?php  defined('INITIALIZED') OR exit('You cannot access this file directly');
+<?php
+
+defined('INITIALIZED') OR exit('You cannot access this file directly');
 
 class Sala extends Model {
-	
-	private $id;
-	private $codigo;
-	private $bloco;
-	private $tipoSala;
-	private $administrador;
-	private $equipamentos;
-	private $ativo;
 
-    public function getId()
-    {
+    private $id;
+    private $codigo;
+    private $idBloco;
+    private $idTipoSala;
+    private $idAdministrador;
+    private $equipamentos;
+    private $ativo;
+
+    function getId() {
         return $this->id;
     }
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    public function getCodigo()
-    {
+    function getCodigo() {
         return $this->codigo;
     }
 
-    public function setCodigo($codigo)
-    {
-        $this->codigo = $codigo;
+    function getIdBloco() {
+        return $this->idBloco;
     }
 
-    public function getBloco()
-    {
-        return $this->bloco;
+    function getIdTipoSala() {
+        return $this->idTipoSala;
     }
 
-    public function setBloco($bloco)
-    {
-        $this->bloco = $bloco;
+    function getIdAdministrador() {
+        return $this->idAdministrador;
     }
 
-    public function getTipoSala()
-    {
-        return $this->tipoSala;
-    }
-
-    public function setTipoSala($tipoSala)
-    {
-        $this->tipoSala = $tipoSala;
-    }
-
-    public function getAdministrador()
-    {
-        return $this->administrador;
-    }
-
-    public function setAdministrador($administrador)
-    {
-        $this->administrador = $administrador;
-    }
-
-    public function getEquipamentos()
-    {
+    function getEquipamentos() {
         return $this->equipamentos;
     }
 
-    public function setEquipamentos($equipamentos)
-    {
-        $this->equipamentos = $equipamentos;
-    }
-
-    public function getAtivo()
-    {
+    function getAtivo() {
         return $this->ativo;
     }
 
-    public function setAtivo($ativo)
-    {
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+
+    function setIdBloco($idBloco) {
+        $this->idBloco = $idBloco;
+    }
+
+    function setIdTipoSala($idTipoSala) {
+        $this->idTipoSala = $idTipoSala;
+    }
+
+    function setIdAdministrador($idAdministrador) {
+        $this->idAdministrador = $idAdministrador;
+    }
+
+    function setEquipamentos($equipamentos) {
+        $this->equipamentos = $equipamentos;
+    }
+
+    function setAtivo($ativo) {
         $this->ativo = $ativo;
     }
-	
-	
+
 }
