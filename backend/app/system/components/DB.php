@@ -19,7 +19,7 @@ class DB {
 
 		// Define o número que deve ser subtraído 
 		// da contagem máxima de elementos nas rotinas abaixo
-		$varsSub = 1;
+		$varsSub = 0;
 		if(in_array('id', $arrVars))
 			$varsSub++;
 
@@ -75,7 +75,6 @@ class DB {
 			$stmt->bindValue(':'.$object->primarykey, (int) $object->$getFunc());
 		}
 
-dump($sql);
 		if ($stmt->execute())
 			return $object;
 		else
@@ -213,6 +212,6 @@ dump($sql);
 	}	
 
 	public static function connect () {
-		return new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
+		return new PDO(DB_DRIVER.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
 	}
 }
