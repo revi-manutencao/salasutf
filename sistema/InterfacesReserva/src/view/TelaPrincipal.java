@@ -1,8 +1,17 @@
 package view;
 
+import view.Cadastrar.CadastrarBlocos;
+import view.Cadastrar.CadastrarDepartamentos;
+import view.Cadastrar.CadastrarHorarios;
+import view.Cadastrar.CadastrarSalas;
+import view.Cadastrar.CadastrarTpsSala;
+import view.Cadastrar.CadastrarUsuarios;
 import view.Editar.EditarBlocos;
 import view.Editar.EditarDepartamentos;
 import view.Editar.EditarHorarios;
+import view.Editar.EditarSalas;
+import view.Editar.EditarTpsSala;
+import view.Editar.EditarUsuarios;
 
 
 /*
@@ -64,20 +73,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmConsultar = new javax.swing.JMenu();
         jmReservas = new javax.swing.JMenu();
         jmGerenciar = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
+        jmCadastrar = new javax.swing.JMenu();
+        jmCadSalas = new javax.swing.JMenuItem();
+        jmCadBlocos = new javax.swing.JMenuItem();
+        jmCadTipodeSalas = new javax.swing.JMenuItem();
+        jmCadHorarios = new javax.swing.JMenuItem();
+        jmCadDepartamento = new javax.swing.JMenuItem();
+        jmCadUsuarios = new javax.swing.JMenuItem();
+        jmEditar = new javax.swing.JMenu();
+        jmEditarSalas = new javax.swing.JMenuItem();
+        jmEditarBlocos = new javax.swing.JMenuItem();
+        jmEditarTipodeSalas = new javax.swing.JMenuItem();
+        jmEditarHorarios = new javax.swing.JMenuItem();
+        jmEditarDepartamento = new javax.swing.JMenuItem();
+        jmEditarUsuarios = new javax.swing.JMenuItem();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jFrame1.setTitle("Tela principal");
@@ -287,74 +296,109 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenu8.setText("Cadastrar");
+        jmCadastrar.setText("Cadastrar");
 
-        jMenuItem7.setText("Salas");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        jmCadSalas.setText("Salas");
+        jmCadSalas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                jmCadSalasActionPerformed(evt);
             }
         });
-        jMenu8.add(jMenuItem7);
+        jmCadastrar.add(jmCadSalas);
 
-        jMenuItem8.setText("Blocos");
-        jMenu8.add(jMenuItem8);
-
-        jMenuItem9.setText("Tipo de salas");
-        jMenu8.add(jMenuItem9);
-
-        jMenuItem10.setText("Horários");
-        jMenu8.add(jMenuItem10);
-
-        jMenuItem11.setText("Departamento");
-        jMenu8.add(jMenuItem11);
-
-        jMenuItem12.setText("Usuários");
-        jMenu8.add(jMenuItem12);
-
-        jmGerenciar.add(jMenu8);
-
-        jMenu9.setText("Editar");
-
-        jMenuItem15.setText("Salas");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+        jmCadBlocos.setText("Blocos");
+        jmCadBlocos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
+                jmCadBlocosActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem15);
+        jmCadastrar.add(jmCadBlocos);
 
-        jMenuItem16.setText("Blocos");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+        jmCadTipodeSalas.setText("Tipo de salas");
+        jmCadTipodeSalas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
+                jmCadTipodeSalasActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem16);
+        jmCadastrar.add(jmCadTipodeSalas);
 
-        jMenuItem17.setText("Tipo de salas");
-        jMenu9.add(jMenuItem17);
-
-        jMenuItem18.setText("Horários");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
+        jmCadHorarios.setText("Horários");
+        jmCadHorarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
+                jmCadHorariosActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem18);
+        jmCadastrar.add(jmCadHorarios);
 
-        jMenuItem19.setText("Departamento");
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+        jmCadDepartamento.setText("Departamento");
+        jmCadDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
+                jmCadDepartamentoActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem19);
+        jmCadastrar.add(jmCadDepartamento);
 
-        jMenuItem20.setText("Usuários");
-        jMenu9.add(jMenuItem20);
+        jmCadUsuarios.setText("Usuários");
+        jmCadUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCadUsuariosActionPerformed(evt);
+            }
+        });
+        jmCadastrar.add(jmCadUsuarios);
 
-        jmGerenciar.add(jMenu9);
+        jmGerenciar.add(jmCadastrar);
+
+        jmEditar.setText("Editar");
+
+        jmEditarSalas.setText("Salas");
+        jmEditarSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarSalasActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarSalas);
+
+        jmEditarBlocos.setText("Blocos");
+        jmEditarBlocos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarBlocosActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarBlocos);
+
+        jmEditarTipodeSalas.setText("Tipo de salas");
+        jmEditarTipodeSalas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarTipodeSalasActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarTipodeSalas);
+
+        jmEditarHorarios.setText("Horários");
+        jmEditarHorarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarHorariosActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarHorarios);
+
+        jmEditarDepartamento.setText("Departamento");
+        jmEditarDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarDepartamentoActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarDepartamento);
+
+        jmEditarUsuarios.setText("Usuários");
+        jmEditarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmEditarUsuariosActionPerformed(evt);
+            }
+        });
+        jmEditar.add(jmEditarUsuarios);
+
+        jmGerenciar.add(jmEditar);
 
         jMenuBar2.add(jmGerenciar);
 
@@ -398,13 +442,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jmConsultarActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void jmCadSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalasActionPerformed
+        CadastrarSalas cadsalas = new CadastrarSalas();
+        cadsalas.setVisible(true);
+    }//GEN-LAST:event_jmCadSalasActionPerformed
 
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
+    private void jmEditarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalasActionPerformed
+        EditarSalas editarsalas = new EditarSalas();
+        editarsalas.setVisible(true);
+
+    }//GEN-LAST:event_jmEditarSalasActionPerformed
 
     private void jmGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGerenciarActionPerformed
         // TODO add your handling code here:
@@ -432,25 +479,70 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmReservasMouseClicked
 
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+    private void jmEditarBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarBlocosActionPerformed
         
         EditarBlocos editarblocos = new EditarBlocos();
         editarblocos.setVisible(true);
 
 
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
+    }//GEN-LAST:event_jmEditarBlocosActionPerformed
 
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+    private void jmEditarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarDepartamentoActionPerformed
         EditarDepartamentos editardepartamentos = new EditarDepartamentos();
         editardepartamentos.setVisible(true);
 
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
+    }//GEN-LAST:event_jmEditarDepartamentoActionPerformed
 
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+    private void jmEditarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarHorariosActionPerformed
         EditarHorarios editarhorarios = new EditarHorarios();
         
         editarhorarios.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
+    }//GEN-LAST:event_jmEditarHorariosActionPerformed
+
+    private void jmCadBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocosActionPerformed
+        CadastrarBlocos cadblocos = new CadastrarBlocos();
+        cadblocos.setVisible(true);
+
+
+    }//GEN-LAST:event_jmCadBlocosActionPerformed
+
+    private void jmCadTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadTipodeSalasActionPerformed
+        CadastrarTpsSala cadtiposala = new CadastrarTpsSala();
+        cadtiposala.setVisible(true);
+
+
+    }//GEN-LAST:event_jmCadTipodeSalasActionPerformed
+
+    private void jmCadHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadHorariosActionPerformed
+        CadastrarHorarios cadhorarios = new CadastrarHorarios();
+        cadhorarios.setVisible(true);
+
+
+    }//GEN-LAST:event_jmCadHorariosActionPerformed
+
+    private void jmCadDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadDepartamentoActionPerformed
+        CadastrarDepartamentos caddepartamentos = new CadastrarDepartamentos();
+        caddepartamentos.setVisible(true);
+
+    }//GEN-LAST:event_jmCadDepartamentoActionPerformed
+
+    private void jmCadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuariosActionPerformed
+        CadastrarUsuarios cadusuarios = new CadastrarUsuarios();
+        cadusuarios.setVisible(true);
+
+    }//GEN-LAST:event_jmCadUsuariosActionPerformed
+
+    private void jmEditarTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipodeSalasActionPerformed
+        EditarTpsSala editartiposala = new EditarTpsSala();
+        editartiposala.setVisible(true);
+
+    }//GEN-LAST:event_jmEditarTipodeSalasActionPerformed
+
+    private void jmEditarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarUsuariosActionPerformed
+        EditarUsuarios editarusuarios = new EditarUsuarios();
+        editarusuarios.setVisible(true);
+
+    }//GEN-LAST:event_jmEditarUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -495,35 +587,35 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JMenuItem jmCadBlocos;
+    private javax.swing.JMenuItem jmCadDepartamento;
+    private javax.swing.JMenuItem jmCadHorarios;
+    private javax.swing.JMenuItem jmCadSalas;
+    private javax.swing.JMenuItem jmCadTipodeSalas;
+    private javax.swing.JMenuItem jmCadUsuarios;
+    private javax.swing.JMenu jmCadastrar;
     private javax.swing.JMenu jmConsultar;
+    private javax.swing.JMenu jmEditar;
+    private javax.swing.JMenuItem jmEditarBlocos;
+    private javax.swing.JMenuItem jmEditarDepartamento;
+    private javax.swing.JMenuItem jmEditarHorarios;
+    private javax.swing.JMenuItem jmEditarSalas;
+    private javax.swing.JMenuItem jmEditarTipodeSalas;
+    private javax.swing.JMenuItem jmEditarUsuarios;
     private javax.swing.JMenu jmGerenciar;
     private javax.swing.JMenu jmReservas;
     private javax.swing.JPanel jpPrincipal;
