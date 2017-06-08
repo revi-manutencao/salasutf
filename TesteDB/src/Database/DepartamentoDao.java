@@ -1,6 +1,6 @@
 package Database;
 
-import Model.Bloco;
+import Model.Departamento;
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class BlocoDao {
+public class DepartamentoDao {
     protected DB db;
     protected String table;
     
-    public BlocoDao(){
+    public DepartamentoDao(){
         this.db = new DB();
-        this.table = "bloco";
+        this.table = "departamento";
     }
     
     
@@ -26,7 +26,7 @@ public class BlocoDao {
     */
     
     // Obter um objeto com base na coluna dada
-    public Bloco get (Bloco b, String column) {
+    public Departamento get (Departamento d, String column) {
         try{
             Connection con = db.connect();
 
@@ -34,21 +34,23 @@ public class BlocoDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = b.getClass().getMethod("get" + capitalize(column));
-                String val = (String) m.invoke(b);
+                Method m = d.getClass().getMethod("get" + capitalize(column));
+                String val = (String) m.invoke(d);
                 
                 stmt.setString(1, val);
             }catch(Exception e){
                 System.out.println(e.getMessage());
             }
+                        
             
             ResultSet rs = stmt.executeQuery();            
             
-            Bloco bloco = new Bloco();
+            Departamento bloco = new Departamento();
             
             while (rs.next()){
                 bloco.setId(rs.getInt("id"));
-                bloco.setCodigo(rs.getString("codigo"));
+                bloco.setNome(rs.getString("nome"));
+                bloco.setSigla(rs.getString("sigla"));
                 bloco.setAtivo(rs.getBoolean("ativo"));
             }
             
@@ -62,18 +64,18 @@ public class BlocoDao {
     }
     
     // Obter um objeto ATIVO com base na coluna dada
-    public Bloco getAtivo (Bloco b, String column) {
-        Bloco bloco = get (b, column);
+    public Departamento getAtivo (Departamento d, String column) {
+        Departamento dep = get (d, column);
         
-        if(bloco.isAtivo() == true)
-            return bloco;
+        if(dep.isAtivo() == true)
+            return dep;
         else
             return null;
     }
     
     
     // Obter todos os objetos
-    public List<Bloco> getAll () {
+    public List<Departamento> getAll () {
         try{
             Connection con = db.connect();
 
@@ -82,12 +84,13 @@ public class BlocoDao {
 
             ResultSet rs = stmt.executeQuery();
             
-            List<Bloco> blocos = new ArrayList<Bloco>();
+            List<Departamento> blocos = new ArrayList<Departamento>();
             
             while (rs.next()){
-                Bloco bloco = new Bloco();
+                Departamento bloco = new Departamento();
                 bloco.setId(rs.getInt("id"));
-                bloco.setCodigo(rs.getString("codigo"));
+                bloco.setNome(rs.getString("nome"));
+                bloco.setSigla(rs.getString("sigla"));
                 bloco.setAtivo(rs.getBoolean("ativo"));
                 
                 blocos.add(bloco);
@@ -103,12 +106,12 @@ public class BlocoDao {
     }
     
     // Obter todos os objetos ATIVOS
-    public List<Bloco> getAllAtivos () {
-        List<Bloco> blocos = getAll();  
-        List<Bloco> ativos = new ArrayList<Bloco>();
-        for (Bloco bloco : blocos){
-            if(bloco.isAtivo() == true)
-                ativos.add(bloco);
+    public List<Departamento> getAllAtivos () {
+        List<Departamento> deptos = getAll();  
+        List<Departamento> ativos = new ArrayList<Departamento>();
+        for (Departamento depto : deptos){
+            if(depto.isAtivo() == true)
+                ativos.add(depto);
         }
         
         return ativos;
@@ -117,15 +120,16 @@ public class BlocoDao {
     
     
     // Insere um dado objeto do BD
-    public boolean insert (Bloco b){
+    public boolean insert (Departamento d){
         try{
             Connection con = db.connect();
 
-            String query = "INSERT INTO "+table+" (codigo, ativo) VALUES (?, ?)";
+            String query = "INSERT INTO "+table+" (nome, sigla, ativo) VALUES (?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             
-            stmt.setString(1, b.getCodigo());
-            stmt.setBoolean(2, b.isAtivo());
+            stmt.setString(1, d.getNome());
+            stmt.setString(2, d.getSigla());
+            stmt.setBoolean(3, d.isAtivo());
 
             stmt.execute();
             
@@ -140,16 +144,17 @@ public class BlocoDao {
     
     
     // Atualiza um dado objeto no BD
-    public boolean update (Bloco b){
+    public boolean update (Departamento d){
         try{
             Connection con = db.connect();
 
-            String query = "UPDATE "+table+" SET codigo = ?, ativo = ? WHERE id = ?";
+            String query = "UPDATE "+table+" SET nome = ?, sigla = ?, ativo = ? WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
-            stmt.setString(1, b.getCodigo());
-            stmt.setBoolean(2, b.isAtivo());
-            stmt.setInt(3, b.getId());
+            stmt.setString(1, d.getNome());
+            stmt.setString(2, d.getSigla());
+            stmt.setBoolean(2, d.isAtivo());
+            stmt.setInt(3, d.getId());
 
             stmt.execute();
             
@@ -163,16 +168,16 @@ public class BlocoDao {
     }
     
     // Desabilita o objeto no sistema
-    public boolean disable (Bloco b) {
-        b.setAtivo(false);
+    public boolean disable (Departamento d) {
+        d.setAtivo(false);
         
-        return update(b);
+        return update(d);
     }
     
     // Reabilita o objeto no sistema
-    public boolean enable (Bloco b) {
-        b.setAtivo(true);
+    public boolean enable (Departamento d) {
+        d.setAtivo(true);
         
-        return update(b);
+        return update(d);
     }
 }

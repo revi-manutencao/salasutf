@@ -20,7 +20,8 @@ public class Teste {
         
 //        Bloco blocoSearch = new Bloco();
 //        blocoSearch.setId(3);
-//        Bloco bl = bdao.get(blocoSearch, "id");
+//        blocoSearch.setCodigo("I");
+//        Bloco bl = bdao.get(blocoSearch, "codigo");
         
 
 
@@ -43,7 +44,7 @@ public class Teste {
 //            System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId()+"\n");
 //        }
 
-        // Select specific
+//        // Select specific
 //        System.out.println("Cod: "+bl.getCodigo()+"\nId: "+bl.getId());
 
         // Disable object
