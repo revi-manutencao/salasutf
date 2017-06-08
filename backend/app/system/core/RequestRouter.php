@@ -18,7 +18,7 @@ class RequestRouter {
 		$method = $data['method'];
 		$params = $data['params'];
 		$error = $data['error'];
-
+		
 		if (!$error) {
 			// Inclui e instancia o controller e o método, passando os parâmetros
 			if (file_exists(BASEPATH . '/app/controllers/' . $controller . '.php')
@@ -55,7 +55,7 @@ class RequestRouter {
 
 	private function setRouteData ($path) {
 		$route = array();
-		require_once BASEPATH . '/app/system/Routes.php';
+		require_once BASEPATH . '/app/Routes.php';
 		$routed = FALSE;
 		$error = FALSE;
 
@@ -114,6 +114,7 @@ class RequestRouter {
 
 					// Define que foi encontrada uma rota para a URL atual
 					$routed = TRUE;
+                    $error = FALSE;
 				} 
 				// Caso sejam passadas variáveis pra uma rota que não peça
 				else if ($clearurlvars == $pureroute) { 
@@ -126,8 +127,9 @@ class RequestRouter {
 		if ($routed == FALSE) {
 			$urlcomponents = $path = explode('/', $urlcomponents);
 
-			// Define o controller a ser usado
-			if (isset($urlcomponents[0]) && !empty($urlcomponents[0])) 
+			// Define o controller a ser usado 
+			// (caso o primeiro caractere seja '?', chama o MainController e passa o $_GET)
+			if (isset($urlcomponents[0]) && !empty($urlcomponents[0]) && $urlcomponents[0][0] != '?') 
 				$controller = $urlcomponents[0].'Controller';
 			 else
 				$controller = 'MainController';
@@ -167,7 +169,6 @@ class RequestRouter {
 		} else
 			$params = '';
 
-
 		return array(
 			'controller' => $controller, 
 			'method' => $method, 
@@ -197,6 +198,13 @@ class RequestRouter {
 		require_once BASEPATH . '/app/system/components/Mail.php';
 		require_once BASEPATH . '/app/system/components/Validation.php';
 
+		// Mostra ou oculta os erros com base na constante ENVIRONMENT
+		if(ENVIRONMENT == 'dev'){
+			ini_set('display_errors', 'On');
+		} else if(ENVIRONMENT == 'production'){
+			ini_set('display_errors', 'Off');
+		}
+
 		// Define cabeçalhos HTTP com foco na segurança da aplicação
 		header('X-Frame-Options: DENY');
 		header('X-XSS-Protection: 1; mode=block');
@@ -204,10 +212,9 @@ class RequestRouter {
 	}
 
 	private function iniSession () {
-		ini_set('session.cookie_secure',1);
 		ini_set('session.use_only_cookies',1);
 		ini_set( 'session.cookie_httponly', SESSION_HTTP_ONLY );
-		
+
 		session_name(SESSION_NAME);
 		session_start();
 		ob_start();

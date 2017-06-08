@@ -58,8 +58,12 @@ class App {
 	}
 
 	public function withErrors ($inputErrors) {
-		foreach ($inputErrors as $input => $error)
-			$_SESSION['flash']['inputErrors'][$input] .= $error.'<br>';
+		foreach ($inputErrors as $input => $error) {
+            if (!isset($_SESSION['flash']['inputErrors'][$input]))
+                $_SESSION['flash']['inputErrors'][$input] = '';
+
+            $_SESSION['flash']['inputErrors'][$input] .= $error . '<br>';
+        }
 		return $this;
 	}
 
@@ -80,6 +84,20 @@ class App {
 		} else
 			return FALSE;
 	}
+
+    public function checkInputErrors ($fieldName = NULL) {
+        if($fieldName != NULL) {
+            if (isset($_SESSION['flash']['inputErrors'][$fieldName]) && $_SESSION['flash']['inputErrors'][$fieldName] != NULL)
+                return true;
+            else
+                return false;
+        } else{
+            if (isset($_SESSION['flash']['inputErrors']) && $_SESSION['flash']['inputErrors'] != NULL)
+                return TRUE;
+            else
+                return FALSE;
+        }
+    }
 
 	// Recebe o array de arquivos vindo do formulário e reordena os elementos
 	public function orderFiles ($files) {

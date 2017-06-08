@@ -33,7 +33,6 @@
 			<ul class="nolist">
 				<a href="#changevalidationmsg"><li>Validação de dados</li></a>
 				<a href="#changeauthmsg"><li>Autenticação de usuário</li></a>
-				<!-- <a href="#modelinit"><li>Inicialização</li></a> -->
 			</ul>
 		</ul>
 		<a href="#controllers"><h3>Controllers</h3></a>
@@ -58,8 +57,6 @@
 			<a href="#modelcreate"><li>Criação de um model</li></a>
 			<a href="#primarykey"><li>Chave primária</li></a>
 			<a href="#modelinit"><li>Inicialização</li></a>
-			<a href="#modeltoarray"><li>toArray()</li></a>
-			<a href="#modeljsonserialize"><li>jsonSerialize()</li></a>
 		</ul>
 		<a href="#database"><h3>Banco de Dados</h3></a>
 		<ul class="nolist">
@@ -68,6 +65,7 @@
 				<a href="#dbget"><li><i>get()</i></li></a>
 				<a href="#dball"><li><i>all()</i></li></a>
 				<a href="#dbselect"><li><i>select()</i></li></a>
+				<a href="#dbjoin"><li><i>join()</i></li></a>
 				<a href="#dbwhere"><li><i>where()</i></li></a>
 				<a href="#dborderby"><li><i>orderBy()</i></li></a>
 				<a href="#dbextrasql"><li><i>extraSql()</i></li></a>
@@ -83,8 +81,10 @@
 			<a href="#dbclass"><li>Classe DB</li></a>
 			<ul class="nolist">
 				<a href="#dbclassselect"><li><i>DB->select()</i></li></a>
+				<a href="#dbclassjoin"><li><i>DB->join()</i></li></a>
 				<a href="#dbclasswhere"><li><i>DB->where()</i></li></a>
 				<a href="#dbclassfind"><li><i>find()</i></li></a>
+				<a href="#dbclassall"><li><i>DB::all()</i></li></a>
 				<a href="#dbclasssave"><li><i>DB::save()</i></li></a>
 				<a href="#dbclassdelete"><li><i>DB::delete()</i></li></a>
 			</ul>
@@ -134,6 +134,7 @@
 		<ul class="nolist">
 			<a href="#oldval"><li><i>oldVal()</i></li></a>
 			<a href="#getinputerrors"><li><i>getInputErrors()</i></li></a>
+			<a href="#checkinputerrors"><li><i>checkInputErrors()</i></li></a>
 		</ul>
 		<a href="#formfunc"><h3>Processamento de Formulários</h3></a>
 		<ul class="nolist">
@@ -167,7 +168,9 @@
 		<a href="#utilfunc"><h3>Funções utilitárias</h3></a>
 		<ul class="nolist">
 			<a href="#dump"><li><i>dump()</i></li></a>
-			<a href="#dd"><li><i>dd()</i></li></a>
+			<a href="#dd"><li><i>dd()</i></li></a>			
+			<a href="#toarray"><li>toArray()</li></a>
+			<a href="#jsonserialize"><li>jsonSerialize()</li></a>
 		</ul>
 	</div>
 
@@ -185,7 +188,7 @@
 		
 		<p class="obs">
 			<b>Atenção:</b> ao iniciar um projeto utilizando o Luvi, não se esqueça de renomear o arquivo
-			<b>SystemData-Example.php</b> (localizado em <i>/app/<wbr>system/<wbr></i>) para 
+			<b>SystemData-Example.php</b> (localizado em <i>/app/<wbr></i>) para 
 			<b>SystemData.php</b> e de definir nele as
 			<a href="#sysconst">constantes do sistema</a> para que o sistema funcione corretamente.
 		</p>
@@ -245,9 +248,7 @@
 									<li class="treefile"><i class="grayfont">(Conteúdo da biblioteca)</i></li>
 								</ul>
 							</ul>
-						<li class="treefile">Routes.php <i class="comment">&nbsp;&nbsp;// Contém as rotas personalizadas</i></li>
-						<li class="treefile">SystemData-Example.php <i class="comment">&nbsp;&nbsp;// Arquivo base que contém as constantes do sistema</i></li>
-					</ul>
+						</ul>
 					<li>views <i class="comment">&nbsp;&nbsp;// Destinada a armazenamento de views</i></li>
 					<ul>
 						<li>error</li>
@@ -256,6 +257,8 @@
 						</ul>
 						<li class="treefile">Default.php</li>
 					</ul>
+					<li class="treefile">Routes.php <i class="comment">&nbsp;&nbsp;// Contém as rotas personalizadas</i></li>
+					<li class="treefile">SystemData-Example.php <i class="comment">&nbsp;&nbsp;// Arquivo base que contém as constantes do sistema</i></li>
 				</ul>
 				<li>assets <i class="comment">&nbsp;&nbsp;// Arquivos para exibição pública</i></li>
 				<ul>
@@ -328,7 +331,7 @@
 		
 		<a name="sysconst"><h2>Constantes do sistema</h2></a>
 		<p>
-			O arquivo <b>/app/<wbr>system/<wbr>SystemData-Example.php</b> contém as constantes que são utilizadas pelo
+			O arquivo <b>/app/<wbr>SystemData-Example.php</b> contém as constantes que são utilizadas pelo
 			sistema na configuração de determinados recursos. Deve ser renomeado para apenas <b>SystemData.php</b>
 			para que funcione corretamente.
 		</p>
@@ -874,32 +877,6 @@
 			<br>
 			<pre>(new <b>Bird</b>)->all ();</pre>
 		</span>
-		<br>
-		<a name="modeltoarray"><h3><i>toArray()</i></h3></a>
-		<p>
-			Converte os atributos e valores do objeto atual em um array, partindo dos métodos setters do objeto para a obtenção das informações.
-		</p>
-		<span class="pregroup">
-			<pre>array <b>toArray (</b> <b>)</b></pre>
-			<pre><br><b>Usage example:</b></pre>
-			<pre>$device->toArray (); <i class="comment">// Obtém um vetor contendo os atributos e valores do objeto $device</i></pre>
-		</span>
-		<p>
-			Retorna um vetor com os atributos do objeto.
-		</p>
-		<br>
-		<a name="modeljsonserialize"><h3><i>jsonSerialize()</i></h3></a>
-		<p>
-			Converte os atributos e valores do objeto atual em uma string JSON.
-		</p>
-		<span class="pregroup">
-			<pre>string <b>jsonSerialize (</b> <b>)</b></pre>
-			<pre><br><b>Usage example:</b></pre>
-			<pre>$guitar->jsonSerialize (); <i class="comment">// Obtém a string JSON contendo os atributos e valores do objeto $guitar</i></pre>
-		</span>
-		<p>
-			Retorna uma string JSON com os atributos do objeto, partindo dos métodos setters do objeto para a obtenção das informações.
-		</p>
 
 
 		<br><br>
@@ -997,6 +974,42 @@
 				Caso contrário, a consulta não será executada.
 			</p>
 			<br>
+			<a name="dbjoin"><b><i>join()</i></b></a>
+			<p>
+				Define uma união com outra tabela do banco de dados.
+			</p>
+			<p>
+				Realiza a união com a tabela <b>$joinTable</b>, comparando a coluna <b>$joinTableCol</b>,
+				da tabela a ser unida, com a coluna <b>$thisTableCol</b>, tabela ao qual o objeto atual
+				pertence, utilizando a comparação <b>$compare</b> (por padrão, verifica se são iguais).
+			</p>
+			<p>
+				Ao executar a consulta, utilizando o método 
+				<a href="dbclassfind" class="normallink">find()</a>, <b>os resultados
+				obtidos são adicionados a um objeto do mesmo tipo do objeto que originou a chamada da
+				função</b>, com as colunas adicionais, 
+				do objeto unido, sendo definidas como atributos públicos.
+			</p>
+			<p>
+				Em outras palavras, ao chamar a função a partir de um objeto, por exemplo, Device e uni-lo
+				com um objeto Person, o resultado será um objeto da classe Device, com seus atributos
+				tradicionais (manipulados pelos métodos getters e setters) mais os atributos da classe
+				Person, públicos (manipuláveis diretamente, sem necessitar dos métodos get e set).
+			</p>
+			<span class="pregroup">
+				<pre>object:DB <b>join (</b> string $joinTable, $joinTableCol, $thisTableCol, [$compare] <b>)</b></pre>
+				<pre><br><b>Usage example:</b></pre>
+				<pre>(new Television)->join ('hometheater', 'hometheater.id_tv', 'television.id')->where ('hometheater.video = ?', 'hdmi')->find (); <i class="comment">// Procura por toda a tabela Television, unindo-se com a tabela Hometheater, por uma TV cujo HT tenha a propriedade 'video' igual a 'hdmi' </i></pre>
+			</span>
+			<p>
+				Retorna um objeto da classe DB.
+			</p>
+			<p class="obs">
+				<b>Observação:</b> esta função deve ser executada SEMPRE antes da função where()
+				(quando aplicável). Caso contrário, a consulta não será executada 
+				corretamente.
+			</p>
+			<br>
 			<a name="dbwhere"><b><i>where()</i></b></a>
 			<p>
 				Define a condição de restrição para a consulta dada pela função 
@@ -1006,15 +1019,16 @@
 			<p>
 				A condição de busca (<b>$where</b>) é composta de uma string com o código SQL do where
 				(exceto pela palavra chave "WHERE"), com os valores a serem buscados trocados por 
-				uma "?", enquanto que <b>$whereVars</b> pode ser uma string contendo o único valor
-				a substituir a "?" na string $where ou um vetor com todos os elementos que substituirão,
-				respectivamente, cada uma das interrogações do código passado.
+				uma "?", enquanto que <b>$whereVars</b>, quando passada, pode ser uma string contendo 
+				o único valor a substituir a "?" na string $where ou um vetor com todos os elementos
+				que substituirão, respectivamente, cada uma das interrogações do código passado.
 			</p>
 			<span class="pregroup">
-				<pre>object:DB <b>where (</b> string $where, $whereVars <b>)</b></pre>
+				<pre>object:DB <b>where (</b> string $where, [$whereVars] <b>)</b></pre>
 				<pre><br><b>Usage example:</b></pre>
 				<pre>(new Cat)->where ('name = ?', 'Felix')->find (); <i class="comment">// Procura por toda a tabela Cat por um valor cujo atributo 'name' seja 'Felix'</i></pre>
 				<pre>(new Dog)->select ('id, age')->where ('name = ? AND weight > ?', [$name, $weight])->find (); <i class="comment">// Seleciona 'id' e 'age' na tabela Dog, procurando por uma linha em que 'name' seja igual ao valor de $name e 'weight' seja maior que o valor de $weight</i></pre>
+				<pre>(new Lion)->select ('*')->where ('wild = TRUE')->find (); <i class="comment">// Seleciona tudo na tabela Lion, procurando por uma linha em que 'wild' seja TRUE</i></pre>
 			</span>
 			<p>
 				Retorna um objeto da classe DB.
@@ -1141,7 +1155,22 @@
 				<pre>(new DB)->select (NULL, 'Animal')->find ();</pre>
 			</span>
 			<p>
-				Retorna o objeto salvo em caso de sucesso ou <b>FALSE</b> caso contrário.
+				Retorna um objeto do tipo DB.
+			</p>
+			<br>
+			<a name="dbclassjoin"><b><i>DB->join()</i></b></a>
+			<p>
+				As mesmas propriedades da função <a class="normallink" href="#dbjoin">join()</a> descrita
+				anteriormente, com a diferença de que deve ser executada <b>SEMPRE</b> após um 
+				<a class="normallink" href="#dbclassselect">select()</a>.
+			</p>
+			<span class="pregroup">
+				<pre>object:DB <b>join (</b> string $joinTable, $joinTableCol, $thisTableCol, [$compare] <b>)</b></pre>
+				<pre><br><b>Usage example:</b></pre>
+				<pre>(new DB)->select ('name')->join ('hometheater', 'hometheater.id_tv', 'television.id')->where ('hometheater.video = ?', 'hdmi')->find (); <i class="comment">// Procura por toda a tabela Television, unindo-se com a tabela Hometheater, por uma TV cujo HT tenha a propriedade 'video' igual a 'hdmi' </i></pre>
+			</span>
+			<p>
+				Retorna um objeto do tipo DB.
 			</p>
 			<br>
 			<a name="dbclasswhere"><b><i>DB->where()</i></b></a>
@@ -1151,13 +1180,14 @@
 				adicional</b>, quando não usada em conjunto com a função <a href="#dbclassselect">select()</a>.
 			</p>
 			<span class="pregroup">
-				<pre>object:DB <b>where (</b> string $where, $whereVars, [string $table] <b>)</b></pre>
+				<pre>object:DB <b>where (</b> string $where, [$whereVars], [string $table] <b>)</b></pre>
 				<pre><br><b>Usage example:</b></pre>
 				<pre>(new DB)->where ('name = ?', 'Felix', 'Cat')->find ();</pre>
-				<pre>(new DB)->select ('id, age', 'Cat')->where ('name = ? AND weight > ?', [$name, $weight])->find (); <i class="comment">// Seleciona 'id' e 'age' na tabela Dog, procurando por uma linha em que 'name' seja igual ao valor de $name e 'weight' seja maior que o valor de $weight</i></pre>
+				<pre>(new DB)->select ('id, age', 'Dog')->where ('name = ? AND weight > ?', [$name, $weight])->find (); <i class="comment">// Seleciona 'id' e 'age' na tabela Dog, procurando por uma linha em que 'name' seja igual ao valor de $name e 'weight' seja maior que o valor de $weight</i></pre>
+				<pre>(new DB)->select ('*', 'Lion')->where ('wild = TRUE')->find (); <i class="comment">// Seleciona tudo na tabela Lion, procurando por uma linha em que 'wild' seja TRUE</i></pre>
 			</span>
 			<p>
-				Retorna o objeto salvo em caso de sucesso ou <b>FALSE</b> caso contrário.
+				Retorna um objeto do tipo DB.
 			</p>
 			<br>
 			<a name="dbclassfind"><b><i>find()</i></b></a>
@@ -1175,6 +1205,19 @@
 			</span>
 			<p>
 				Retorna o objeto salvo em caso de sucesso ou <b>NULL</b> caso contrário.
+			</p>
+			<br>
+			<a name="dbclassall"><b><i>DB::all()</i></b></a>
+			<p>
+				Recebe uma string <b>$table</b> por parâmetro e busca no banco por todos os dados da tabela passada.
+			</p>
+			<span class="pregroup">
+				<pre>object <b>all (</b> $table <b>)</b></pre>
+				<pre><br><b>Usage example:</b></pre>
+				<pre>DB::all ($mouse); <i class="comment">// Busca por todos os dados de uma dada tabela</i></pre>
+			</span>
+			<p>
+				Retorna os objetos encontrados em caso de sucesso ou <b>NULL</b> caso contrário.
 			</p>
 			<br><a name="dbclasssave"><b><i>DB::save()</i></b></a>
 			<p>
@@ -1879,6 +1922,29 @@
 			Retorna o valor da <i>flash</i> que contém a lista de erros encontrados no preenchimento
 			do campo de formulário identificado por <b>$inputName</b>.
 		</p>
+		<br>
+		<a name="checkinputerrors"><h3><i>checkInputErrors()</i></h3></a>
+		<p>
+			Verifica se há algum erro de formulário ainda não exibido. Quando é passado o parâmetro $inputName, verifica se há, especificamente, erros para o campo de formulário indicado.
+		</p> 
+		<p>
+			Ideal para varificar a existência de erros em um campo de formulário antes de exibi-los com <a href="#getinputerrors">getInputErrors()</a>.
+		</p>
+		<span class="pregroup">
+			<pre>bool <b>checkInputErrors (</b> [string $inputName] <b>)</b></pre>
+			<pre><br><b>Usage example:</b></pre>
+			<pre>if (checkInputErrors ('username')){</pre>
+			<pre>	echo getInputErrors ('username'));</pre>
+			<pre>}</pre>
+			<pre></pre>
+			<pre>if (checkInputErrors ()){</pre>
+			<pre>	echo getInputErrors ('password'));</pre>
+			<pre>}</pre>
+			<pre></pre>
+		</span>
+		<p>
+			Retorna <b>TRUE</b> ou <b>FALSE</b> com base na existência ou não de erros entre os campos de formulários ou no campo identificado por <b>$inputName</b>.
+		</p>
 		
 
 		<br><br>
@@ -2065,30 +2131,36 @@
 		<br>
 		<a name="witherrors"><h3><i>withErrors()</i></h3></a>
 		<p>
-			Envia um <i>flash</i> com as mensagens de erro referentes aos campos de formulário 
-			junto a um <a href="#redirect">redirect()</a> ou <a href="#back">back()</a> para o
-			usuário veja 
+			Envia um <i>flash</i> com as mensagens de erro referentes aos campos de formulário,
+			conforme passados por parâmetro na variável $arrayErrors, 
+			junto a um <a href="#redirect">redirect()</a> ou <a href="#back">back()</a>.
+		</p>
+		<p>
+			O parâmetro deve seguir o padrão <b>$fielNname => $errorMessage</b>, onde <i>$fieldName</i>
+			representa o nome do campo no formulário e <i>$errorMessage</i> representa a mensagem de
+			erro a ser exibida para o usuário.
 		</p>
 		<p>
 			Seu valor deve ser exibido no formulário com a função 
 			<a href="#getinputerrors">getInputErrors()</a>.
 		</p>
 		<p class="obs">
-			<b>Observação:</b> esta função pode ser utilizada 
+			<b>Observação:</b> esta função deve ser utilizada 
 			<b><a href="#joinuse">APENAS EM CONJUNTO</a></b> com as funções 
 			<a href="#redirect">redirect()</a> e <a href="#back">back()</a>.
 		</p>
 		<span class="pregroup">
-			<pre>object:App <b>withErrors (</b> <b>)</b></pre>
+			<pre>object:App <b>withErrors (</b> $arrayErrors <b>)</b></pre>
 			<pre><br><b>Usage example:</b></pre>
-			<pre>back()->withErrors();</pre>
-			<pre>redirect('register')->withErrors();</pre>
+			<pre>back()->withErrors($arrError);</pre>
+			<pre>redirect('register')->withErrors(array('user' => 'Usuário inválido'));</pre>
 		</span>
 		<p>
 			Retorna um objeto da classe App.
 		</p>
 		<p>
-			<i>Função relacionada: <b><a href="#getinputerrors">getInputErrors()</a></b></i>
+			<i>Funções relacionadas: <b><a href="#getinputerrors">getInputErrors()</a></b> e
+			<b><a href="#checkinputerrors">checkInputErrors()</a></b></i>
 		</p>
 
 
@@ -2314,6 +2386,32 @@
 		</span>
 		<p>
 			Não possui retorno, apenas exibe os dados.
+		</p>
+		<br>
+		<a name="toarray"><h3><i>toArray()</i></h3></a>
+		<p>
+			Converte os atributos e valores de um objeto em um array, partindo dos métodos getters do objeto para a obtenção das informações.
+		</p>
+		<span class="pregroup">
+			<pre>array <b>toArray (</b> $object <b>)</b></pre>
+			<pre><br><b>Usage example:</b></pre>
+			<pre>toArray ($device); <i class="comment">// Obtém um vetor contendo os atributos e valores do objeto $device</i></pre>
+		</span>
+		<p>
+			Retorna um vetor com os atributos do objeto.
+		</p>
+		<br>
+		<a name="jsonserialize"><h3><i>jsonSerialize()</i></h3></a>
+		<p>
+			Converte os atributos e valores de um objeto ou array em uma string JSON.
+		</p>
+		<span class="pregroup">
+			<pre>string <b>jsonSerialize (</b> $var <b>)</b></pre>
+			<pre><br><b>Usage example:</b></pre>
+			<pre>jsonSerialize ($guitar); <i class="comment">// Obtém a string JSON contendo os atributos e valores do objeto $guitar</i></pre>
+		</span>
+		<p>
+			Retorna uma string JSON com os atributos de um array ou objeto, partindo dos métodos getters do objeto para a obtenção das informações.
 		</p>
 	</div>
 </body>

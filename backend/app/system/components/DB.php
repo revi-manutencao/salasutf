@@ -113,6 +113,13 @@ class DB {
 		return $this;
 	}
 
+
+    public function join ($table, $tableCol, $thisCol, $compare = '=') {
+        $this->sql .= ' JOIN ' . $table . ' ON ' . $table.'.'.$tableCol .' '. $compare .' '. $this->table.'.'.$thisCol.' ';
+
+        return $this;
+    }
+
 	/**
 	 * Padrão para o where: 
 	 * Caso 1: 'Element = ? AND OtherElement = ?'
@@ -122,7 +129,7 @@ class DB {
 	 * Caso 1: ['Value1', 'Value2']
 	 * Caso 2: 'Value1'
 	 */
-	public function where ($where, $whereVars, $table = NULL) {
+	public function where ($where, $whereVars = NULL, $table = NULL) {
 		if (!isset($table)) {
 			if (isset($this->table))
 				$table = $this->table;
@@ -133,17 +140,30 @@ class DB {
 
 		if (empty($this->sql))
 			$this->sql = 'SELECT * FROM ' . $table . ' WHERE ' . $where;
-		else
-			$this->sql .= ' WHERE ' . $where;
+		else {
+            if (preg_match('/.+(WHERE).+/', $this->sql)) {
+                $this->sql .= ' AND ';
+            } else {
+                $this->sql .= ' WHERE ';
+            }
 
-		$this->whereVars = $whereVars;
+            $this->sql .= $where;
+        }
+
+
+        if(is_array($whereVars)) {
+            foreach ($whereVars as $var) {
+                $this->whereVars[] = $var;
+            }
+        } else
+            $this->whereVars[] = $whereVars;
 
 		return $this;
 	}
 
 	public function orderBy ($orderValue, $order = 'ASC') {
 		if (empty($this->sql)) 
-			return FALSE;
+			return NULL;
 		else {
 			$orderExplode = explode('ORDER BY', $this->sql);
 
@@ -160,7 +180,7 @@ class DB {
 
 	public function extraSql ($sql) {
 		if (empty($this->sql))
-			return FALSE;
+			return NULL;
 		else 
 			$this->sql .= ' ' . $sql;
 
@@ -185,6 +205,10 @@ class DB {
 		}
 
 		$stmt->execute();
+
+        // Limpa as variáveis do where após executar a consulta
+        $this->whereVars = null;
+
 		// Retorna um objeto da classe definida pela tabela ($this->table)
 		return $stmt->fetchAll(PDO::FETCH_CLASS, $this->table);
 		// $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna um array
@@ -209,9 +233,22 @@ class DB {
 			return FALSE;
 		else 
 			return TRUE;
-	}	
+	}
 
-	public static function connect () {
+    public static function all($table) {
+        $sql = 'SELECT * FROM '.$table.';';
+
+        $con = self::connect();
+        $stmt = $con->prepare($sql);
+
+
+        $stmt->execute();
+        // Retorna um objeto da classe definida pela tabela ($this->table)
+        return $stmt->fetchAll(PDO::FETCH_CLASS, $table);
+    }
+
+
+    public static function connect () {
 		return new PDO(DB_DRIVER.":host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
 	}
 }
