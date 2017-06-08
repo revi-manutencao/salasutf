@@ -23,22 +23,28 @@ public class Teste {
         
         BlocoDao bdao = new BlocoDao();
         
-        Bloco b = new Bloco();
-        b.setCodigo("I");
-        b.setAtivo(true);
+//        Bloco b = new Bloco();
+//        b.setCodigo("I");
+//        b.setAtivo(true);
         
-        Bloco blocoSearch = new Bloco();
-        blocoSearch.setId(3);
-        Bloco bl = bdao.get(blocoSearch, "id");
+//        Bloco blocoSearch = new Bloco();
+//        blocoSearch.setId(3);
+//        Bloco bl = bdao.get(blocoSearch, "id");
         
+
+
+        /**
+         * Teste de operações com o BD
+         */
+
         //Insert
 //        bdao.insert(b);
         
         // Select all
-        List<Bloco> blocos = bdao.getAll();        
-        for (Bloco bloco : blocos){
-            System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId()+"\n");
-        }
+//        List<Bloco> blocos = bdao.getAll();        
+//        for (Bloco bloco : blocos){
+//            System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId()+"\n");
+//        }
         
         // Select all actives
 //        List<Bloco> blocos = bdao.getAllAtivos();        
