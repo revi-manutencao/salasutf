@@ -16,7 +16,8 @@ import java.sql.SQLException;
 public class Teste {
     public static void main(String[] args){
         try{
-            Connection con = new DB().connect("teste", "root", "");
+            Connection con = new DB().connect("texto", "root", "");
+            System.out.println("meu texto de teste do git");
             System.out.println("Conectou");
             con.close();
         } catch(SQLException e){

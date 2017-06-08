@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package src.view.Cadastrar;
+package view.Cadastrar;
 
-import src.view.Consultar;
 
 /**
  *
@@ -41,24 +40,6 @@ public class CadastrarHorarios extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenu8 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,82 +87,6 @@ public class CadastrarHorarios extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-
-        jMenu4.setText("Consultar");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
-            }
-        });
-        jMenuBar2.add(jMenu4);
-
-        jMenu5.setText("Reservas");
-        jMenuBar2.add(jMenu5);
-
-        jMenu7.setText("Gerenciar");
-        jMenu7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu7ActionPerformed(evt);
-            }
-        });
-
-        jMenu8.setText("Cadastrar");
-
-        jMenuItem7.setText("Salas");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem7);
-
-        jMenuItem8.setText("Blocos");
-        jMenu8.add(jMenuItem8);
-
-        jMenuItem9.setText("Tipo de salas");
-        jMenu8.add(jMenuItem9);
-
-        jMenuItem10.setText("Horários");
-        jMenu8.add(jMenuItem10);
-
-        jMenuItem11.setText("Departamento");
-        jMenu8.add(jMenuItem11);
-
-        jMenuItem12.setText("Usuários");
-        jMenu8.add(jMenuItem12);
-
-        jMenu7.add(jMenu8);
-
-        jMenu9.setText("Editar");
-
-        jMenuItem15.setText("Salas");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu9.add(jMenuItem15);
-
-        jMenuItem16.setText("Blocos");
-        jMenu9.add(jMenuItem16);
-
-        jMenuItem17.setText("Tipo de salas");
-        jMenu9.add(jMenuItem17);
-
-        jMenuItem18.setText("Horários");
-        jMenu9.add(jMenuItem18);
-
-        jMenuItem19.setText("Departamento");
-        jMenu9.add(jMenuItem19);
-
-        jMenuItem20.setText("Usuários");
-        jMenu9.add(jMenuItem20);
-
-        jMenu7.add(jMenu9);
-
-        jMenuBar2.add(jMenu7);
-
-        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -241,7 +146,7 @@ public class CadastrarHorarios extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -254,23 +159,6 @@ public class CadastrarHorarios extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        Consultar TelaConsultar = new Consultar();
-        TelaConsultar.setVisible(true);
-    }//GEN-LAST:event_jMenu4ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
-
-    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu7ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -328,24 +216,6 @@ public class CadastrarHorarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
