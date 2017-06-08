@@ -52,6 +52,8 @@ function toArray ($data) {
 		}
 	} else if (is_array($data) && sizeof($data) == 1){
 		$arrProperties = singleToArray($data[0]);
+	} else if (is_array($data) && sizeof($data) == 0){
+		$arrProperties = array();
 	} else {
 		$arrProperties = singleToArray($data);
 	}
