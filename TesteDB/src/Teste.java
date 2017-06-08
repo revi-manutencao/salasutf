@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class Teste {
     public static void main(String[] args){
         try{
-            Connection con = new DB().connect("teste", "root", "");
+            Connection con = new DB().connect("salasutf", "root", "root");
             System.out.println("Conectou");
             con.close();
         } catch(SQLException e){
