@@ -1,6 +1,6 @@
 package Database;
 
-import Model.Departamento;
+import Model.Horario;
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DepartamentoDao {
+public class HorarioDao {
     protected DB db;
     protected String table;
     
-    public DepartamentoDao(){
+    public HorarioDao(){
         this.db = new DB();
-        this.table = "departamento";
+        this.table = "horario";
     }
     
     
@@ -26,7 +26,7 @@ public class DepartamentoDao {
     */
     
     // Obter um objeto com base na coluna dada
-    public Departamento get (Departamento d, String column) {
+    public Horario get (Horario h, String column) {
         try{
             Connection con = db.connect();
 
@@ -34,8 +34,8 @@ public class DepartamentoDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = d.getClass().getMethod("get" + capitalize(column));
-                String val = (String) m.invoke(d);
+                Method m = h.getClass().getMethod("get" + capitalize(column));
+                String val = (String) m.invoke(h);
                 
                 stmt.setString(1, val);
             }catch(Exception e){
@@ -45,17 +45,19 @@ public class DepartamentoDao {
             
             ResultSet rs = stmt.executeQuery();            
             
-            Departamento departamento = new Departamento();
+            Horario horario = new Horario();
             
             while (rs.next()){
-                departamento.setId(rs.getInt("id"));
-                departamento.setNome(rs.getString("nome"));
-                departamento.setSigla(rs.getString("sigla"));
-                departamento.setAtivo(rs.getBoolean("ativo"));
+                horario.setId(rs.getInt("id"));
+                horario.setDescricao(rs.getString("descricao"));
+                horario.setHorarioInicio(rs.getString("horarioInicio"));
+                horario.setHorarioFim(rs.getString("horarioFim"));
+                horario.setTurno(rs.getString("turno"));
+                horario.setAtivo(rs.getBoolean("ativo"));
             }
             
             con.close();
-            return departamento;
+            return horario;
             
         } catch(SQLException e){
             System.out.println(e);
@@ -64,8 +66,8 @@ public class DepartamentoDao {
     }
     
     // Obter um objeto ATIVO com base na coluna dada
-    public Departamento getAtivo (Departamento d, String column) {
-        Departamento dep = get (d, column);
+    public Horario getAtivo (Horario h, String column) {
+        Horario dep = get (h, column);
         
         if(dep.isAtivo() == true)
             return dep;
@@ -75,7 +77,7 @@ public class DepartamentoDao {
     
     
     // Obter todos os objetos
-    public List<Departamento> getAll () {
+    public List<Horario> getAll () {
         try{
             Connection con = db.connect();
 
@@ -84,20 +86,22 @@ public class DepartamentoDao {
 
             ResultSet rs = stmt.executeQuery();
             
-            List<Departamento> departamentos = new ArrayList<Departamento>();
+            List<Horario> horarios = new ArrayList<Horario>();
             
             while (rs.next()){
-                Departamento departamento = new Departamento();
-                departamento.setId(rs.getInt("id"));
-                departamento.setNome(rs.getString("nome"));
-                departamento.setSigla(rs.getString("sigla"));
-                departamento.setAtivo(rs.getBoolean("ativo"));
+                Horario horario = new Horario();
+                horario.setId(rs.getInt("id"));
+                horario.setDescricao(rs.getString("descricao"));
+                horario.setHorarioInicio(rs.getString("horarioInicio"));
+                horario.setHorarioFim(rs.getString("horarioFim"));
+                horario.setTurno(rs.getString("turno"));
+                horario.setAtivo(rs.getBoolean("ativo"));
                 
-                departamentos.add(departamento);
+                horarios.add(horario);
             }
             
             con.close();
-            return departamentos;
+            return horarios;
             
         } catch(SQLException e){
             System.out.println(e);
@@ -106,12 +110,12 @@ public class DepartamentoDao {
     }
     
     // Obter todos os objetos ATIVOS
-    public List<Departamento> getAllAtivos () {
-        List<Departamento> deptos = getAll();  
-        List<Departamento> ativos = new ArrayList<Departamento>();
-        for (Departamento depto : deptos){
-            if(depto.isAtivo() == true)
-                ativos.add(depto);
+    public List<Horario> getAllAtivos () {
+        List<Horario> horas = getAll();  
+        List<Horario> ativos = new ArrayList<Horario>();
+        for (Horario hora : horas){
+            if(hora.isAtivo() == true)
+                ativos.add(hora);
         }
         
         return ativos;
@@ -120,16 +124,19 @@ public class DepartamentoDao {
     
     
     // Insere um dado objeto do BD
-    public boolean insert (Departamento d){
+    public boolean insert (Horario h){
         try{
             Connection con = db.connect();
 
-            String query = "INSERT INTO "+table+" (nome, sigla, ativo) VALUES (?, ?, ?)";
+            String query = "INSERT INTO "+table+" (descricao, horarioInicio, "
+                    +"horarioFim, turno, ativo) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             
-            stmt.setString(1, d.getNome());
-            stmt.setString(2, d.getSigla());
-            stmt.setBoolean(3, d.isAtivo());
+            stmt.setString(1, h.getDescricao());
+            stmt.setString(2, h.getHorarioInicio());
+            stmt.setString(3, h.getHorarioFim());
+            stmt.setString(4, h.getTurno());
+            stmt.setBoolean(5, h.isAtivo());
 
             stmt.execute();
             
@@ -144,17 +151,20 @@ public class DepartamentoDao {
     
     
     // Atualiza um dado objeto no BD
-    public boolean update (Departamento d){
+    public boolean update (Horario h){
         try{
             Connection con = db.connect();
 
-            String query = "UPDATE "+table+" SET nome = ?, sigla = ?, ativo = ? WHERE id = ?";
+            String query = "UPDATE "+table+" SET descricao = ?, horarioInicio = ?, "
+                    + "horarioFim = ?, turno = ?, ativo = ? WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
-            stmt.setString(1, d.getNome());
-            stmt.setString(2, d.getSigla());
-            stmt.setBoolean(2, d.isAtivo());
-            stmt.setInt(3, d.getId());
+            stmt.setString(1, h.getDescricao());
+            stmt.setString(2, h.getHorarioInicio());
+            stmt.setString(3, h.getHorarioFim());
+            stmt.setString(4, h.getTurno());
+            stmt.setBoolean(5, h.isAtivo());
+            stmt.setInt(6, h.getId());
 
             stmt.execute();
             
@@ -168,16 +178,16 @@ public class DepartamentoDao {
     }
     
     // Desabilita o objeto no sistema
-    public boolean disable (Departamento d) {
-        d.setAtivo(false);
+    public boolean disable (Horario h) {
+        h.setAtivo(false);
         
-        return update(d);
+        return update(h);
     }
     
     // Reabilita o objeto no sistema
-    public boolean enable (Departamento d) {
-        d.setAtivo(true);
+    public boolean enable (Horario h) {
+        h.setAtivo(true);
         
-        return update(d);
+        return update(h);
     }
 }
