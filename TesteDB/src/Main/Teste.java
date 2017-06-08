@@ -27,26 +27,38 @@ public class Teste {
         b.setCodigo("I");
         b.setAtivo(true);
         
+        Bloco blocoSearch = new Bloco();
+        blocoSearch.setId(3);
+        Bloco bl = bdao.get(blocoSearch, "id");
+        
         //Insert
 //        bdao.insert(b);
         
         // Select all
-//        List<Bloco> blocos = bdao.getAll();        
+        List<Bloco> blocos = bdao.getAll();        
+        for (Bloco bloco : blocos){
+            System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId()+"\n");
+        }
+        
+        // Select all actives
+//        List<Bloco> blocos = bdao.getAllAtivos();        
 //        for (Bloco bloco : blocos){
 //            System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId()+"\n");
 //        }
 
         // Select specific
-        Bloco blocoSearch = new Bloco();
-        blocoSearch.setId(3);
-        Bloco bloco = bdao.get(blocoSearch);
-        System.out.println("Cod: "+bloco.getCodigo()+"\nId: "+bloco.getId());
+//        System.out.println("Cod: "+bl.getCodigo()+"\nId: "+bl.getId());
 
         // Disable object
-//        Bloco blocoSearch = new Bloco();
-//        blocoSearch.setId(3);
-//        Bloco bloco = bdao.get(blocoSearch);
-//        bdao.disable(bloco);
+//        bdao.disable(bl);
+
+
+        // re enable object
+//        bdao.enable(bl);
+
+        // update object
+//        bl.setCodigo("K");
+//        bdao.update(bl);
         
     }
 }
