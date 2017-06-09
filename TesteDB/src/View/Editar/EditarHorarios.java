@@ -105,7 +105,6 @@ public class EditarHorarios extends javax.swing.JFrame {
         jLabel2.setText("Nome");
 
         jTextField1.setFocusable(false);
-        jTextField1.setOpaque(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -113,14 +112,12 @@ public class EditarHorarios extends javax.swing.JFrame {
         });
 
         jTextField2.setFocusable(false);
-        jTextField2.setOpaque(false);
 
         jLabel3.setText("Início");
 
         jLabel6.setText("Fim");
 
         jTextField3.setFocusable(false);
-        jTextField3.setOpaque(false);
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Manhã", "Tarde", "Noite" }));
 
@@ -216,6 +213,7 @@ public class EditarHorarios extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

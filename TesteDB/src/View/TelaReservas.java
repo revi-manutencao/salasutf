@@ -76,6 +76,7 @@ public class TelaReservas extends javax.swing.JPanel {
             }
         ));
         jTable1.setCellSelectionEnabled(true);
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTable1.setDropMode(javax.swing.DropMode.ON);
         jScrollPane2.setViewportView(jTable1);
 

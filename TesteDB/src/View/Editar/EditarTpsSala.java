@@ -52,7 +52,6 @@ public class EditarTpsSala extends javax.swing.JFrame {
         jRadioButton1.setText("Desativar");
 
         jTextField1.setFocusable(false);
-        jTextField1.setOpaque(false);
 
         jButton3.setText("Alterar");
         jButton3.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -162,6 +161,7 @@ public class EditarTpsSala extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

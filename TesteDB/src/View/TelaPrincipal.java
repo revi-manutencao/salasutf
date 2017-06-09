@@ -71,15 +71,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpPrincipal = new javax.swing.JPanel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmReservas = new javax.swing.JMenu();
+        jSeparator8 = new javax.swing.JPopupMenu.Separator();
+        jSeparator9 = new javax.swing.JPopupMenu.Separator();
         jmGerenciar = new javax.swing.JMenu();
         jmCadastrar = new javax.swing.JMenu();
         jmCadSalas = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jmCadBlocos = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jmCadTipodeSalas = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jmCadHorarios = new javax.swing.JMenuItem();
+        jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jmCadDepartamento = new javax.swing.JMenuItem();
+        jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jmCadUsuarios = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmEditar = new javax.swing.JMenu();
         jmEditarSalas = new javax.swing.JMenuItem();
         jmEditarBlocos = new javax.swing.JMenuItem();
@@ -279,6 +288,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jmConsultarActionPerformed(evt);
             }
         });
+        jmConsultar.add(jSeparator1);
+
         jMenuBar2.add(jmConsultar);
 
         jmReservas.setText("Reservas");
@@ -287,6 +298,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jmReservasMouseClicked(evt);
             }
         });
+        jmReservas.add(jSeparator8);
+        jmReservas.add(jSeparator9);
+
         jMenuBar2.add(jmReservas);
 
         jmGerenciar.setText("Gerenciar");
@@ -305,6 +319,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastrar.add(jmCadSalas);
+        jmCadastrar.add(jSeparator4);
 
         jmCadBlocos.setText("Blocos");
         jmCadBlocos.addActionListener(new java.awt.event.ActionListener() {
@@ -313,6 +328,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastrar.add(jmCadBlocos);
+        jmCadastrar.add(jSeparator3);
 
         jmCadTipodeSalas.setText("Tipo de salas");
         jmCadTipodeSalas.addActionListener(new java.awt.event.ActionListener() {
@@ -321,6 +337,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastrar.add(jmCadTipodeSalas);
+        jmCadastrar.add(jSeparator5);
 
         jmCadHorarios.setText("Horários");
         jmCadHorarios.addActionListener(new java.awt.event.ActionListener() {
@@ -329,6 +346,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastrar.add(jmCadHorarios);
+        jmCadastrar.add(jSeparator6);
 
         jmCadDepartamento.setText("Departamento");
         jmCadDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +355,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jmCadastrar.add(jmCadDepartamento);
+        jmCadastrar.add(jSeparator7);
 
         jmCadUsuarios.setText("Usuários");
         jmCadUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -347,6 +366,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmCadastrar.add(jmCadUsuarios);
 
         jmGerenciar.add(jmCadastrar);
+        jmGerenciar.add(jSeparator2);
 
         jmEditar.setText("Editar");
 
@@ -416,10 +436,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultarActionPerformed
@@ -598,6 +619,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JPopupMenu.Separator jSeparator6;
+    private javax.swing.JPopupMenu.Separator jSeparator7;
+    private javax.swing.JPopupMenu.Separator jSeparator8;
+    private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
