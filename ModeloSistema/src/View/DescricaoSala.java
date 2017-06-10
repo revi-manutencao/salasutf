@@ -27,80 +27,44 @@ public class DescricaoSala extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jpDescricaoSala = new javax.swing.JPanel();
+        jlNomeSala = new javax.swing.JLabel();
+        jlDescricao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        panel2 = new java.awt.Panel();
+        jtEquipamentos = new javax.swing.JTextArea();
+        jlHorariosDisponiveis = new javax.swing.JLabel();
+        jpResultadoHorarios = new java.awt.Panel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"A040 (X horários disponíveis)"},
-                {"P105 (X horários disponíveis)"},
-                {"A145 (X horários disponíveis)"},
-                {"K009 (X horários disponíveis)"},
-                {"P205 (X horários disponíveis)"},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "SALAS ENCONTRADAS"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        jtabHorariosDisponiveis = new javax.swing.JTable();
+        jlLegendaDisponível = new javax.swing.JLabel();
+        jlLegendaOcupado = new javax.swing.JLabel();
+        jbReservar = new javax.swing.JButton();
+        jldescricaoHorario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("SALA X");
+        jlNomeSala.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jlNomeSala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlNomeSala.setText("SALA X");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Descrição da sala selecionada");
+        jlDescricao.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jlDescricao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlDescricao.setText("Descrição da sala selecionada");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(240, 240, 240));
-        jTextArea1.setRows(5);
-        jTextArea1.setText("X computadores...");
-        jTextArea1.setEnabled(false);
-        jTextArea1.setOpaque(false);
-        jScrollPane1.setViewportView(jTextArea1);
+        jtEquipamentos.setColumns(20);
+        jtEquipamentos.setForeground(new java.awt.Color(240, 240, 240));
+        jtEquipamentos.setRows(5);
+        jtEquipamentos.setText("X computadores...");
+        jtEquipamentos.setEnabled(false);
+        jtEquipamentos.setOpaque(false);
+        jScrollPane1.setViewportView(jtEquipamentos);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLabel4.setText("Horários disponíveis");
+        jlHorariosDisponiveis.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jlHorariosDisponiveis.setText("Horários disponíveis");
 
-        panel2.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        jpResultadoHorarios.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jtabHorariosDisponiveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"A040 (X horários disponíveis)"},
                 {"P105 (X horários disponíveis)"},
@@ -132,89 +96,90 @@ public class DescricaoSala extends javax.swing.JFrame {
                 "SALAS ENCONTRADAS"
             }
         ));
-        jTable2.addContainerListener(new java.awt.event.ContainerAdapter() {
+        jtabHorariosDisponiveis.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jTable2ComponentAdded(evt);
+                jtabHorariosDisponiveisComponentAdded(evt);
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(jtabHorariosDisponiveis);
 
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpResultadoHorariosLayout = new javax.swing.GroupLayout(jpResultadoHorarios);
+        jpResultadoHorarios.setLayout(jpResultadoHorariosLayout);
+        jpResultadoHorariosLayout.setHorizontalGroup(
+            jpResultadoHorariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpResultadoHorariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
+        jpResultadoHorariosLayout.setVerticalGroup(
+            jpResultadoHorariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpResultadoHorariosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jLabel6.setBackground(new java.awt.Color(255, 102, 102));
-        jLabel6.setText("Disponível");
+        jlLegendaDisponível.setBackground(new java.awt.Color(255, 102, 102));
+        jlLegendaDisponível.setText("Disponível");
 
-        jLabel5.setBackground(new java.awt.Color(255, 102, 102));
-        jLabel5.setText("Ocupado");
+        jlLegendaOcupado.setBackground(new java.awt.Color(255, 102, 102));
+        jlLegendaOcupado.setText("Ocupado");
 
-        jButton1.setText("Reservar");
+        jbReservar.setText("Reservar");
 
-        jLabel7.setBackground(new java.awt.Color(255, 102, 102));
-        jLabel7.setText("Selecione um horário disponível");
+        jldescricaoHorario.setBackground(new java.awt.Color(255, 102, 102));
+        jldescricaoHorario.setText("Selecione um horário disponível");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(81, 81, 81)
-                                        .addComponent(jLabel6))
-                                    .addComponent(jLabel7))
-                                .addGap(55, 55, 55))
-                            .addComponent(jButton1)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        javax.swing.GroupLayout jpDescricaoSalaLayout = new javax.swing.GroupLayout(jpDescricaoSala);
+        jpDescricaoSala.setLayout(jpDescricaoSalaLayout);
+        jpDescricaoSalaLayout.setHorizontalGroup(
+            jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jlNomeSala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlDescricao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jpDescricaoSalaLayout.createSequentialGroup()
+                .addGroup(jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpDescricaoSalaLayout.createSequentialGroup()
+                            .addGap(28, 28, 28)
+                            .addGroup(jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jpDescricaoSalaLayout.createSequentialGroup()
+                                    .addGroup(jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlHorariosDisponiveis)
+                                        .addGroup(jpDescricaoSalaLayout.createSequentialGroup()
+                                            .addComponent(jlLegendaOcupado)
+                                            .addGap(81, 81, 81)
+                                            .addComponent(jlLegendaDisponível))
+                                        .addComponent(jldescricaoHorario))
+                                    .addGap(151, 151, 151))
+                                .addComponent(jbReservar)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDescricaoSalaLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(jpResultadoHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(85, Short.MAX_VALUE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jpDescricaoSalaLayout.setVerticalGroup(
+            jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpDescricaoSalaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(jlNomeSala)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(jlDescricao)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(jlHorariosDisponiveis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jldescricaoHorario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                .addGroup(jpDescricaoSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlLegendaOcupado)
+                    .addComponent(jlLegendaDisponível))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpResultadoHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(jbReservar)
                 .addGap(22, 22, 22))
         );
 
@@ -222,21 +187,21 @@ public class DescricaoSala extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpDescricaoSala, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpDescricaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTable2ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable2ComponentAdded
+    private void jtabHorariosDisponiveisComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jtabHorariosDisponiveisComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTable2ComponentAdded
+    }//GEN-LAST:event_jtabHorariosDisponiveisComponentAdded
 
     /**
      * @param args the command line arguments
@@ -280,20 +245,18 @@ public class DescricaoSala extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
-    private java.awt.Panel panel2;
+    private javax.swing.JButton jbReservar;
+    private javax.swing.JLabel jlDescricao;
+    private javax.swing.JLabel jlHorariosDisponiveis;
+    private javax.swing.JLabel jlLegendaDisponível;
+    private javax.swing.JLabel jlLegendaOcupado;
+    private javax.swing.JLabel jlNomeSala;
+    private javax.swing.JLabel jldescricaoHorario;
+    private javax.swing.JPanel jpDescricaoSala;
+    private java.awt.Panel jpResultadoHorarios;
+    private javax.swing.JTextArea jtEquipamentos;
+    private javax.swing.JTable jtabHorariosDisponiveis;
     // End of variables declaration//GEN-END:variables
 }
