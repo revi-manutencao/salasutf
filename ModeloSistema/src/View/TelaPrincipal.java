@@ -28,6 +28,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     TelaReservas telareservas = new TelaReservas();
     TelaConsultar telaconsultar = new TelaConsultar();
+    int telax = 680;
+    int telay = 450;
 
     public TelaPrincipal() {
         telareservas.setVisible(false);
@@ -68,18 +70,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jpPrincipal.setPreferredSize(new java.awt.Dimension(647, 409));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(660, 450));
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 647, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
+
+        jmenubar.setName(""); // NOI18N
+        jmenubar.setRequestFocusEnabled(false);
+        jmenubar.setVerifyInputWhenFocusTarget(false);
 
         jmConsultar.setText("Consultar");
         jmConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,15 +228,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -258,7 +260,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jmConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmConsultarMouseClicked
         if(!telaconsultar.isVisible()){
-            jpPrincipal.add(telaconsultar).setBounds(0,0,647,409);
+            jpPrincipal.add(telaconsultar).setBounds(0,0,telax,telay);
             telaconsultar.setVisible(true);
             telareservas.setVisible(false);
         }else{
@@ -269,7 +271,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jmReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmReservasMouseClicked
         if(!telareservas.isVisible()){
-            jpPrincipal.add(telareservas).setBounds(0,0,647,409);
+            jpPrincipal.add(telareservas).setBounds(0,0,telax,telay);
             telareservas.setVisible(true);
             telaconsultar.setVisible(false);
         }else{
@@ -380,6 +382,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
+                
             }
         });
     }

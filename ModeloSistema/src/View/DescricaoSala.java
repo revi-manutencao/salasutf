@@ -41,7 +41,9 @@ public class DescricaoSala extends javax.swing.JFrame {
         jbReservar = new javax.swing.JButton();
         jldescricaoHorario = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jpDescricaoSala.setFocusCycleRoot(true);
 
         jlNomeSala.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jlNomeSala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
