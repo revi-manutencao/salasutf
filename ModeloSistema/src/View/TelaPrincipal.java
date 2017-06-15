@@ -1,21 +1,10 @@
 package View;
 
-import Util.Auth;
-import View.Cadastrar.CadastrarBlocos;
-import View.Cadastrar.CadastrarDepartamentos;
-import View.Cadastrar.CadastrarHorarios;
-import View.Cadastrar.CadastrarSalas;
-import View.Cadastrar.CadastrarTpsSala;
-import View.Cadastrar.CadastrarUsuarios;
-import View.Editar.EditarBlocos;
-import View.Editar.EditarDepartamentos;
-import View.Editar.EditarHorarios;
-import View.Editar.EditarSalas;
-import View.Editar.EditarTpsSala;
-import View.Editar.EditarUsuarios;
-import java.awt.Color;
+import Util.*;
+import static Util.Utility.setModal;
+import View.Cadastrar.*;
+import View.Editar.*;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 
 
@@ -369,8 +358,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmCadSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalasActionPerformed
-        CadastrarSalas cadsalas = new CadastrarSalas();
-        cadsalas.setVisible(true);
+        setModal(new CadastrarSala(), this, 300, 390, "Cadastrar sala");
     }//GEN-LAST:event_jmCadSalasActionPerformed
 
     private void jmEditarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalasActionPerformed
