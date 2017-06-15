@@ -48,6 +48,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jpPrincipal = new javax.swing.JPanel();
+        login1 = new View.Login();
         jmenubar = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
         jmReservas = new javax.swing.JMenu();
@@ -76,11 +77,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addComponent(login1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addComponent(login1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
         );
 
         jmenubar.setName(""); // NOI18N
@@ -408,5 +409,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmReservas;
     private javax.swing.JMenuBar jmenubar;
     private javax.swing.JPanel jpPrincipal;
+    private View.Login login1;
     // End of variables declaration//GEN-END:variables
 }
