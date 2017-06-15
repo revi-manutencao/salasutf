@@ -38,8 +38,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jpLogin = new javax.swing.JPanel();
+        TituloSistema = new javax.swing.JLabel();
+        InputSenha = new javax.swing.JFormattedTextField();
+        LabelLogin = new javax.swing.JLabel();
+        LabelSenha = new javax.swing.JLabel();
+        InputLogin = new javax.swing.JTextField();
+        BtnEntrar = new javax.swing.JToggleButton();
+        TituloLogin = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jpPrincipal = new javax.swing.JPanel();
-        login1 = new View.Login();
         jmenubar = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
         jmReservas = new javax.swing.JMenu();
@@ -62,17 +70,97 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jpLogin.setMaximumSize(new java.awt.Dimension(647, 442));
+        jpLogin.setMinimumSize(new java.awt.Dimension(647, 420));
+        jpLogin.setPreferredSize(new java.awt.Dimension(647, 442));
+
+        TituloSistema.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        TituloSistema.setText("Reserva de Salas");
+
+        InputSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputSenhaActionPerformed(evt);
+            }
+        });
+
+        LabelLogin.setText("Login");
+
+        LabelSenha.setText("Senha");
+
+        InputLogin.setName(""); // NOI18N
+
+        BtnEntrar.setText("Entrar");
+        BtnEntrar.setAutoscrolls(true);
+        BtnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEntrarActionPerformed(evt);
+            }
+        });
+
+        TituloLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        TituloLogin.setText("Entrar no sistema");
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        jLabel1.setText("<html>Texto descritivo do sistema.<br>Precisamos pensar em algo ainda.</html>");
+
+        javax.swing.GroupLayout jpLoginLayout = new javax.swing.GroupLayout(jpLogin);
+        jpLogin.setLayout(jpLoginLayout);
+        jpLoginLayout.setHorizontalGroup(
+            jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnEntrar)
+                .addGap(103, 103, 103))
+            .addGroup(jpLoginLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TituloSistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(InputLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
+                            .addComponent(TituloLogin)
+                            .addGap(20, 20, 20)))
+                    .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelLogin)
+                    .addComponent(LabelSenha))
+                .addGap(26, 26, 26))
+        );
+        jpLoginLayout.setVerticalGroup(
+            jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(TituloSistema)
+                .addGap(10, 10, 10)
+                .addComponent(TituloLogin)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(LabelLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(LabelSenha)
+                .addGap(4, 4, 4)
+                .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BtnEntrar)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
         jpPrincipal.setPreferredSize(new java.awt.Dimension(660, 450));
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(login1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(login1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         jmenubar.setName(""); // NOI18N
@@ -215,17 +303,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmenubar.add(jmGerenciar);
 
         setJMenuBar(jmenubar);
+        jmenubar.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jpLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jpLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
+
+        jpLogin.setVisible(true);
+        jpPrincipal.setVisible(false);
 
         pack();
         setLocationRelativeTo(null);
@@ -337,6 +433,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmEditarUsuariosActionPerformed
 
+    private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputSenhaActionPerformed
+
+    private void BtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEntrarActionPerformed
+        jmenubar.setVisible(true);
+    }//GEN-LAST:event_BtnEntrarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -368,12 +472,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaPrincipal().setVisible(true);
-                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton BtnEntrar;
+    private javax.swing.JTextField InputLogin;
+    private javax.swing.JFormattedTextField InputSenha;
+    private javax.swing.JLabel LabelLogin;
+    private javax.swing.JLabel LabelSenha;
+    private javax.swing.JLabel TituloLogin;
+    private javax.swing.JLabel TituloSistema;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmCadBlocos;
     private javax.swing.JMenuItem jmCadDepartamento;
@@ -393,7 +504,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jmGerenciar;
     private javax.swing.JMenu jmReservas;
     private javax.swing.JMenuBar jmenubar;
+    private javax.swing.JPanel jpLogin;
     private javax.swing.JPanel jpPrincipal;
-    private View.Login login1;
     // End of variables declaration//GEN-END:variables
 }
