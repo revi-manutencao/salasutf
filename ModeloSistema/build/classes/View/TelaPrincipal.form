@@ -2,6 +2,16 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JMenuItem" name="jMenuItem2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+      </Properties>
+    </Component>
     <Menu class="javax.swing.JMenuBar" name="jmenubar">
       <Properties>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
@@ -151,11 +161,20 @@
             </Menu>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jmSair">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Desconectar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jmSairMouseClicked"/>
+          </Events>
+        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jmenubar"/>
@@ -217,26 +236,24 @@
                   <Component id="BtnEntrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="TituloSistema" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="123" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                          <Component id="InputLogin" alignment="1" min="-2" pref="228" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="TituloLogin" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="InputLogin" alignment="0" pref="228" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="TituloLogin" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="InputSenha" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
                       <Component id="LabelLogin" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="LabelSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="InputSenha" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -252,12 +269,12 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="LabelLogin" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="InputLogin" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="InputLogin" min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="LabelSenha" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                  <Component id="InputSenha" min="-2" pref="36" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="InputSenha" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="BtnEntrar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="93" max="32767" attributes="0"/>
               </Group>
@@ -272,11 +289,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Reserva de Salas"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="InputSenha">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputSenhaActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="LabelLogin">
           <Properties>
@@ -299,7 +311,7 @@
             <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnEntrarActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BtnEntrarMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="TituloLogin">
@@ -317,6 +329,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;html&gt;Texto descritivo do sistema.&lt;br&gt;Precisamos pensar em algo ainda.&lt;/html&gt;"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="InputSenha">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InputSenhaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

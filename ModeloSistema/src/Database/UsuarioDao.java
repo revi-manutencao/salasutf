@@ -17,8 +17,48 @@ public class UsuarioDao {
     
     public UsuarioDao(){
         this.db = new DB();
-        this.table = "departamento";
+        this.table = "usuario";
     }
+    
+    
+    
+    // Obter um objeto com base na coluna dada
+    public Usuario getAuth (Usuario u) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" WHERE login = ? AND senha = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+
+            stmt.setString(1, u.getLogin());
+            stmt.setString(2, u.getSenha());
+            
+            ResultSet rs = stmt.executeQuery();            
+            
+            Usuario user = new Usuario();
+            
+            while (rs.next()){
+                user.setNome(rs.getString("nome"));
+                user.setLogin(rs.getString("login"));
+                user.setSenha(rs.getString("senha"));
+                user.setEmail(rs.getString("email"));
+                user.setTipoUsuario(rs.getInt("tipo_usuario"));
+                user.setIdDepartamento(rs.getInt("id_departamento"));
+                user.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
+                user.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
+                user.setAceito(rs.getBoolean("aceito"));
+                user.setAtivo(rs.getBoolean("ativo"));
+            }
+            
+            con.close();
+            return user;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
     
     
     /**
@@ -45,24 +85,24 @@ public class UsuarioDao {
             
             ResultSet rs = stmt.executeQuery();            
             
-            Usuario departamento = new Usuario();
+            Usuario user = new Usuario();
             
             while (rs.next()){
-                departamento.setId(rs.getInt("id"));
-                departamento.setNome(rs.getString("nome"));
-                departamento.setLogin(rs.getString("login"));
-                departamento.setSenha(rs.getString("senha"));
-                departamento.setEmail(rs.getString("email"));
-                departamento.setTipoUsuario(rs.getInt("tipo_usuario"));
-                departamento.setIdDepartamento(rs.getInt("id_departamento"));
-                departamento.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
-                departamento.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
-                departamento.setAceito(rs.getBoolean("aceito"));
-                departamento.setAtivo(rs.getBoolean("ativo"));
+                user.setId(rs.getInt("id"));
+                user.setNome(rs.getString("nome"));
+                user.setLogin(rs.getString("login"));
+                user.setSenha(rs.getString("senha"));
+                user.setEmail(rs.getString("email"));
+                user.setTipoUsuario(rs.getInt("tipo_usuario"));
+                user.setIdDepartamento(rs.getInt("id_departamento"));
+                user.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
+                user.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
+                user.setAceito(rs.getBoolean("aceito"));
+                user.setAtivo(rs.getBoolean("ativo"));
             }
             
             con.close();
-            return departamento;
+            return user;
             
         } catch(SQLException e){
             System.out.println(e);
@@ -91,27 +131,27 @@ public class UsuarioDao {
 
             ResultSet rs = stmt.executeQuery();
             
-            List<Usuario> departamentos = new ArrayList<Usuario>();
+            List<Usuario> users = new ArrayList<Usuario>();
             
             while (rs.next()){
-                Usuario departamento = new Usuario();
-                departamento.setId(rs.getInt("id"));
-                departamento.setNome(rs.getString("nome"));
-                departamento.setLogin(rs.getString("login"));
-                departamento.setSenha(rs.getString("senha"));
-                departamento.setEmail(rs.getString("email"));
-                departamento.setTipoUsuario(rs.getInt("tipo_usuario"));
-                departamento.setIdDepartamento(rs.getInt("id_departamento"));
-                departamento.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
-                departamento.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
-                departamento.setAceito(rs.getBoolean("aceito"));
-                departamento.setAtivo(rs.getBoolean("ativo"));
+                Usuario user = new Usuario();
+                user.setId(rs.getInt("id"));
+                user.setNome(rs.getString("nome"));
+                user.setLogin(rs.getString("login"));
+                user.setSenha(rs.getString("senha"));
+                user.setEmail(rs.getString("email"));
+                user.setTipoUsuario(rs.getInt("tipo_usuario"));
+                user.setIdDepartamento(rs.getInt("id_departamento"));
+                user.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
+                user.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
+                user.setAceito(rs.getBoolean("aceito"));
+                user.setAtivo(rs.getBoolean("ativo"));
                 
-                departamentos.add(departamento);
+                users.add(user);
             }
             
             con.close();
-            return departamentos;
+            return users;
             
         } catch(SQLException e){
             System.out.println(e);

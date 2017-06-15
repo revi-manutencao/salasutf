@@ -1,5 +1,6 @@
 package View;
 
+import Util.Auth;
 import View.Cadastrar.CadastrarBlocos;
 import View.Cadastrar.CadastrarDepartamentos;
 import View.Cadastrar.CadastrarHorarios;
@@ -12,6 +13,8 @@ import View.Editar.EditarHorarios;
 import View.Editar.EditarSalas;
 import View.Editar.EditarTpsSala;
 import View.Editar.EditarUsuarios;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 
 
 
@@ -26,7 +29,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telareservas.setVisible(false);
         telaconsultar.setVisible(false);
         initComponents();
-        
+       
     }
 
     /**
@@ -38,15 +41,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jpLogin = new javax.swing.JPanel();
         TituloSistema = new javax.swing.JLabel();
-        InputSenha = new javax.swing.JFormattedTextField();
         LabelLogin = new javax.swing.JLabel();
         LabelSenha = new javax.swing.JLabel();
         InputLogin = new javax.swing.JTextField();
         BtnEntrar = new javax.swing.JToggleButton();
         TituloLogin = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        InputSenha = new javax.swing.JPasswordField();
         jpPrincipal = new javax.swing.JPanel();
         jmenubar = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
@@ -67,8 +72,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmEditarHorarios = new javax.swing.JMenuItem();
         jmEditarDepartamento = new javax.swing.JMenuItem();
         jmEditarUsuarios = new javax.swing.JMenuItem();
+        jmSair = new javax.swing.JMenu();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jpLogin.setMaximumSize(new java.awt.Dimension(647, 442));
         jpLogin.setMinimumSize(new java.awt.Dimension(647, 420));
@@ -76,12 +87,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         TituloSistema.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         TituloSistema.setText("Reserva de Salas");
-
-        InputSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputSenhaActionPerformed(evt);
-            }
-        });
 
         LabelLogin.setText("Login");
 
@@ -91,9 +96,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         BtnEntrar.setText("Entrar");
         BtnEntrar.setAutoscrolls(true);
-        BtnEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEntrarActionPerformed(evt);
+        BtnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnEntrarMouseClicked(evt);
             }
         });
 
@@ -103,6 +108,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("<html>Texto descritivo do sistema.<br>Precisamos pensar em algo ainda.</html>");
 
+        InputSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputSenhaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpLoginLayout = new javax.swing.GroupLayout(jpLogin);
         jpLogin.setLayout(jpLoginLayout);
         jpLoginLayout.setHorizontalGroup(
@@ -111,22 +122,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnEntrar)
                 .addGap(103, 103, 103))
-            .addGroup(jpLoginLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(TituloSistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
-                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(InputLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
-                            .addComponent(TituloLogin)
-                            .addGap(20, 20, 20)))
-                    .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(InputLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
+                        .addComponent(TituloLogin)
+                        .addGap(20, 20, 20))
                     .addComponent(LabelLogin)
-                    .addComponent(LabelSenha))
-                .addGap(26, 26, 26))
+                    .addComponent(LabelSenha)
+                    .addComponent(InputSenha))
+                .addGap(28, 28, 28))
         );
         jpLoginLayout.setVerticalGroup(
             jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,12 +150,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(LabelLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(InputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(LabelSenha)
-                .addGap(4, 4, 4)
-                .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnEntrar)
                 .addContainerGap(93, Short.MAX_VALUE))
         );
@@ -302,8 +312,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmenubar.add(jmGerenciar);
 
+        jmSair.setText("Desconectar");
+        jmSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmSairMouseClicked(evt);
+            }
+        });
+        jmenubar.add(jmSair);
+
         setJMenuBar(jmenubar);
-        jmenubar.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -320,8 +337,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jpLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
 
-        jpLogin.setVisible(true);
-        jpPrincipal.setVisible(false);
+        if(Auth.autenticaAutomatico()){
+            jpLogin.setVisible(false);
+            jmenubar.setVisible(true);
+        } else {
+            jpLogin.setVisible(true);
+            jmenubar.setVisible(false);
+            jpPrincipal.setVisible(false);
+        }
 
         pack();
         setLocationRelativeTo(null);
@@ -437,9 +460,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InputSenhaActionPerformed
 
-    private void BtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEntrarActionPerformed
-        jmenubar.setVisible(true);
-    }//GEN-LAST:event_BtnEntrarActionPerformed
+    private void jmSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSairMouseClicked
+        Auth.sair();
+        
+        InputLogin.setText("");
+        InputSenha.setText("");
+       
+        jmenubar.setVisible(false);
+        jpPrincipal.setVisible(false);
+        jpLogin.setVisible(true);
+        InputLogin.requestFocus();
+    }//GEN-LAST:event_jmSairMouseClicked
+
+    private void BtnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEntrarMouseClicked
+        if (Util.Auth.autenticaLogin(InputLogin.getText(), new StringBuilder().append(InputSenha.getPassword()).toString())){
+            jmenubar.setVisible(true);
+            jpLogin.setVisible(false);
+        } else{
+            JOptionPane.showMessageDialog(null, "Os dados digitados estão incorretos.", "", JOptionPane.WARNING_MESSAGE);
+//            InputLogin.setText("");
+//            InputSenha.setText("");
+            InputLogin.requestFocus();
+        }
+    }//GEN-LAST:event_BtnEntrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -479,12 +522,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtnEntrar;
     private javax.swing.JTextField InputLogin;
-    private javax.swing.JFormattedTextField InputSenha;
+    private javax.swing.JPasswordField InputSenha;
     private javax.swing.JLabel LabelLogin;
     private javax.swing.JLabel LabelSenha;
     private javax.swing.JLabel TituloLogin;
     private javax.swing.JLabel TituloSistema;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmCadBlocos;
     private javax.swing.JMenuItem jmCadDepartamento;
@@ -503,6 +548,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmEditarUsuarios;
     private javax.swing.JMenu jmGerenciar;
     private javax.swing.JMenu jmReservas;
+    private javax.swing.JMenu jmSair;
     private javax.swing.JMenuBar jmenubar;
     private javax.swing.JPanel jpLogin;
     private javax.swing.JPanel jpPrincipal;
