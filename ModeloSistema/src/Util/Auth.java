@@ -57,7 +57,6 @@ public class Auth {
 
             int i = 1;
             while (linha != null) {
-              System.out.printf("%s\n", linha);
               
               if(i == 1)
                   login = linha;

@@ -341,6 +341,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jpLogin.setVisible(false);
             jmenubar.setVisible(true);
         } else {
+            Auth.sair();
             jpLogin.setVisible(true);
             jmenubar.setVisible(false);
             jpPrincipal.setVisible(false);
