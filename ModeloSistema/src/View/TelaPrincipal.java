@@ -183,11 +183,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jmConsultarMouseClicked(evt);
             }
         });
-        jmConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmConsultarActionPerformed(evt);
-            }
-        });
         jmenubar.add(jmConsultar);
 
         jmReservas.setText("Reservas");
@@ -338,22 +333,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         if(Auth.autenticaAutomatico()){
-            jpLogin.setVisible(false);
             jmenubar.setVisible(true);
+            jpLogin.setVisible(false);
         } else {
             Auth.sair();
-            jpLogin.setVisible(true);
             jmenubar.setVisible(false);
+            jpLogin.setVisible(true);
             jpPrincipal.setVisible(false);
         }
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jmConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmConsultarActionPerformed
-    
-    }//GEN-LAST:event_jmConsultarActionPerformed
 
     private void jmCadSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalasActionPerformed
         CadastrarSalas cadsalas = new CadastrarSalas();
