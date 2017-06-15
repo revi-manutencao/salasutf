@@ -97,7 +97,7 @@ public class Teste {
 //        }
 
         // Exibir senha encriptada
-//            System.out.println(hashPassword("abc"));
+            System.out.println(hashPassword("admin"));
 
     }
     
