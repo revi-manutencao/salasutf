@@ -50,7 +50,6 @@ public class Login extends javax.swing.JPanel {
         });
 
         LabelLogin.setText("Login");
-        LabelLogin.setLocation(new java.awt.Point(5, 0));
 
         LabelSenha.setText("Senha");
 

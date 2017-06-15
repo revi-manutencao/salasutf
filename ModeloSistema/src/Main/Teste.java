@@ -3,6 +3,10 @@ package Main;
 
 import Database.*;
 import Model.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -57,6 +61,38 @@ public class Teste {
         // update object
 //        bl.setCodigo("K");
 //        bdao.update(bl);
-        
+
+//Gravar arquivo - útil para informações do usuário
+//        try{
+//            FileWriter arq = new FileWriter("c:\\tabuada.txt");
+//            PrintWriter gravarArq = new PrintWriter(arq);
+//
+//            gravarArq.printf("Username: X%n");
+//            gravarArq.printf("Password: Y%n");
+//
+//            arq.close();
+//
+//        } catch(Exception e){}
+
+        // Ler arquivo txt gerado
+//        try {
+//            FileReader arq = new FileReader("c:\\tabuada.txt");
+//            BufferedReader lerArq = new BufferedReader(arq);
+//
+//            String linha = lerArq.readLine(); // lê a primeira linha
+//              // a variável "linha" recebe o valor "null" quando o processo
+//              // de repetição atingir o final do arquivo texto
+//
+//            while (linha != null) {
+//              System.out.printf("%s\n", linha);
+//
+//              linha = lerArq.readLine(); // lê da segunda até a última linha
+//            }
+//
+//            arq.close();
+//        } catch (Exception e) {
+//            System.err.printf("Erro na abertura do arquivo: %s.\n",
+//              e.getMessage());
+//        }
     }
 }
