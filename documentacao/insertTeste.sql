@@ -31,4 +31,4 @@ VALUES
 INSERT INTO usuario
 (login, senha, email, tipo_usuario, nome, id_departamento, data_hora_cadastro, ativo, aceito)
 VALUES
-('admin', '5f4dcc3b5aa765d61d8327deb882cf99', 'admin@salasutf.com', 2, 'Administrador do Sistema', 1, '2017-06-14 22:16', true, true);
+('admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@salasutf.com', 2, 'Administrador do Sistema', 1, '2017-06-14 22:16', true, true);
