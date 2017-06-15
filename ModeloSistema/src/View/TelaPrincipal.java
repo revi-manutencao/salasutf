@@ -13,8 +13,9 @@ import View.Editar.EditarHorarios;
 import View.Editar.EditarSalas;
 import View.Editar.EditarTpsSala;
 import View.Editar.EditarUsuarios;
+import java.awt.Color;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
+import javax.swing.UIManager;
 
 
 
@@ -22,13 +23,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
     
     TelaReservas telareservas = new TelaReservas();
     TelaConsultar telaconsultar = new TelaConsultar();
-    int telax = 680;
-    int telay = 450;
+    int telax = 700;
+    int telay = 430;
 
     public TelaPrincipal() {
         telareservas.setVisible(false);
         telaconsultar.setVisible(false);
         initComponents();
+        
+       // Exibe a tela de acordo com o estado de autenticação do usuário
+        if(Auth.autenticaAutomatico()){
+            jmenubar.setVisible(true);
+            jpLogin.setVisible(false);
+            jpPrincipal.setVisible(true);
+        
+            jpPrincipal.add(telaconsultar).setBounds(0,0,telax,telay);
+            telaconsultar.setVisible(true);
+            telareservas.setVisible(false);
+        } else {
+            Auth.sair();
+            jmenubar.setVisible(false);
+            jpLogin.setVisible(true);
+            jpPrincipal.setVisible(false);
+        }
        
     }
 
@@ -43,6 +60,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jpLogin = new javax.swing.JPanel();
         TituloSistema = new javax.swing.JLabel();
         LabelLogin = new javax.swing.JLabel();
@@ -77,6 +95,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -160,7 +180,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        jpPrincipal.setPreferredSize(new java.awt.Dimension(660, 450));
+        jpPrincipal.setMaximumSize(new java.awt.Dimension(700, 450));
+        jpPrincipal.setMinimumSize(new java.awt.Dimension(700, 450));
+        jpPrincipal.setPreferredSize(new java.awt.Dimension(700, 450));
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -178,6 +200,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmenubar.setVerifyInputWhenFocusTarget(false);
 
         jmConsultar.setText("Consultar");
+        jmConsultar.setContentAreaFilled(false);
+        jmConsultar.setFocusTraversalKeysEnabled(false);
+        jmConsultar.setFocusable(false);
+        jmConsultar.setNextFocusableComponent(this);
+        jmConsultar.setRequestFocusEnabled(false);
+        jmConsultar.setVerifyInputWhenFocusTarget(false);
         jmConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jmConsultarMouseClicked(evt);
@@ -316,12 +344,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmenubar.add(jmSair);
 
         setJMenuBar(jmenubar);
+        jmenubar.setVisible(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jpLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
         );
@@ -332,15 +361,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jpLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
 
-        if(Auth.autenticaAutomatico()){
-            jmenubar.setVisible(true);
-            jpLogin.setVisible(false);
-        } else {
-            Auth.sair();
-            jmenubar.setVisible(false);
-            jpLogin.setVisible(true);
-            jpPrincipal.setVisible(false);
-        }
+        jpLogin.setVisible(true);
+        jpPrincipal.setVisible(false);
 
         pack();
         setLocationRelativeTo(null);
@@ -468,6 +490,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         if (Util.Auth.autenticaLogin(InputLogin.getText(), new StringBuilder().append(InputSenha.getPassword()).toString())){
             jmenubar.setVisible(true);
             jpLogin.setVisible(false);
+            jpPrincipal.setVisible(true);
+            
+        
+            jpPrincipal.add(telaconsultar).setBounds(0,0,telax,telay);
+            telaconsultar.setVisible(true);
+            telareservas.setVisible(false);
         } else{
             JOptionPane.showMessageDialog(null, "Os dados digitados estão incorretos.", "", JOptionPane.WARNING_MESSAGE);
 //            InputLogin.setText("");
@@ -522,6 +550,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmCadBlocos;
     private javax.swing.JMenuItem jmCadDepartamento;

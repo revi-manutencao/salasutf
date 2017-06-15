@@ -15,7 +15,11 @@ public class TelaConsultar extends javax.swing.JPanel {
      * Creates new form TelaReservas
      */
     public TelaConsultar() {
-        initComponents();
+           initComponents();
+    }
+    
+    public void focusInput() {
+        jtDadosdePesquisa.requestFocus();
     }
 
     /**
@@ -31,15 +35,21 @@ public class TelaConsultar extends javax.swing.JPanel {
         jtDadosdePesquisa = new javax.swing.JTextField();
         jlSubtituloData = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jTextArea1 = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jpResultadosdaBusca = new javax.swing.JPanel();
-        txtConsultar = new java.awt.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlistResultadosBusca = new javax.swing.JList<>();
+        jbuttonConsultar = new javax.swing.JButton();
 
-        jpConsultarSala.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONSULTAR SALA", 2, 0, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        setMaximumSize(new java.awt.Dimension(700, 430));
+        setMinimumSize(new java.awt.Dimension(680, 430));
+        setPreferredSize(new java.awt.Dimension(700, 430));
+        setVerifyInputWhenFocusTarget(false);
 
-        jtDadosdePesquisa.setText("Informações da sala que você quer");
+        jpConsultarSala.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONSULTAR SALA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
+        jpConsultarSala.setPreferredSize(new java.awt.Dimension(660, 450));
+
         jtDadosdePesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtDadosdePesquisaActionPerformed(evt);
@@ -48,50 +58,43 @@ public class TelaConsultar extends javax.swing.JPanel {
 
         jlSubtituloData.setText("Informe a data");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Informe o código, o tipo ou uma palavra-chave para encontrar a sala que deseja consultar a disponibilidade.  ");
-        jTextArea1.setWrapStyleWord(true);
+        jLabel1.setText("<html>Informe o código, o tipo ou uma palavra-chave para encontrar a sala que deseja consultar a disponibilidade. </html>");
+
+        jLabel2.setText("Informações da sala que você quer");
 
         javax.swing.GroupLayout jpConsultarSalaLayout = new javax.swing.GroupLayout(jpConsultarSala);
         jpConsultarSala.setLayout(jpConsultarSalaLayout);
         jpConsultarSalaLayout.setHorizontalGroup(
             jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpConsultarSalaLayout.createSequentialGroup()
-                .addComponent(jlSubtituloData)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultarSalaLayout.createSequentialGroup()
-                .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpConsultarSalaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap()
+                .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jpConsultarSalaLayout.createSequentialGroup()
+                        .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlSubtituloData)
+                            .addComponent(jLabel2))
+                        .addGap(0, 211, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpConsultarSalaLayout.setVerticalGroup(
             jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConsultarSalaLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlSubtituloData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jpResultadosdaBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADOS DA BUSCA", 2, 0, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
-
-        txtConsultar.setLabel("Consultar");
-        txtConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConsultarActionPerformed(evt);
-            }
-        });
+        jpResultadosdaBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADOS DA BUSCA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jlistResultadosBusca.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "A001   (3 horarios disponíveis)", "A002   (3 horarios disponíveis)", "A003   (3 horarios disponíveis)", "A004   (3 horarios disponíveis)", "A005   (3 horarios disponíveis)", "A006   (3 horarios disponíveis)", "A007   (3 horarios disponíveis)", "A008   (3 horarios disponíveis)", "A009   (3 horarios disponíveis)", "A010   (3 horarios disponíveis)", "A011   (3 horarios disponíveis)", "A001   (3 horarios disponíveis)", "A002   (3 horarios disponíveis)", "A003   (3 horarios disponíveis)", "A004   (3 horarios disponíveis)", "A005   (3 horarios disponíveis)", "A006   (3 horarios disponíveis)", "A007\t(3 horarios disponíveis)", "A008\t(3 horarios disponíveis)", "A009\t(3 horarios disponíveis)", "A010\t(3 horarios disponíveis)", "A011\t(3 horarios disponíveis)" };
@@ -111,23 +114,33 @@ public class TelaConsultar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jlistResultadosBusca);
 
+        jbuttonConsultar.setText("Consultar");
+        jbuttonConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonConsultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpResultadosdaBuscaLayout = new javax.swing.GroupLayout(jpResultadosdaBusca);
         jpResultadosdaBusca.setLayout(jpResultadosdaBuscaLayout);
         jpResultadosdaBuscaLayout.setHorizontalGroup(
             jpResultadosdaBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpResultadosdaBuscaLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(txtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jbuttonConsultar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+            .addGroup(jpResultadosdaBuscaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jpResultadosdaBuscaLayout.setVerticalGroup(
             jpResultadosdaBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpResultadosdaBuscaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbuttonConsultar)
                 .addContainerGap())
         );
 
@@ -137,27 +150,27 @@ public class TelaConsultar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpConsultarSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpConsultarSala, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpResultadosdaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jpResultadosdaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpConsultarSala, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpResultadosdaBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jpConsultarSala, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jpResultadosdaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(4, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleParent(this);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jtDadosdePesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtDadosdePesquisaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDadosdePesquisaActionPerformed
-
-    private void txtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtConsultarActionPerformed
 
     private void jlistResultadosBuscaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jlistResultadosBuscaValueChanged
     }//GEN-LAST:event_jlistResultadosBuscaValueChanged
@@ -171,16 +184,21 @@ public class TelaConsultar extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jlistResultadosBuscaMouseClicked
 
+    private void jbuttonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuttonConsultarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton jbuttonConsultar;
     private javax.swing.JLabel jlSubtituloData;
     private javax.swing.JList<String> jlistResultadosBusca;
     private javax.swing.JPanel jpConsultarSala;
     private javax.swing.JPanel jpResultadosdaBusca;
     private javax.swing.JTextField jtDadosdePesquisa;
-    private java.awt.Button txtConsultar;
     // End of variables declaration//GEN-END:variables
 }
