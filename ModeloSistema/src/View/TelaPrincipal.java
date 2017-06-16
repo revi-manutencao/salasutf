@@ -57,8 +57,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         InputLogin = new javax.swing.JTextField();
         BtnEntrar = new javax.swing.JToggleButton();
         TituloLogin = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         InputSenha = new javax.swing.JPasswordField();
+        LabelDescricao = new javax.swing.JLabel();
         jpPrincipal = new javax.swing.JPanel();
         jmenubar = new javax.swing.JMenuBar();
         jmConsultar = new javax.swing.JMenu();
@@ -114,14 +114,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TituloLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         TituloLogin.setText("Entrar no sistema");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
-        jLabel1.setText("<html>Texto descritivo do sistema.<br>Precisamos pensar em algo ainda.</html>");
-
         InputSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputSenhaActionPerformed(evt);
             }
         });
+
+        LabelDescricao.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+        LabelDescricao.setText("<html>Encontre e reserve salas facilmente.<br><br>Confira as salas e os horários disponíveis e garanta seu acesso a ela para quando precisar.<br><br>Tudo isso em alguns poucos cliques e pouca burocracia.</html>");
+        LabelDescricao.setMaximumSize(new java.awt.Dimension(296, 44));
+        LabelDescricao.setMinimumSize(new java.awt.Dimension(296, 44));
+        LabelDescricao.setName(""); // NOI18N
 
         javax.swing.GroupLayout jpLoginLayout = new javax.swing.GroupLayout(jpLogin);
         jpLogin.setLayout(jpLoginLayout);
@@ -133,10 +136,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(103, 103, 103))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TituloSistema, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TituloSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LabelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(InputLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
@@ -154,16 +157,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(TituloSistema)
                 .addGap(10, 10, 10)
                 .addComponent(TituloLogin)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(LabelLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LabelSenha)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpLoginLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(LabelLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(InputLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelSenha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(InputSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpLoginLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnEntrar)
                 .addContainerGap(93, Short.MAX_VALUE))
@@ -504,11 +510,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JToggleButton BtnEntrar;
     private javax.swing.JTextField InputLogin;
     private javax.swing.JPasswordField InputSenha;
+    private javax.swing.JLabel LabelDescricao;
     private javax.swing.JLabel LabelLogin;
     private javax.swing.JLabel LabelSenha;
     private javax.swing.JLabel TituloLogin;
     private javax.swing.JLabel TituloSistema;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
