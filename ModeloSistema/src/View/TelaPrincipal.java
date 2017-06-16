@@ -414,36 +414,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmEditarHorariosActionPerformed
 
     private void jmCadBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocosActionPerformed
-        CadastrarBlocos cadblocos = new CadastrarBlocos();
-        cadblocos.setVisible(true);
-
-
+        setModal(new CadastrarBloco(), this, 304, 150, "Cadastrar bloco");
     }//GEN-LAST:event_jmCadBlocosActionPerformed
 
     private void jmCadTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadTipodeSalasActionPerformed
-        CadastrarTpsSala cadtiposala = new CadastrarTpsSala();
-        cadtiposala.setVisible(true);
-
-
+        setModal(new CadastrarTipoSala(), this, 350, 140, "Cadastrar tipo de sala");
     }//GEN-LAST:event_jmCadTipodeSalasActionPerformed
 
     private void jmCadHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadHorariosActionPerformed
-        CadastrarHorarios cadhorarios = new CadastrarHorarios();
-        cadhorarios.setVisible(true);
-
-
+        setModal(new CadastrarHorario(), this, 300, 277, "Cadastrar horário");
     }//GEN-LAST:event_jmCadHorariosActionPerformed
 
     private void jmCadDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadDepartamentoActionPerformed
-        CadastrarDepartamentos caddepartamentos = new CadastrarDepartamentos();
-        caddepartamentos.setVisible(true);
-
+        setModal(new CadastrarDepartamento(), this, 300, 185, "Cadastrar departamento");
     }//GEN-LAST:event_jmCadDepartamentoActionPerformed
 
     private void jmCadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuariosActionPerformed
-        CadastrarUsuarios cadusuarios = new CadastrarUsuarios();
-        cadusuarios.setVisible(true);
-
+        setModal(new CadastrarUsuario(), this, 300, 320, "Cadastrar usuário");
     }//GEN-LAST:event_jmCadUsuariosActionPerformed
 
     private void jmEditarTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipodeSalasActionPerformed
