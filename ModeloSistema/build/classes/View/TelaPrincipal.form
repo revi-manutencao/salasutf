@@ -64,36 +64,36 @@
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jmCadSalas">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCadSala">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Salas"/>
+                    <Property name="text" type="java.lang.String" value="Sala"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadSalasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadSalaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmCadBlocos">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCadBloco">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Blocos"/>
+                    <Property name="text" type="java.lang.String" value="Bloco"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadBlocosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadBlocoActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmCadTipodeSalas">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCadTipoSala">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tipo de salas"/>
+                    <Property name="text" type="java.lang.String" value="Tipo de sala"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadTipodeSalasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadTipoSalaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmCadHorarios">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCadHorario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Hor&#xe1;rios"/>
+                    <Property name="text" type="java.lang.String" value="Hor&#xe1;rio"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadHorariosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadHorarioActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmCadDepartamento">
@@ -104,12 +104,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadDepartamentoActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmCadUsuarios">
+                <MenuItem class="javax.swing.JMenuItem" name="jmCadUsuario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadUsuariosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmCadUsuarioActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>
@@ -121,36 +121,36 @@
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="jmEditarSalas">
+                <MenuItem class="javax.swing.JMenuItem" name="jmEditarSala">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Salas"/>
+                    <Property name="text" type="java.lang.String" value="Sala"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarSalasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarSalaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmEditarBlocos">
+                <MenuItem class="javax.swing.JMenuItem" name="jmEditarBloco">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Blocos"/>
+                    <Property name="text" type="java.lang.String" value="Bloco"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarBlocosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarBlocoActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmEditarTipodeSalas">
+                <MenuItem class="javax.swing.JMenuItem" name="jmEditarTipoSala">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Tipo de salas"/>
+                    <Property name="text" type="java.lang.String" value="Tipo de sala"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarTipodeSalasActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarTipoSalaActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmEditarHorarios">
+                <MenuItem class="javax.swing.JMenuItem" name="jmEditarHorario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Hor&#xe1;rios"/>
+                    <Property name="text" type="java.lang.String" value="Hor&#xe1;rio"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarHorariosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarHorarioActionPerformed"/>
                   </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jmEditarDepartamento">
@@ -161,12 +161,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarDepartamentoActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jmEditarUsuarios">
+                <MenuItem class="javax.swing.JMenuItem" name="jmEditarUsuario">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rios"/>
+                    <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarUsuariosActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmEditarUsuarioActionPerformed"/>
                   </Events>
                 </MenuItem>
               </SubComponents>

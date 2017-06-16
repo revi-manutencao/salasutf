@@ -65,20 +65,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jmReservas = new javax.swing.JMenu();
         jmGerenciar = new javax.swing.JMenu();
         jmCadastrar = new javax.swing.JMenu();
-        jmCadSalas = new javax.swing.JMenuItem();
-        jmCadBlocos = new javax.swing.JMenuItem();
-        jmCadTipodeSalas = new javax.swing.JMenuItem();
-        jmCadHorarios = new javax.swing.JMenuItem();
+        jmCadSala = new javax.swing.JMenuItem();
+        jmCadBloco = new javax.swing.JMenuItem();
+        jmCadTipoSala = new javax.swing.JMenuItem();
+        jmCadHorario = new javax.swing.JMenuItem();
         jmCadDepartamento = new javax.swing.JMenuItem();
-        jmCadUsuarios = new javax.swing.JMenuItem();
+        jmCadUsuario = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmEditar = new javax.swing.JMenu();
-        jmEditarSalas = new javax.swing.JMenuItem();
-        jmEditarBlocos = new javax.swing.JMenuItem();
-        jmEditarTipodeSalas = new javax.swing.JMenuItem();
-        jmEditarHorarios = new javax.swing.JMenuItem();
+        jmEditarSala = new javax.swing.JMenuItem();
+        jmEditarBloco = new javax.swing.JMenuItem();
+        jmEditarTipoSala = new javax.swing.JMenuItem();
+        jmEditarHorario = new javax.swing.JMenuItem();
         jmEditarDepartamento = new javax.swing.JMenuItem();
-        jmEditarUsuarios = new javax.swing.JMenuItem();
+        jmEditarUsuario = new javax.swing.JMenuItem();
         jmSair = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
@@ -219,37 +219,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jmCadastrar.setText("Cadastrar");
 
-        jmCadSalas.setText("Salas");
-        jmCadSalas.addActionListener(new java.awt.event.ActionListener() {
+        jmCadSala.setText("Sala");
+        jmCadSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadSalasActionPerformed(evt);
+                jmCadSalaActionPerformed(evt);
             }
         });
-        jmCadastrar.add(jmCadSalas);
+        jmCadastrar.add(jmCadSala);
 
-        jmCadBlocos.setText("Blocos");
-        jmCadBlocos.addActionListener(new java.awt.event.ActionListener() {
+        jmCadBloco.setText("Bloco");
+        jmCadBloco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadBlocosActionPerformed(evt);
+                jmCadBlocoActionPerformed(evt);
             }
         });
-        jmCadastrar.add(jmCadBlocos);
+        jmCadastrar.add(jmCadBloco);
 
-        jmCadTipodeSalas.setText("Tipo de salas");
-        jmCadTipodeSalas.addActionListener(new java.awt.event.ActionListener() {
+        jmCadTipoSala.setText("Tipo de sala");
+        jmCadTipoSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadTipodeSalasActionPerformed(evt);
+                jmCadTipoSalaActionPerformed(evt);
             }
         });
-        jmCadastrar.add(jmCadTipodeSalas);
+        jmCadastrar.add(jmCadTipoSala);
 
-        jmCadHorarios.setText("Horários");
-        jmCadHorarios.addActionListener(new java.awt.event.ActionListener() {
+        jmCadHorario.setText("Horário");
+        jmCadHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadHorariosActionPerformed(evt);
+                jmCadHorarioActionPerformed(evt);
             }
         });
-        jmCadastrar.add(jmCadHorarios);
+        jmCadastrar.add(jmCadHorario);
 
         jmCadDepartamento.setText("Departamento");
         jmCadDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -259,50 +259,50 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jmCadastrar.add(jmCadDepartamento);
 
-        jmCadUsuarios.setText("Usuários");
-        jmCadUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        jmCadUsuario.setText("Usuário");
+        jmCadUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmCadUsuariosActionPerformed(evt);
+                jmCadUsuarioActionPerformed(evt);
             }
         });
-        jmCadastrar.add(jmCadUsuarios);
+        jmCadastrar.add(jmCadUsuario);
 
         jmGerenciar.add(jmCadastrar);
         jmGerenciar.add(jSeparator2);
 
         jmEditar.setText("Editar");
 
-        jmEditarSalas.setText("Salas");
-        jmEditarSalas.addActionListener(new java.awt.event.ActionListener() {
+        jmEditarSala.setText("Sala");
+        jmEditarSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmEditarSalasActionPerformed(evt);
+                jmEditarSalaActionPerformed(evt);
             }
         });
-        jmEditar.add(jmEditarSalas);
+        jmEditar.add(jmEditarSala);
 
-        jmEditarBlocos.setText("Blocos");
-        jmEditarBlocos.addActionListener(new java.awt.event.ActionListener() {
+        jmEditarBloco.setText("Bloco");
+        jmEditarBloco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmEditarBlocosActionPerformed(evt);
+                jmEditarBlocoActionPerformed(evt);
             }
         });
-        jmEditar.add(jmEditarBlocos);
+        jmEditar.add(jmEditarBloco);
 
-        jmEditarTipodeSalas.setText("Tipo de salas");
-        jmEditarTipodeSalas.addActionListener(new java.awt.event.ActionListener() {
+        jmEditarTipoSala.setText("Tipo de sala");
+        jmEditarTipoSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmEditarTipodeSalasActionPerformed(evt);
+                jmEditarTipoSalaActionPerformed(evt);
             }
         });
-        jmEditar.add(jmEditarTipodeSalas);
+        jmEditar.add(jmEditarTipoSala);
 
-        jmEditarHorarios.setText("Horários");
-        jmEditarHorarios.addActionListener(new java.awt.event.ActionListener() {
+        jmEditarHorario.setText("Horário");
+        jmEditarHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmEditarHorariosActionPerformed(evt);
+                jmEditarHorarioActionPerformed(evt);
             }
         });
-        jmEditar.add(jmEditarHorarios);
+        jmEditar.add(jmEditarHorario);
 
         jmEditarDepartamento.setText("Departamento");
         jmEditarDepartamento.addActionListener(new java.awt.event.ActionListener() {
@@ -312,13 +312,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jmEditar.add(jmEditarDepartamento);
 
-        jmEditarUsuarios.setText("Usuários");
-        jmEditarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+        jmEditarUsuario.setText("Usuário");
+        jmEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmEditarUsuariosActionPerformed(evt);
+                jmEditarUsuarioActionPerformed(evt);
             }
         });
-        jmEditar.add(jmEditarUsuarios);
+        jmEditar.add(jmEditarUsuario);
 
         jmGerenciar.add(jmEditar);
 
@@ -357,13 +357,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jmCadSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalasActionPerformed
+    private void jmCadSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalaActionPerformed
         setModal(new CadastrarSala(), this, 300, 390, "Cadastrar sala");
-    }//GEN-LAST:event_jmCadSalasActionPerformed
+    }//GEN-LAST:event_jmCadSalaActionPerformed
 
-    private void jmEditarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalasActionPerformed
+    private void jmEditarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalaActionPerformed
         setModal(new EditarSala(), this, 287, 424, "Editar sala");
-    }//GEN-LAST:event_jmEditarSalasActionPerformed
+    }//GEN-LAST:event_jmEditarSalaActionPerformed
 
     private void jmGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGerenciarActionPerformed
         // TODO add your handling code here:
@@ -391,45 +391,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jmReservasMouseClicked
 
-    private void jmEditarBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarBlocosActionPerformed
+    private void jmEditarBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarBlocoActionPerformed
         setModal(new EditarBloco(), this, 259, 312, "Editar bloco");
-    }//GEN-LAST:event_jmEditarBlocosActionPerformed
+    }//GEN-LAST:event_jmEditarBlocoActionPerformed
 
     private void jmEditarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarDepartamentoActionPerformed
         setModal(new EditarDepartamento(), this, 308, 333, "Editar departamento");
     }//GEN-LAST:event_jmEditarDepartamentoActionPerformed
 
-    private void jmEditarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarHorariosActionPerformed
+    private void jmEditarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarHorarioActionPerformed
         setModal(new EditarHorario(), this, 272, 387, "Editar horário");
-    }//GEN-LAST:event_jmEditarHorariosActionPerformed
+    }//GEN-LAST:event_jmEditarHorarioActionPerformed
 
-    private void jmCadBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocosActionPerformed
+    private void jmCadBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocoActionPerformed
         setModal(new CadastrarBloco(), this, 304, 150, "Cadastrar bloco");
-    }//GEN-LAST:event_jmCadBlocosActionPerformed
+    }//GEN-LAST:event_jmCadBlocoActionPerformed
 
-    private void jmCadTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadTipodeSalasActionPerformed
+    private void jmCadTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadTipoSalaActionPerformed
         setModal(new CadastrarTipoSala(), this, 350, 140, "Cadastrar tipo de sala");
-    }//GEN-LAST:event_jmCadTipodeSalasActionPerformed
+    }//GEN-LAST:event_jmCadTipoSalaActionPerformed
 
-    private void jmCadHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadHorariosActionPerformed
+    private void jmCadHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadHorarioActionPerformed
         setModal(new CadastrarHorario(), this, 300, 277, "Cadastrar horário");
-    }//GEN-LAST:event_jmCadHorariosActionPerformed
+    }//GEN-LAST:event_jmCadHorarioActionPerformed
 
     private void jmCadDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadDepartamentoActionPerformed
         setModal(new CadastrarDepartamento(), this, 300, 185, "Cadastrar departamento");
     }//GEN-LAST:event_jmCadDepartamentoActionPerformed
 
-    private void jmCadUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuariosActionPerformed
+    private void jmCadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuarioActionPerformed
         setModal(new CadastrarUsuario(), this, 300, 320, "Cadastrar usuário");
-    }//GEN-LAST:event_jmCadUsuariosActionPerformed
+    }//GEN-LAST:event_jmCadUsuarioActionPerformed
 
-    private void jmEditarTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipodeSalasActionPerformed
+    private void jmEditarTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipoSalaActionPerformed
         setModal(new EditarTipoSala(), this, 304, 305, "Editar tipo de sala");
-    }//GEN-LAST:event_jmEditarTipodeSalasActionPerformed
+    }//GEN-LAST:event_jmEditarTipoSalaActionPerformed
 
-    private void jmEditarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarUsuariosActionPerformed
+    private void jmEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarUsuarioActionPerformed
         setModal(new EditarUsuario(), this, 305, 490, "Editar usuário");
-    }//GEN-LAST:event_jmEditarUsuariosActionPerformed
+    }//GEN-LAST:event_jmEditarUsuarioActionPerformed
 
     private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
         // TODO add your handling code here:
@@ -513,21 +513,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JMenuItem jmCadBlocos;
+    private javax.swing.JMenuItem jmCadBloco;
     private javax.swing.JMenuItem jmCadDepartamento;
-    private javax.swing.JMenuItem jmCadHorarios;
-    private javax.swing.JMenuItem jmCadSalas;
-    private javax.swing.JMenuItem jmCadTipodeSalas;
-    private javax.swing.JMenuItem jmCadUsuarios;
+    private javax.swing.JMenuItem jmCadHorario;
+    private javax.swing.JMenuItem jmCadSala;
+    private javax.swing.JMenuItem jmCadTipoSala;
+    private javax.swing.JMenuItem jmCadUsuario;
     private javax.swing.JMenu jmCadastrar;
     private javax.swing.JMenu jmConsultar;
     private javax.swing.JMenu jmEditar;
-    private javax.swing.JMenuItem jmEditarBlocos;
+    private javax.swing.JMenuItem jmEditarBloco;
     private javax.swing.JMenuItem jmEditarDepartamento;
-    private javax.swing.JMenuItem jmEditarHorarios;
-    private javax.swing.JMenuItem jmEditarSalas;
-    private javax.swing.JMenuItem jmEditarTipodeSalas;
-    private javax.swing.JMenuItem jmEditarUsuarios;
+    private javax.swing.JMenuItem jmEditarHorario;
+    private javax.swing.JMenuItem jmEditarSala;
+    private javax.swing.JMenuItem jmEditarTipoSala;
+    private javax.swing.JMenuItem jmEditarUsuario;
     private javax.swing.JMenu jmGerenciar;
     private javax.swing.JMenu jmReservas;
     private javax.swing.JMenu jmSair;
