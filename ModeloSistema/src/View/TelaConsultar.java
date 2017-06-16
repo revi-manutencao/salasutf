@@ -5,6 +5,9 @@
  */
 package View;
 
+import static Util.Utility.setModal;
+import View.Editar.EditarUsuario;
+
 /**
  *
  * @author Renato
@@ -177,10 +180,7 @@ public class TelaConsultar extends javax.swing.JPanel {
 
     private void jlistResultadosBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistResultadosBuscaMouseClicked
         if(evt.getClickCount()==2){
-        System.out.println("teste "+ jlistResultadosBusca.getSelectedValue());
-        DescricaoSala descricaosala = new DescricaoSala();
-        descricaosala.setVisible(true);
-        
+            setModal(new DescricaoSala(), null, 367, 565, null);
         }
     }//GEN-LAST:event_jlistResultadosBuscaMouseClicked
 
