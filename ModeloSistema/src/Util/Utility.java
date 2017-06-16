@@ -18,6 +18,7 @@ public class Utility {
     public static void setModal(JPanel inner, Frame parent, int width, int height, String title){
         JDialog frame = new JDialog (parent, title, true);
         frame.setPreferredSize(new Dimension(width, height));
+        frame.setResizable(false);
         frame.add(inner);
         frame.pack();
         frame.setLocationRelativeTo(parent);

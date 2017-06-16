@@ -362,9 +362,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadSalasActionPerformed
 
     private void jmEditarSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalasActionPerformed
-        EditarSalas editarsalas = new EditarSalas();
-        editarsalas.setVisible(true);
-
+        setModal(new EditarSala(), this, 287, 424, "Editar sala");
     }//GEN-LAST:event_jmEditarSalasActionPerformed
 
     private void jmGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGerenciarActionPerformed
@@ -394,23 +392,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmReservasMouseClicked
 
     private void jmEditarBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarBlocosActionPerformed
-        
-        EditarBlocos editarblocos = new EditarBlocos();
-        editarblocos.setVisible(true);
-
-
+        setModal(new EditarBloco(), this, 259, 312, "Editar bloco");
     }//GEN-LAST:event_jmEditarBlocosActionPerformed
 
     private void jmEditarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarDepartamentoActionPerformed
-        EditarDepartamentos editardepartamentos = new EditarDepartamentos();
-        editardepartamentos.setVisible(true);
-
+        setModal(new EditarDepartamento(), this, 308, 333, "Editar departamento");
     }//GEN-LAST:event_jmEditarDepartamentoActionPerformed
 
     private void jmEditarHorariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarHorariosActionPerformed
-        EditarHorarios editarhorarios = new EditarHorarios();
-        
-        editarhorarios.setVisible(true);
+        setModal(new EditarHorario(), this, 272, 387, "Editar horário");
     }//GEN-LAST:event_jmEditarHorariosActionPerformed
 
     private void jmCadBlocosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocosActionPerformed
@@ -434,15 +424,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadUsuariosActionPerformed
 
     private void jmEditarTipodeSalasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipodeSalasActionPerformed
-        EditarTpsSala editartiposala = new EditarTpsSala();
-        editartiposala.setVisible(true);
-
+        setModal(new EditarTipoSala(), this, 304, 305, "Editar tipo de sala");
     }//GEN-LAST:event_jmEditarTipodeSalasActionPerformed
 
     private void jmEditarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarUsuariosActionPerformed
-        EditarUsuarios editarusuarios = new EditarUsuarios();
-        editarusuarios.setVisible(true);
-
+        setModal(new EditarUsuario(), this, 305, 490, "Editar usuário");
     }//GEN-LAST:event_jmEditarUsuariosActionPerformed
 
     private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
