@@ -5,9 +5,16 @@
  */
 package View.Cadastrar;
 
+import Database.BlocoDao;
+import Database.TipoSalaDao;
+import Database.UsuarioDao;
+import Model.Bloco;
 import Model.Sala;
+import Model.TipoSala;
+import Model.Usuario;
 import static Util.Utility.disposeModal;
 import java.awt.Window;
+import java.util.List;
 import javax.swing.JDialog;
 
 /**
@@ -21,8 +28,27 @@ public class CadastrarSala extends javax.swing.JPanel {
      */
     public CadastrarSala() {
         initComponents();
-    }
-
+        //Combobox Administrador
+        /*UsuarioDao usuariodao = new UsuarioDao();
+        List<Usuario> usuario = usuariodao.getAllAtivos();
+        for(Usuario usuarios : usuario){
+            if(usuarios.getTipoUsuario() == 1)
+            jcbAdministrador.addItem(usuarios.getNome());
+        }*/
+        //Combobox BLOCOS
+        BlocoDao blocodao = new BlocoDao();
+        List<Bloco> blocos =  blocodao.getAllAtivos();
+        for(Bloco bloco : blocos){
+            jbBloco.addItem(bloco.getCodigo());
+        }
+        //Combobox Tipos de sala
+                //Combobox BLOCOS
+        TipoSalaDao tiposaladao = new TipoSalaDao();
+        List<TipoSala> tiposala =  tiposaladao.getAllAtivos();
+        for(TipoSala tiposalas : tiposala){
+            jbTiposdeSala.addItem(tiposalas.getDescricao());
+        }
+   }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +82,11 @@ public class CadastrarSala extends javax.swing.JPanel {
         jlDescricao.setText("Descrição");
 
         jbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        jbBloco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBlocoActionPerformed(evt);
+            }
+        });
 
         jbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
 
@@ -111,7 +142,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                                     .addComponent(jlAdministrador))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbAdministrador, 0, 174, Short.MAX_VALUE)
+                                    .addComponent(jcbAdministrador, 0, 176, Short.MAX_VALUE)
                                     .addComponent(jtxtCodSala))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -176,6 +207,10 @@ public class CadastrarSala extends javax.swing.JPanel {
 //        sala.setIdTipoSala(Integer.parseInt(jbTiposdeSala.getSelectedItem().toString()));
 //        sala.setEquipamentos(jtDescricao.getText());
     }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBlocoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBlocoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -41,7 +41,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jcbAdministrador" pref="174" max="32767" attributes="0"/>
+                                  <Component id="jcbAdministrador" pref="176" max="32767" attributes="0"/>
                                   <Component id="jtxtCodSala" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -139,6 +139,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbBlocoActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpConsultarSala" pref="453" max="32767" attributes="0"/>
+              <Component id="jpConsultarSala" pref="437" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpResultadosdaBusca" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -50,7 +50,7 @@
                   <Component id="jpConsultarSala" pref="0" max="32767" attributes="0"/>
                   <Component id="jpResultadosdaBusca" min="-2" pref="420" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="4" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -182,30 +182,7 @@
             <Component class="javax.swing.JList" name="jlistResultadosBusca">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="22">
-                    <StringItem index="0" value="A001   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="1" value="A002   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="2" value="A003   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="3" value="A004   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="4" value="A005   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="5" value="A006   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="6" value="A007   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="7" value="A008   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="8" value="A009   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="9" value="A010   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="10" value="A011   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="11" value="A001   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="12" value="A002   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="13" value="A003   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="14" value="A004   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="15" value="A005   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="16" value="A006   (3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="17" value="A007&#x9;(3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="18" value="A008&#x9;(3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="19" value="A009&#x9;(3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="20" value="A010&#x9;(3 horarios dispon&#xed;veis)"/>
-                    <StringItem index="21" value="A011&#x9;(3 horarios dispon&#xed;veis)"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="selectionMode" type="int" value="0"/>
               </Properties>
