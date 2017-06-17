@@ -151,17 +151,15 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="jbConsultar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jCalendarConsulta" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jlDigiteCod" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jCalendarConsulta" alignment="1" pref="0" max="32767" attributes="0"/>
                                   <Component id="jtCodigo" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jlDigiteCod" alignment="0" min="-2" pref="332" max="-2" attributes="0"/>
-                                          <Component id="jlDataReserva" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                                      <Component id="jlDataReserva" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
