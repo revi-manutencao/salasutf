@@ -5,6 +5,8 @@
  */
 package View.Editar;
 
+import static Util.Utility.disposeModal;
+
 /**
  *
  * @author vinicius
@@ -144,6 +146,11 @@ public class EditarSala extends javax.swing.JPanel {
 
         jbCancelar.setText("Cancelar");
         jbCancelar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbAlterar.setText("Alterar");
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -232,7 +239,7 @@ public class EditarSala extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -272,6 +279,10 @@ public class EditarSala extends javax.swing.JPanel {
     private void jcbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAdministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbAdministradorActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        disposeModal(this);
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

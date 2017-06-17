@@ -5,6 +5,8 @@
  */
 package View.Editar;
 
+import static Util.Utility.disposeModal;
+
 /**
  *
  * @author vinicius
@@ -86,6 +88,11 @@ public class EditarBloco extends javax.swing.JPanel {
 
         jcbCancelar.setText("Cancelar");
         jcbCancelar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jcbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbCancelarActionPerformed(evt);
+            }
+        });
 
         jlNome.setText("Nome");
 
@@ -143,8 +150,8 @@ public class EditarBloco extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jpPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(jpPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -163,6 +170,10 @@ public class EditarBloco extends javax.swing.JPanel {
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbConfirmarActionPerformed
+
+    private void jcbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCancelarActionPerformed
+        disposeModal(this);
+    }//GEN-LAST:event_jcbCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

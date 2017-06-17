@@ -24,4 +24,9 @@ public class Utility {
         frame.setLocationRelativeTo(parent);
         frame.setVisible(true);
     }
+    
+    public static void disposeModal(JPanel painelModal) {
+        JDialog parent = (JDialog) painelModal.getParent().getParent().getParent().getParent();
+        parent.dispose();
+    }
 }

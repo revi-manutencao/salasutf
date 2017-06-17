@@ -5,6 +5,8 @@
  */
 package View.Cadastrar;
 
+import static Util.Utility.disposeModal;
+
 /**
  *
  * @author vinicius
@@ -173,7 +175,7 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_jtEmailActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        // TODO add your handling code here:
+        disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
 

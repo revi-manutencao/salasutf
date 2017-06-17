@@ -5,6 +5,8 @@
  */
 package View.Editar;
 
+import static Util.Utility.disposeModal;
+
 /**
  *
  * @author vinicius
@@ -121,6 +123,11 @@ public class EditarUsuario extends javax.swing.JPanel {
 
         jbCancelar.setText("Cancelar");
         jbCancelar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jlDepartamento.setText("Departamento");
 
@@ -200,6 +207,10 @@ public class EditarUsuario extends javax.swing.JPanel {
     private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtNomeActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        disposeModal(this);
+    }//GEN-LAST:event_jbCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

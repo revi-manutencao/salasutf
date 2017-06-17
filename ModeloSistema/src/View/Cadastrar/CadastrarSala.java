@@ -5,6 +5,10 @@
  */
 package View.Cadastrar;
 
+import static Util.Utility.disposeModal;
+import java.awt.Window;
+import javax.swing.JDialog;
+
 /**
  *
  * @author vinicius
@@ -153,7 +157,7 @@ public class CadastrarSala extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        // TODO add your handling code here:
+        disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
 
