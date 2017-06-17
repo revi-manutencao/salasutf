@@ -5,7 +5,11 @@
  */
 package View.Cadastrar;
 
+import Database.BlocoDao;
+import Model.Bloco;
 import static Util.Utility.disposeModal;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,6 +55,11 @@ public class CadastrarBloco extends javax.swing.JPanel {
         });
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +110,22 @@ public class CadastrarBloco extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        Bloco bloco = new Bloco();
+        bloco.setAtivo(true);
+        bloco.setCodigo(jtCodigo.getText());
+        
+        BlocoDao bdao = new BlocoDao();
+        if (bdao.insert(bloco)) {
+            JOptionPane.showMessageDialog(null, "O bloco foi cadastrado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o bloco", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtCodigo.requestFocus();
+        }
+        
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

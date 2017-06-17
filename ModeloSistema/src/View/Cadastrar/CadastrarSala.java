@@ -5,6 +5,7 @@
  */
 package View.Cadastrar;
 
+import Model.Sala;
 import static Util.Utility.disposeModal;
 import java.awt.Window;
 import javax.swing.JDialog;
@@ -32,7 +33,7 @@ public class CadastrarSala extends javax.swing.JPanel {
     private void initComponents() {
 
         jlTitulo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxtCodSala = new javax.swing.JTextField();
         jlCodigodaSala = new javax.swing.JLabel();
         jlDescricao = new javax.swing.JLabel();
         jbBloco = new javax.swing.JComboBox<>();
@@ -65,6 +66,11 @@ public class CadastrarSala extends javax.swing.JPanel {
         jlTipodeSala.setText("Tipo de sala");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +112,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jcbAdministrador, 0, 174, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))))
+                                    .addComponent(jtxtCodSala))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -130,7 +136,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                 .addComponent(jlTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxtCodSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCodigodaSala))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -160,10 +166,20 @@ public class CadastrarSala extends javax.swing.JPanel {
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        // Base para fazer o create - analisar o combobox
+//        Sala sala = new Sala();
+//        sala.setAtivo(true);
+//        sala.setCodigo(jtxtCodSala.getText());
+//        sala.setIdAdministrador(Integer.parseInt(jcbAdministrador.getSelectedItem().toString()));
+//        sala.setIdBloco(Integer.parseInt(jbBloco.getSelectedItem().toString()));
+//        sala.setIdTipoSala(Integer.parseInt(jbTiposdeSala.getSelectedItem().toString()));
+//        sala.setEquipamentos(jtDescricao.getText());
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JComboBox<String> jbBloco;
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
@@ -176,5 +192,6 @@ public class CadastrarSala extends javax.swing.JPanel {
     private javax.swing.JLabel jlTipodeSala;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JTextArea jtDescricao;
+    private javax.swing.JTextField jtxtCodSala;
     // End of variables declaration//GEN-END:variables
 }
