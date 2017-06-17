@@ -124,7 +124,6 @@ public class CadastrarBloco extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o bloco", "Erro", JOptionPane.PLAIN_MESSAGE);
             jtCodigo.requestFocus();
         }
-        
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
 

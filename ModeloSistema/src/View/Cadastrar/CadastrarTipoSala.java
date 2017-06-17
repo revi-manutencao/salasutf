@@ -5,7 +5,10 @@
  */
 package View.Cadastrar;
 
+import Database.TipoSalaDao;
+import Model.TipoSala;
 import static Util.Utility.disposeModal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,6 +55,11 @@ public class CadastrarTipoSala extends javax.swing.JPanel {
         jlTitulo.setText("CADASTRAR TIPOS DE SALA");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +111,21 @@ public class CadastrarTipoSala extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        TipoSala tipo = new TipoSala();
+        tipo.setAtivo(true);
+        tipo.setDescricao(jtDescricao.getText());
+        
+        TipoSalaDao tsdao = new TipoSalaDao();
+        if (tsdao.insert(tipo)) {
+            JOptionPane.showMessageDialog(null, "O tipo de sala foi cadastrado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o tipo de sala", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtDescricao.requestFocus();
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

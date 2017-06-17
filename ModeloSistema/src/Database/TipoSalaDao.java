@@ -17,7 +17,7 @@ public class TipoSalaDao {
     
     public TipoSalaDao(){
         this.db = new DB();
-        this.table = "tipo_sala";
+        this.table = "tipo_de_sala";
     }
     
     
@@ -126,7 +126,7 @@ public class TipoSalaDao {
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, s.getDescricao());
-            stmt.setBoolean(5, s.isAtivo());
+            stmt.setBoolean(2, s.isAtivo());
 
             stmt.execute();
             
@@ -151,7 +151,7 @@ public class TipoSalaDao {
             
             
             stmt.setString(1, s.getDescricao());
-            stmt.setBoolean(5, s.isAtivo());
+            stmt.setBoolean(2, s.isAtivo());
 
             stmt.execute();
             
