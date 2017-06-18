@@ -8,7 +8,6 @@ package View.Cadastrar;
 import Database.BlocoDao;
 import Model.Bloco;
 import static Util.Utility.disposeModal;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import javax.swing.JOptionPane;
 
 /**
