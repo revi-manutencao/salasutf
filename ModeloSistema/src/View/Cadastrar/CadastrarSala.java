@@ -6,6 +6,7 @@
 package View.Cadastrar;
 
 import Database.BlocoDao;
+import Database.SalaDao;
 import Database.TipoSalaDao;
 import Database.UsuarioDao;
 import Model.Bloco;
@@ -13,9 +14,8 @@ import Model.Sala;
 import Model.TipoSala;
 import Model.Usuario;
 import static Util.Utility.disposeModal;
-import java.awt.Window;
 import java.util.List;
-import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -81,14 +81,20 @@ public class CadastrarSala extends javax.swing.JPanel {
 
         jlDescricao.setText("Descrição");
 
-        jbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        List<Bloco> blocos = new BlocoDao().getAllAtivos();
+        Bloco[] arrBlocos =  new Bloco[blocos.size()];
+        arrBlocos = blocos.toArray(arrBlocos);
+        jbBloco.setModel(new javax.swing.DefaultComboBoxModel(arrBlocos));
         jbBloco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBlocoActionPerformed(evt);
             }
         });
 
-        jbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        List<TipoSala> tiposSala = new TipoSalaDao().getAllAtivos();
+        TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];
+        arrTipoSala = tiposSala.toArray(arrTipoSala);
+        jbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel(arrTipoSala));
 
         jlAdministrador.setText("Administrador");
 
@@ -110,7 +116,10 @@ public class CadastrarSala extends javax.swing.JPanel {
             }
         });
 
-        jcbAdministrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Champinho" }));
+        List<Usuario> admins = new UsuarioDao().getAllAdmins();
+        Usuario[] arrAdmin =  new Usuario[admins.size()];
+        arrAdmin = admins.toArray(arrAdmin);
+        jcbAdministrador.setModel(new javax.swing.DefaultComboBoxModel(arrAdmin));
 
         jtDescricao.setColumns(20);
         jtDescricao.setLineWrap(true);
@@ -142,7 +151,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                                     .addComponent(jlAdministrador))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbAdministrador, 0, 176, Short.MAX_VALUE)
+                                    .addComponent(jcbAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtCodSala))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -199,13 +208,28 @@ public class CadastrarSala extends javax.swing.JPanel {
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         // Base para fazer o create - analisar o combobox
-//        Sala sala = new Sala();
-//        sala.setAtivo(true);
-//        sala.setCodigo(jtxtCodSala.getText());
-//        sala.setIdAdministrador(Integer.parseInt(jcbAdministrador.getSelectedItem().toString()));
-//        sala.setIdBloco(Integer.parseInt(jbBloco.getSelectedItem().toString()));
-//        sala.setIdTipoSala(Integer.parseInt(jbTiposdeSala.getSelectedItem().toString()));
-//        sala.setEquipamentos(jtDescricao.getText());
+        Sala sala = new Sala();
+        sala.setAtivo(true);
+        sala.setCodigo(jtxtCodSala.getText());
+        
+        Usuario admin = (Usuario) jcbAdministrador.getSelectedItem();
+        sala.setIdAdministrador(admin.getLogin());
+        
+        Bloco bloco = (Bloco) jbBloco.getSelectedItem();
+        sala.setIdBloco(bloco.getId());
+        
+        TipoSala tiposala = (TipoSala) jbTiposdeSala.getSelectedItem();
+        sala.setIdTipoSala(tiposala.getId());
+        sala.setEquipamentos(jtDescricao.getText());
+        
+        SalaDao sd = new SalaDao();
+        if(sd.insert(sala)){
+            JOptionPane.showMessageDialog(null, "A sala foi cadastrada", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar a sala", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtxtCodSala.requestFocus();
+        }
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
     private void jbBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBlocoActionPerformed

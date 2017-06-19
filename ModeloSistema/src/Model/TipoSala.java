@@ -30,4 +30,7 @@ public class TipoSala {
         this.ativo = ativo;
     }
 
+    public String toString() {
+        return this.descricao;
+    }
 }

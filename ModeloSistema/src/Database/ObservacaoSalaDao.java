@@ -51,7 +51,7 @@ public class ObservacaoSalaDao {
                 obsSala.setDescricao(rs.getString("descricao"));
                 obsSala.setDataHora(rs.getString("data_hora"));
                 obsSala.setIdSala(rs.getInt("id_sala"));
-                obsSala.setIdUsuario(rs.getInt("id_usuario"));
+                obsSala.setIdUsuario(rs.getString("id_usuario"));
                 obsSala.setAtivo(rs.getBoolean("ativo"));
             }
             
@@ -93,7 +93,7 @@ public class ObservacaoSalaDao {
                 obsSala.setDescricao(rs.getString("descricao"));
                 obsSala.setDataHora(rs.getString("data_hora"));
                 obsSala.setIdSala(rs.getInt("id_sala"));
-                obsSala.setIdUsuario(rs.getInt("id_usuario"));
+                obsSala.setIdUsuario(rs.getString("id_usuario"));
                 obsSala.setAtivo(rs.getBoolean("ativo"));
                 
                 obsSalas.add(obsSala);
@@ -134,7 +134,7 @@ public class ObservacaoSalaDao {
             stmt.setString(1, obs.getDescricao());
             stmt.setString(2, obs.getDataHora());
             stmt.setInt(3, obs.getIdSala());
-            stmt.setInt(4, obs.getIdUsuario());
+            stmt.setString(4, obs.getIdUsuario());
             stmt.setBoolean(5, obs.isAtivo());
 
             stmt.execute();
@@ -162,7 +162,7 @@ public class ObservacaoSalaDao {
             stmt.setString(1, obs.getDescricao());
             stmt.setString(2, obs.getDataHora());
             stmt.setInt(3, obs.getIdSala());
-            stmt.setInt(4, obs.getIdUsuario());
+            stmt.setString(4, obs.getIdUsuario());
             stmt.setBoolean(5, obs.isAtivo());
             stmt.setInt(6, obs.getId());
 

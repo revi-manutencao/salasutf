@@ -51,7 +51,7 @@ public class ReservaDao {
                 res.setDataUso(rs.getString("data_uso"));
                 res.setDataHoraReserva(rs.getString("data_hora_reserva"));
                 res.setIdSala(rs.getInt("id_sala"));
-                res.setIdProfessor(rs.getInt("id_professor"));
+                res.setIdProfessor(rs.getString("id_professor"));
                 res.setHorario(rs.getString("horario"));
                 res.setAtivo(rs.getBoolean("ativo"));
             }
@@ -94,7 +94,7 @@ public class ReservaDao {
                 res.setDataUso(rs.getString("data_uso"));
                 res.setDataHoraReserva(rs.getString("data_hora_reserva"));
                 res.setIdSala(rs.getInt("id_sala"));
-                res.setIdProfessor(rs.getInt("id_professor"));
+                res.setIdProfessor(rs.getString("id_professor"));
                 res.setHorario(rs.getString("horario"));
                 res.setAtivo(rs.getBoolean("ativo"));
                 
@@ -137,7 +137,7 @@ public class ReservaDao {
             stmt.setString(1, r.getDataUso());
             stmt.setString(2, r.getDataHoraReserva());
             stmt.setInt(3, r.getIdSala());
-            stmt.setInt(4, r.getIdProfessor());
+            stmt.setString(4, r.getIdProfessor());
             stmt.setBoolean(5, r.isAtivo());
             stmt.setString(6, r.getHorario());
 
@@ -166,7 +166,7 @@ public class ReservaDao {
             stmt.setString(1, r.getDataUso());
             stmt.setString(2, r.getDataHoraReserva());
             stmt.setInt(3, r.getIdSala());
-            stmt.setInt(4, r.getIdProfessor());
+            stmt.setString(4, r.getIdProfessor());
             stmt.setBoolean(5, r.isAtivo());
             stmt.setString(6, r.getHorario());
             stmt.setInt(7, r.getId());

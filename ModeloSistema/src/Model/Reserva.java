@@ -7,7 +7,7 @@ public class Reserva {
     private String dataHoraReserva;
     private boolean ativo;
     private int idSala;
-    private int idProfessor;
+    private String idProfessor;
     private String horario;
 
     public int getId() {
@@ -50,11 +50,11 @@ public class Reserva {
         this.idSala = idSala;
     }
 
-    public int getIdProfessor() {
+    public String getIdProfessor() {
         return idProfessor;
     }
 
-    public void setIdProfessor(int idProfessor) {
+    public void setIdProfessor(String idProfessor) {
         this.idProfessor = idProfessor;
     }
 
@@ -66,4 +66,7 @@ public class Reserva {
         this.horario = horario;
     }
 
+    public String toString() {
+        return this.dataUso;
+    }
 }

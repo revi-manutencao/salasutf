@@ -20,7 +20,6 @@ public class TipoSalaDao {
         this.table = "tipo_de_sala";
     }
     
-    
     /**
     * Funções básicas de CRUD 
     */

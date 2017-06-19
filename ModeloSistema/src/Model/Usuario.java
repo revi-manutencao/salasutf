@@ -1,8 +1,6 @@
 package Model;
 
 public class Usuario {
-
-    private int id;
     private String login;
     private String senha;
     private String email;
@@ -13,14 +11,6 @@ public class Usuario {
     private String dataHoraAtualizacao;
     private boolean aceito;
     private boolean ativo;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;
@@ -102,5 +92,7 @@ public class Usuario {
         this.ativo = ativo;
     }
 
-
+    public String toString() {
+        return this.nome;
+    }
 }

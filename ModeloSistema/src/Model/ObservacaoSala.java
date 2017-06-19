@@ -6,7 +6,7 @@ public class ObservacaoSala {
     private String descricao;
     private String dataHora;
     private int idSala;
-    private int idUsuario;
+    private String idUsuario;
     private boolean ativo;
 
     public int getId() {
@@ -41,11 +41,11 @@ public class ObservacaoSala {
         this.idSala = idSala;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -57,5 +57,7 @@ public class ObservacaoSala {
         this.ativo = ativo;
     }
 
-    
+    public String toString() {
+        return this.descricao;
+    }
 }

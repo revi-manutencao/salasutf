@@ -60,6 +60,41 @@ public class UsuarioDao {
     }
     
     
+    // Obter todos os objetos ATIVOS
+    public List<Usuario> getAllAdmins () {
+        List<Usuario> user = getAll();  
+        List<Usuario> ativos = new ArrayList<Usuario>();
+        for (Usuario usr : user){
+            if(usr.getTipoUsuario() == 1 && usr.isAtivo() == true)
+                ativos.add(usr);
+        }
+        
+        return ativos;
+    }
+    // Obter todos os objetos ATIVOS
+    public List<Usuario> getAllProfs () {
+        List<Usuario> user = getAll();  
+        List<Usuario> ativos = new ArrayList<Usuario>();
+        for (Usuario usr : user){
+            if(usr.getTipoUsuario() == 0 && usr.isAtivo() == true)
+                ativos.add(usr);
+        }
+        
+        return ativos;
+    }
+    // Obter todos os objetos ATIVOS
+    public List<Usuario> getAllMasters () {
+        List<Usuario> user = getAll();  
+        List<Usuario> ativos = new ArrayList<Usuario>();
+        for (Usuario usr : user){
+            if(usr.getTipoUsuario() == 2 && usr.isAtivo() == true)
+                ativos.add(usr);
+        }
+        
+        return ativos;
+    }
+    
+    
     
     /**
     * Funções básicas de CRUD 
@@ -88,7 +123,6 @@ public class UsuarioDao {
             Usuario user = new Usuario();
             
             while (rs.next()){
-                user.setId(rs.getInt("id"));
                 user.setNome(rs.getString("nome"));
                 user.setLogin(rs.getString("login"));
                 user.setSenha(rs.getString("senha"));
@@ -135,7 +169,6 @@ public class UsuarioDao {
             
             while (rs.next()){
                 Usuario user = new Usuario();
-                user.setId(rs.getInt("id"));
                 user.setNome(rs.getString("nome"));
                 user.setLogin(rs.getString("login"));
                 user.setSenha(rs.getString("senha"));
@@ -161,11 +194,11 @@ public class UsuarioDao {
     
     // Obter todos os objetos ATIVOS
     public List<Usuario> getAllAtivos () {
-        List<Usuario> deptos = getAll();  
+        List<Usuario> user = getAll();  
         List<Usuario> ativos = new ArrayList<Usuario>();
-        for (Usuario depto : deptos){
-            if(depto.isAtivo() == true)
-                ativos.add(depto);
+        for (Usuario usr : user){
+            if(usr.isAtivo() == true)
+                ativos.add(usr);
         }
         
         return ativos;
@@ -212,23 +245,21 @@ public class UsuarioDao {
         try{
             Connection con = db.connect();
 
-            String query = "UPDATE "+table+" SET nome = ?, login = ?, "
+            String query = "UPDATE "+table+" SET nome = ?, "
                     + "senha = ?, email = ?, tipo_usuario = ?, "
                     + "id_departamento = ?, data_hora_cadastro = ?, "
-                    + "data_hora_alteracao = ?, aceito = ?, ativo = ? WHERE id = ?";
+                    + "data_hora_alteracao = ?, aceito = ?, ativo = ? WHERE login = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, u.getNome());
-            stmt.setString(2, u.getLogin());
-            stmt.setString(3, u.getSenha());
-            stmt.setString(4, u.getEmail());
-            stmt.setInt(5, u.getTipoUsuario());
-            stmt.setInt(6, u.getIdDepartamento());
-            stmt.setString(7, u.getDataHoraCadastro());
-            stmt.setString(8, u.getDataHoraAtualizacao());
-            stmt.setBoolean(9, u.isAceito());
-            stmt.setBoolean(10, u.isAtivo());
-            stmt.setInt(11, u.getId());
+            stmt.setString(2, u.getSenha());
+            stmt.setString(3, u.getEmail());
+            stmt.setInt(4, u.getTipoUsuario());
+            stmt.setInt(5, u.getIdDepartamento());
+            stmt.setString(6, u.getDataHoraCadastro());
+            stmt.setString(7, u.getDataHoraAtualizacao());
+            stmt.setBoolean(8, u.isAceito());
+            stmt.setBoolean(9, u.isAtivo());
 
             stmt.execute();
             

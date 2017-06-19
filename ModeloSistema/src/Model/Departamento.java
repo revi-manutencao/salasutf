@@ -39,6 +39,7 @@ public class Departamento {
         this.ativo = ativo;
     }
 
-    
-	
+    public String toString() {
+        return this.nome;
+    }
 }

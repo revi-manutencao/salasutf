@@ -6,7 +6,7 @@ public class Sala {
     private String codigo;
     private int idBloco;
     private int idTipoSala;
-    private int idAdministrador;
+    private String idAdministrador;
     private String equipamentos;
     private boolean ativo;
 
@@ -42,11 +42,11 @@ public class Sala {
         this.idTipoSala = idTipoSala;
     }
 
-    public int getIdAdministrador() {
+    public String getIdAdministrador() {
         return idAdministrador;
     }
 
-    public void setIdAdministrador(int idAdministrador) {
+    public void setIdAdministrador(String idAdministrador) {
         this.idAdministrador = idAdministrador;
     }
 

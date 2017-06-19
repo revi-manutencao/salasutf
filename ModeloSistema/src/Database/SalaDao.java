@@ -49,7 +49,7 @@ public class SalaDao {
             while (rs.next()){
                 sala.setId(rs.getInt("id"));
                 sala.setCodigo(rs.getString("codigo"));
-                sala.setIdAdministrador(rs.getInt("id_administrador"));
+                sala.setIdAdministrador(rs.getString("id_administrador"));
                 sala.setIdBloco(rs.getInt("id_bloco"));
                 sala.setIdTipoSala(rs.getInt("id_tipo_sala"));
                 sala.setAtivo(rs.getBoolean("ativo"));
@@ -92,7 +92,7 @@ public class SalaDao {
                 Sala sala = new Sala();
                 sala.setId(rs.getInt("id"));
                 sala.setCodigo(rs.getString("codigo"));
-                sala.setIdAdministrador(rs.getInt("id_administrador"));
+                sala.setIdAdministrador(rs.getString("id_administrador"));
                 sala.setIdBloco(rs.getInt("id_bloco"));
                 sala.setIdTipoSala(rs.getInt("id_tipo_sala"));
                 sala.setAtivo(rs.getBoolean("ativo"));
@@ -130,16 +130,16 @@ public class SalaDao {
             Connection con = db.connect();
 
             String query = "INSERT INTO "+table+" (codigo, id_bloco, "
-                    + "id_tipo_sala, id_administrador, equipamentos, ativo) "
-                    + "VALUES (?, ?, ?, ?, ?)";
+                    + "id_tipo_de_sala, id_administrador, equipamentos, ativo) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, s.getCodigo());
             stmt.setInt(2, s.getIdBloco());
             stmt.setInt(3, s.getIdTipoSala());
-            stmt.setInt(4, s.getIdAdministrador());
+            stmt.setString(4, s.getIdAdministrador());
             stmt.setString(5, s.getEquipamentos());
-            stmt.setBoolean(5, s.isAtivo());
+            stmt.setBoolean(6, s.isAtivo());
 
             stmt.execute();
             
@@ -159,7 +159,7 @@ public class SalaDao {
             Connection con = db.connect();
 
             String query = "UPDATE "+table+" SET codigo = ?, id_bloco = ?, "
-                    + "id_tipo_sala = ?, id_administrador = ?, equipamentos = ?, "
+                    + "id_tipo_de_sala = ?, id_administrador = ?, equipamentos = ?, "
                     + "ativo = ? WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
@@ -167,7 +167,7 @@ public class SalaDao {
             stmt.setString(1, s.getCodigo());
             stmt.setInt(2, s.getIdBloco());
             stmt.setInt(3, s.getIdTipoSala());
-            stmt.setInt(4, s.getIdAdministrador());
+            stmt.setString(4, s.getIdAdministrador());
             stmt.setString(5, s.getEquipamentos());
             stmt.setBoolean(5, s.isAtivo());
 

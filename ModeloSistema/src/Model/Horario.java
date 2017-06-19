@@ -57,4 +57,7 @@ public class Horario {
         this.ativo = ativo;
     }
 
+    public String toString() {
+        return this.descricao;
+    }
 }

@@ -30,6 +30,8 @@ public class Bloco {
         this.ativo = ativo;
     }
         
-        
+    public String toString() {
+        return this.codigo;
+    } 
         
 }
