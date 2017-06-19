@@ -8,6 +8,8 @@ package Util;
 import Model.Bloco;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
@@ -29,5 +31,11 @@ public class Utility {
     public static void disposeModal(JPanel painelModal) {
         JDialog parent = (JDialog) painelModal.getParent().getParent().getParent().getParent();
         parent.dispose();
+    }
+    
+    public static String now() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        return timestamp.toString();
     }
 }

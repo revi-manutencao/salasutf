@@ -5,7 +5,15 @@
  */
 package View.Cadastrar;
 
+import Database.DepartamentoDao;
+import Database.UsuarioDao;
+import Model.Departamento;
+import Model.Usuario;
+import Util.Hash;
 import static Util.Utility.disposeModal;
+import static Util.Utility.now;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +58,11 @@ public class CadastrarUsuario extends javax.swing.JPanel {
         jlNome.setText("Nome");
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,9 +92,17 @@ public class CadastrarUsuario extends javax.swing.JPanel {
             }
         });
 
-        jcbTiposUsuário.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de usuário", "Professor", "Administrador" }));
+        jcbTiposUsuário.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Professor", "Administrador" }));
+        jcbTiposUsuário.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTiposUsuárioActionPerformed(evt);
+            }
+        });
 
-        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departamento" }));
+        List<Departamento> dpts = new DepartamentoDao().getAllAtivos();
+        Departamento[] arrDepto =  new Departamento[dpts.size()];
+        arrDepto = dpts.toArray(arrDepto);
+        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel(arrDepto));
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -177,6 +198,42 @@ public class CadastrarUsuario extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jcbTiposUsuárioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTiposUsuárioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTiposUsuárioActionPerformed
+
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+       Usuario user = new Usuario();
+       
+       // Definir Aceito e Ativo com base no aceite do admin - a princípio define tudo true
+       user.setAceito(true);
+       user.setAtivo(true);
+       
+       user.setDataHoraCadastro(now());
+       user.setLogin(jtLogin.getText());
+       user.setNome(jtNome.getText());
+       user.setEmail(jtEmail.getText());
+       user.setSenha(Hash.hashPassword(jPassSenha.getPassword().toString()));
+       
+       if(jcbTiposUsuário.getSelectedItem().equals("Professor")){
+           user.setTipoUsuario(Model.TipoUsuario.PROF);
+       } else {
+           user.setTipoUsuario(Model.TipoUsuario.ADMIN);
+       }
+       
+       Departamento dpt = (Departamento) jcbDepartamento.getSelectedItem();
+       user.setIdDepartamento(dpt.getId());
+       
+       UsuarioDao ud = new UsuarioDao();
+       if(ud.insert(user)){
+           JOptionPane.showMessageDialog(null, "O usuário foi cadastrado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+           disposeModal(this);
+       } else {
+           JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o usuário", "Erro", JOptionPane.PLAIN_MESSAGE);
+           jtNome.requestFocus();
+       }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

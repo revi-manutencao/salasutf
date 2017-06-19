@@ -2,8 +2,8 @@ package Model;
 
 public class TipoUsuario {
 	
-    public final int MASTER = 2;
-    public final int ADMIN = 1;
-    public final int PROF = 0;
+    public static final int MASTER = 2;
+    public static final int ADMIN = 1;
+    public static final int PROF = 0;
 	
 }
