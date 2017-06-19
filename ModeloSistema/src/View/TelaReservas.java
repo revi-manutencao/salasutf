@@ -73,13 +73,14 @@ public class TelaReservas extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Salas", "Data", "Horário"
+                "Sala", "Data", "Horário"
             }
         ));
         jtabHistóricodeReservas.setCellSelectionEnabled(true);
         jtabHistóricodeReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtabHistóricodeReservas.setDropMode(javax.swing.DropMode.ON);
         jScrollPane2.setViewportView(jtabHistóricodeReservas);
+        jtabHistóricodeReservas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jpHistoricodeReservasLayout = new javax.swing.GroupLayout(jpHistoricodeReservas);
         jpHistoricodeReservas.setLayout(jpHistoricodeReservasLayout);
