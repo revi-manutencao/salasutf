@@ -45,6 +45,30 @@ public class Auth {
     }
     
     public static boolean autenticaAutomatico () {
+        Usuario user = getLoggedUser();        
+        
+        if(user.getLogin() == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    
+    public static void sair () {
+        try{
+            FileWriter arq = new FileWriter("userdata.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+
+            gravarArq.printf("%n");
+
+            arq.close();
+
+        } catch(Exception e){}
+    }
+    
+    
+    public static Usuario getLoggedUser () {
         String login = "", password = "";
         
         try { // Tenta obter os dados de acesso do arquivo
@@ -79,25 +103,6 @@ public class Auth {
         UsuarioDao ud = new UsuarioDao();
         Usuario user = ud.getAuth(u);
         
-        
-        
-        if(user.getLogin() == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    
-    
-    public static void sair () {
-        try{
-            FileWriter arq = new FileWriter("userdata.txt");
-            PrintWriter gravarArq = new PrintWriter(arq);
-
-            gravarArq.printf("%n");
-
-            arq.close();
-
-        } catch(Exception e){}
+        return user;
     }
 }
