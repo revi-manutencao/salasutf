@@ -5,7 +5,10 @@
  */
 package View.Cadastrar;
 
+import Database.DepartamentoDao;
+import Model.Departamento;
 import static Util.Utility.disposeModal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,10 +33,10 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
     private void initComponents() {
 
         jbTitulo = new javax.swing.JLabel();
-        jbNome = new javax.swing.JTextField();
+        jtNome = new javax.swing.JTextField();
         jlNome = new javax.swing.JLabel();
         jlSigla = new javax.swing.JLabel();
-        jbSigla = new javax.swing.JTextField();
+        jtSigla = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
 
@@ -44,9 +47,9 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
         jbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jbTitulo.setText("Cadastrar Departamento");
 
-        jbNome.addActionListener(new java.awt.event.ActionListener() {
+        jtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNomeActionPerformed(evt);
+                jtNomeActionPerformed(evt);
             }
         });
 
@@ -54,13 +57,18 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
 
         jlSigla.setText("Sigla");
 
-        jbSigla.addActionListener(new java.awt.event.ActionListener() {
+        jtSigla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSiglaActionPerformed(evt);
+                jtSiglaActionPerformed(evt);
             }
         });
 
         jbCadastrar.setText("Cadastrar");
+        jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCadastrarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,8 +91,8 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
                             .addComponent(jlNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbNome)
-                            .addComponent(jbSigla)))
+                            .addComponent(jtNome)
+                            .addComponent(jtSigla)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbCancelar)
@@ -99,11 +107,11 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
                 .addComponent(jbTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlNome))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlSigla))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -113,26 +121,42 @@ public class CadastrarDepartamento extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNomeActionPerformed
+    private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbNomeActionPerformed
+    }//GEN-LAST:event_jtNomeActionPerformed
 
-    private void jbSiglaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSiglaActionPerformed
+    private void jtSiglaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtSiglaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbSiglaActionPerformed
+    }//GEN-LAST:event_jtSiglaActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
+    private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
+        Departamento dpto = new Departamento();
+        dpto.setAtivo(true);
+        dpto.setNome(jtNome.getText());
+        dpto.setSigla(jtSigla.getText());
+        
+        DepartamentoDao dpd = new DepartamentoDao();
+        if(dpd.insert(dpto)){
+            JOptionPane.showMessageDialog(null, "O departamento foi cadastrado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o departamento", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+    }//GEN-LAST:event_jbCadastrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JTextField jbNome;
-    private javax.swing.JTextField jbSigla;
     private javax.swing.JLabel jbTitulo;
     private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlSigla;
+    private javax.swing.JTextField jtNome;
+    private javax.swing.JTextField jtSigla;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,8 +35,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jbNome" max="32767" attributes="0"/>
-                          <Component id="jbSigla" max="32767" attributes="0"/>
+                          <Component id="jtNome" max="32767" attributes="0"/>
+                          <Component id="jtSigla" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -57,12 +57,12 @@
               <Component id="jbTitulo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtNome" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlNome" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbSigla" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jtSigla" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlSigla" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -85,9 +85,9 @@
         <Property name="text" type="java.lang.String" value="Cadastrar Departamento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jbNome">
+    <Component class="javax.swing.JTextField" name="jtNome">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNomeActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtNomeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jlNome">
@@ -100,15 +100,18 @@
         <Property name="text" type="java.lang.String" value="Sigla"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jbSigla">
+    <Component class="javax.swing.JTextField" name="jtSigla">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSiglaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtSiglaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbCadastrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCadastrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbCancelar">
       <Properties>
