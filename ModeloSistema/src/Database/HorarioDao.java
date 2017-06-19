@@ -17,7 +17,7 @@ public class HorarioDao {
     
     public HorarioDao(){
         this.db = new DB();
-        this.table = "horario";
+        this.table = "horarios";
     }
     
     
@@ -48,10 +48,10 @@ public class HorarioDao {
             Horario horario = new Horario();
             
             while (rs.next()){
-                horario.setId(rs.getInt("id"));
+                horario.setId(rs.getString("id"));
                 horario.setDescricao(rs.getString("descricao"));
-                horario.setHorarioInicio(rs.getString("horarioInicio"));
-                horario.setHorarioFim(rs.getString("horarioFim"));
+                horario.setHorarioInicio(rs.getString("horario_inicio"));
+                horario.setHorarioFim(rs.getString("horario_fim"));
                 horario.setTurno(rs.getString("turno"));
                 horario.setAtivo(rs.getBoolean("ativo"));
             }
@@ -90,10 +90,10 @@ public class HorarioDao {
             
             while (rs.next()){
                 Horario horario = new Horario();
-                horario.setId(rs.getInt("id"));
+                horario.setId(rs.getString("id"));
                 horario.setDescricao(rs.getString("descricao"));
-                horario.setHorarioInicio(rs.getString("horarioInicio"));
-                horario.setHorarioFim(rs.getString("horarioFim"));
+                horario.setHorarioInicio(rs.getString("horario_inicio"));
+                horario.setHorarioFim(rs.getString("horario_fim"));
                 horario.setTurno(rs.getString("turno"));
                 horario.setAtivo(rs.getBoolean("ativo"));
                 
@@ -128,15 +128,16 @@ public class HorarioDao {
         try{
             Connection con = db.connect();
 
-            String query = "INSERT INTO "+table+" (descricao, horarioInicio, "
-                    +"horarioFim, turno, ativo) VALUES (?, ?, ?, ?, ?)";
+            String query = "INSERT INTO "+table+" (id, descricao, horario_inicio, "
+                    +"horario_fim, turno, ativo) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             
-            stmt.setString(1, h.getDescricao());
-            stmt.setString(2, h.getHorarioInicio());
-            stmt.setString(3, h.getHorarioFim());
-            stmt.setString(4, h.getTurno());
-            stmt.setBoolean(5, h.isAtivo());
+            stmt.setString(1, h.getId());
+            stmt.setString(2, h.getDescricao());
+            stmt.setString(3, h.getHorarioInicio());
+            stmt.setString(4, h.getHorarioFim());
+            stmt.setString(5, h.getTurno());
+            stmt.setBoolean(6, h.isAtivo());
 
             stmt.execute();
             
@@ -155,8 +156,8 @@ public class HorarioDao {
         try{
             Connection con = db.connect();
 
-            String query = "UPDATE "+table+" SET descricao = ?, horarioInicio = ?, "
-                    + "horarioFim = ?, turno = ?, ativo = ? WHERE id = ?";
+            String query = "UPDATE "+table+" SET descricao = ?, horario_inicio = ?, "
+                    + "horario_fim = ?, turno = ?, ativo = ? WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, h.getDescricao());
@@ -164,7 +165,7 @@ public class HorarioDao {
             stmt.setString(3, h.getHorarioFim());
             stmt.setString(4, h.getTurno());
             stmt.setBoolean(5, h.isAtivo());
-            stmt.setInt(6, h.getId());
+            stmt.setString(6, h.getId());
 
             stmt.execute();
             

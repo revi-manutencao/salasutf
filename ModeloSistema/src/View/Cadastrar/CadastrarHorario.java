@@ -5,7 +5,10 @@
  */
 package View.Cadastrar;
 
+import Database.HorarioDao;
+import Model.Horario;
 import static Util.Utility.disposeModal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,6 +43,8 @@ public class CadastrarHorario extends javax.swing.JPanel {
         jthorarioFim = new javax.swing.JTextField();
         jtHorarioInicio = new javax.swing.JTextField();
         jtDescricao = new javax.swing.JTextField();
+        jtId = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(300, 252));
         setMinimumSize(new java.awt.Dimension(300, 252));
@@ -57,9 +62,19 @@ public class CadastrarHorario extends javax.swing.JPanel {
 
         jlTurno.setText("Turno");
 
-        jcbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Manhã", "Tarde", "Noite" }));
+        jcbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
+        jcbTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbTurnoActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +101,8 @@ public class CadastrarHorario extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Identificação");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,11 +114,6 @@ public class CadastrarHorario extends javax.swing.JPanel {
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jldescricao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtDescricao))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -114,7 +126,16 @@ public class CadastrarHorario extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jthorarioFim, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtHorarioInicio)
-                            .addComponent(jcbTurno, 0, 184, Short.MAX_VALUE))))
+                            .addComponent(jcbTurno, 0, 177, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jldescricao)
+                            .addComponent(jLabel1))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtDescricao)
+                            .addComponent(jtId))))
                 .addContainerGap())
             .addComponent(jlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -123,19 +144,23 @@ public class CadastrarHorario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jldescricao))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtHorarioInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlHorarioInicio))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jthorarioFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlhorarioFim))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlhorarioFim)
+                    .addComponent(jthorarioFim, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jcbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlTurno))
@@ -143,7 +168,7 @@ public class CadastrarHorario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -163,10 +188,41 @@ public class CadastrarHorario extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtDescricaoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Horario horario = new Horario();
+        horario.setAtivo(true);
+        horario.setId(jtId.getText());
+        horario.setDescricao(jtDescricao.getText());
+        horario.setHorarioInicio(jtHorarioInicio.getText());
+        horario.setHorarioFim(jthorarioFim.getText());
+        
+        if(jcbTurno.getSelectedItem().equals("Manhã")){
+            horario.setTurno("0");
+        } else if(jcbTurno.getSelectedItem().equals("Tarde")){
+            horario.setTurno("1");
+        } else{
+            horario.setTurno("2");
+        }
+        
+        HorarioDao hd = new HorarioDao();
+        if(hd.insert(horario)){
+            JOptionPane.showMessageDialog(null, "O horário foi cadastrado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível cadstrar o horário", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtDescricao.requestFocus();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jcbTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTurnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbTurnoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> jcbTurno;
     private javax.swing.JLabel jlHorarioInicio;
     private javax.swing.JLabel jlTitulo;
@@ -175,6 +231,7 @@ public class CadastrarHorario extends javax.swing.JPanel {
     private javax.swing.JLabel jlhorarioFim;
     private javax.swing.JTextField jtDescricao;
     private javax.swing.JTextField jtHorarioInicio;
+    private javax.swing.JTextField jtId;
     private javax.swing.JTextField jthorarioFim;
     // End of variables declaration//GEN-END:variables
 }
