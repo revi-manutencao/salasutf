@@ -429,7 +429,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadDepartamentoActionPerformed
 
     private void jmCadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuarioActionPerformed
-        setModal(new CadastrarUsuario(), this, 300, 320, "Cadastrar usuário");
+        setModal(new CadastrarUsuario(), this, 300, 340, "Cadastrar usuário");
     }//GEN-LAST:event_jmCadUsuarioActionPerformed
 
     private void jmEditarTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipoSalaActionPerformed
