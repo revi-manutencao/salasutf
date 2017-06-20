@@ -91,6 +91,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItem3.setText("jMenuItem3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reserva de Salas");
         setResizable(false);
 
         jpLogin.setMaximumSize(new java.awt.Dimension(647, 442));
@@ -193,15 +194,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 450, Short.MAX_VALUE)
         );
 
+        jmenubar.setFocusable(false);
         jmenubar.setName(""); // NOI18N
         jmenubar.setRequestFocusEnabled(false);
         jmenubar.setVerifyInputWhenFocusTarget(false);
 
         jmConsultar.setText("Consultar");
         jmConsultar.setContentAreaFilled(false);
-        jmConsultar.setFocusTraversalKeysEnabled(false);
         jmConsultar.setFocusable(false);
-        jmConsultar.setNextFocusableComponent(this);
         jmConsultar.setRequestFocusEnabled(false);
         jmConsultar.setVerifyInputWhenFocusTarget(false);
         jmConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
