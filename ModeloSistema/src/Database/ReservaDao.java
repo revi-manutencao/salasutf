@@ -1,6 +1,7 @@
 package Database;
 
 import Model.Reserva;
+import Model.Sala;
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -20,6 +21,42 @@ public class ReservaDao {
         this.table = "reserva";
     }
     
+    
+    public List<Reserva> getBySalaEData (Sala sala, String data) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" WHERE id_sala = ? AND data_uso = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            
+            stmt.setInt(1, sala.getId());
+            stmt.setString(2, data);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Reserva> ress = new ArrayList<Reserva>();
+            
+            while (rs.next()){
+                Reserva res = new Reserva();
+                res.setId(rs.getInt("id"));
+                res.setDataUso(rs.getString("data_uso"));
+                res.setDataHoraReserva(rs.getString("data_hora_reserva"));
+                res.setIdSala(rs.getInt("id_sala"));
+                res.setIdProfessor(rs.getString("id_professor"));
+                res.setHorario(rs.getString("horario"));
+                res.setAtivo(rs.getBoolean("ativo"));
+                
+                ress.add(res);
+            }
+            
+            con.close();
+            return ress;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
     
     /**
     * Funções básicas de CRUD 

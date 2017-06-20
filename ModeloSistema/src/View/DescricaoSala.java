@@ -5,7 +5,10 @@
  */
 package View;
 
+import Database.ReservaDao;
+import Model.Reserva;
 import Model.Sala;
+import java.util.List;
 
 /**
  *
@@ -24,6 +27,11 @@ public class DescricaoSala extends javax.swing.JPanel {
         
         // Buscar os horários disponíveis e mostrar na janela
         //System.out.println(data);
+        ReservaDao resd = new ReservaDao();
+        List<Reserva> listaReservas = resd.getBySalaEData(objeto, data);
+        Reserva[] arrReservas = (Reserva[]) listaReservas.toArray();
+        
+        
     }
 
     /**
@@ -63,34 +71,26 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jtabHorariosDisponiveis1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"M1", "M1", "M1", "", "M1"},
-                {"M2", null, null, "M2", null},
-                {"", "M3", "M3", null, null},
-                {"M4", null, null, null, "M4"},
-                {"", "M5", null, "M5", "M5"},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {"M1", null},
+                {"M2", null},
+                {"M3", null},
+                {"M4", null},
+                {"M5", null},
+                {"M6", null},
+                {"T1", null},
+                {"T2", null},
+                {"T3", null},
+                {"T4", null},
+                {"T5", null},
+                {"T6", null},
+                {"N1", null},
+                {"N2", null},
+                {"N3", null},
+                {"N4", null},
+                {"N5", null}
             },
             new String [] {
-                "SEG", "TER", "QUA", "QUI", "SEX"
+                "Horário", "Selecionar"
             }
         ));
         jtabHorariosDisponiveis1.addContainerListener(new java.awt.event.ContainerAdapter() {
