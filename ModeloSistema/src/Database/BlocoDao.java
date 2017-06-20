@@ -151,9 +151,11 @@ public class BlocoDao {
             stmt.setBoolean(2, b.isAtivo());
             stmt.setInt(3, b.getId());
 
+
             stmt.execute();
             
             con.close();
+            System.out.println(get(b,"id").getCodigo());
             return true;
             
         } catch(SQLException e){

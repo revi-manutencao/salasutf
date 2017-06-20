@@ -14,7 +14,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     TelaReservas telareservas = new TelaReservas();
     TelaConsultar telaconsultar = new TelaConsultar();
     int telax = 700;
-    int telay = 430;
+    int telay = 450;
 
     public TelaPrincipal() {
         telareservas.setVisible(false);
@@ -149,7 +149,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TituloSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(jpLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(InputLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpLoginLayout.createSequentialGroup()
@@ -182,7 +182,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(LabelDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnEntrar)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         jpPrincipal.setMaximumSize(new java.awt.Dimension(700, 450));
@@ -193,11 +193,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpPrincipal.setLayout(jpPrincipalLayout);
         jpPrincipalLayout.setHorizontalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGap(0, 710, Short.MAX_VALUE)
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 454, Short.MAX_VALUE)
         );
 
         jmenubar.setFocusable(false);
@@ -354,13 +354,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jpLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE))
+                .addComponent(jpLogin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jpLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
         );
@@ -446,10 +448,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setModal(new EditarUsuario(), this, 305, 490, "Editar usuário");
     }//GEN-LAST:event_jmEditarUsuarioActionPerformed
 
-    private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InputSenhaActionPerformed
-
     private void jmSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSairMouseClicked
         Auth.sair();
         
@@ -463,12 +461,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         InputLogin.requestFocus();
     }//GEN-LAST:event_jmSairMouseClicked
 
+    private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputSenhaActionPerformed
+
     private void BtnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnEntrarMouseClicked
         if (Util.Auth.autenticaLogin(InputLogin.getText(), new StringBuilder().append(InputSenha.getPassword()).toString())){
             jmenubar.setVisible(true);
             jpLogin.setVisible(false);
             jpPrincipal.setVisible(true);
-            
+
             // Oculta o menu de gerenciar caso seja do tipo professor
             if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.PROF){
                 jmGerenciar.setVisible(false);
@@ -480,8 +482,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             telareservas.setVisible(false);
         } else{
             JOptionPane.showMessageDialog(null, "Os dados digitados estão incorretos.", "", JOptionPane.WARNING_MESSAGE);
-//            InputLogin.setText("");
-//            InputSenha.setText("");
+            //            InputLogin.setText("");
+            //            InputSenha.setText("");
             InputLogin.requestFocus();
         }
     }//GEN-LAST:event_BtnEntrarMouseClicked

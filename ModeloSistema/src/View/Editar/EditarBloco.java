@@ -5,7 +5,11 @@
  */
 package View.Editar;
 
+import Database.BlocoDao;
+import Model.Bloco;
 import static Util.Utility.disposeModal;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,7 +62,15 @@ public class EditarBloco extends javax.swing.JPanel {
         jlSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSubTitulo.setText("Selecione o bloco que deseja alterar");
 
-        jcbBloco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bloco", "A", "B", "C", "D", "E" }));
+        List<Bloco> blocos = new BlocoDao().getAll();
+        Bloco[] arrBlocos =  new Bloco[blocos.size()];
+        arrBlocos = blocos.toArray(arrBlocos);
+        jcbBloco.setModel(new javax.swing.DefaultComboBoxModel(arrBlocos));
+        jcbBloco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbBlocoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpPesquisarLayout = new javax.swing.GroupLayout(jpPesquisar);
         jpPesquisar.setLayout(jpPesquisarLayout);
@@ -68,7 +80,8 @@ public class EditarBloco extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jcbBloco, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jbConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addComponent(jlSubTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jpPesquisarLayout.setVerticalGroup(
@@ -102,6 +115,11 @@ public class EditarBloco extends javax.swing.JPanel {
 
         jbAlterar.setText("Alterar");
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpAlterarLayout = new javax.swing.GroupLayout(jpAlterar);
         jpAlterar.setLayout(jpAlterarLayout);
@@ -125,7 +143,7 @@ public class EditarBloco extends javax.swing.JPanel {
         jpAlterarLayout.setVerticalGroup(
             jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNome)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -146,12 +164,12 @@ public class EditarBloco extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+            .addComponent(jlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(jpPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 247, Short.MAX_VALUE))
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -168,12 +186,34 @@ public class EditarBloco extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-        // TODO add your handling code here:
+        Bloco bloco = (Bloco) jcbBloco.getSelectedItem();
+        jtNome.setText(bloco.getCodigo());
+        jtNome.setFocusable(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jcbCancelarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        Bloco bloco = new Bloco();
+        bloco.setAtivo(!jrDesativar.isSelected());
+        bloco.setCodigo(jtNome.getText());
+        
+        BlocoDao bdao = new BlocoDao();
+        if (bdao.update(bloco)) {
+            JOptionPane.showMessageDialog(null, "O bloco foi alterado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível alterar o bloco", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+
+    }//GEN-LAST:event_jbAlterarActionPerformed
+
+    private void jcbBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbBlocoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

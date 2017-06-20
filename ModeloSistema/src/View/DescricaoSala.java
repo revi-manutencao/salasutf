@@ -80,30 +80,6 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jpResultadoHorarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
-        jtabHorariosDisponiveis1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"M1", null},
-                {"M2", null},
-                {"M3", null},
-                {"M4", null},
-                {"M5", null},
-                {"M6", null},
-                {"T1", null},
-                {"T2", null},
-                {"T3", null},
-                {"T4", null},
-                {"T5", null},
-                {"T6", null},
-                {"N1", null},
-                {"N2", null},
-                {"N3", null},
-                {"N4", null},
-                {"N5", null}
-            },
-            new String [] {
-                "Horário", "Selecionar"
-            }
-        ));
         jtabHorariosDisponiveis1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 jtabHorariosDisponiveis1ComponentAdded(evt);

@@ -40,42 +40,8 @@ public class TelaReservas extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(700, 430));
 
-        jpConsultar.setPreferredSize(new java.awt.Dimension(647, 398));
-
         jpHistoricodeReservas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HISTÓRICO DE RESERVAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jtabHistóricodeReservas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Sala", "Data", "Horário"
-            }
-        ));
         jtabHistóricodeReservas.setCellSelectionEnabled(true);
         jtabHistóricodeReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtabHistóricodeReservas.setDropMode(javax.swing.DropMode.ON);
@@ -95,8 +61,8 @@ public class TelaReservas extends javax.swing.JPanel {
             jpHistoricodeReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpHistoricodeReservasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jpConsultarReservas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONSULTAR RESERVAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -131,7 +97,7 @@ public class TelaReservas extends javax.swing.JPanel {
                             .addComponent(jtCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jpConsultarReservasLayout.createSequentialGroup()
                                 .addComponent(jlDataReserva)
-                                .addGap(0, 315, Short.MAX_VALUE)))))
+                                .addGap(0, 314, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jpConsultarReservasLayout.setVerticalGroup(
@@ -144,7 +110,7 @@ public class TelaReservas extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addComponent(jlDataReserva)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCalendarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 216, Short.MAX_VALUE)
+                .addComponent(jCalendarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbConsultar)
                 .addContainerGap())
@@ -175,13 +141,13 @@ public class TelaReservas extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jpConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jpConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addComponent(jpConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
