@@ -35,8 +35,8 @@ public class BlocoDao {
 
             try{
                 Method m = b.getClass().getMethod("get" + capitalize(column));
-                String val = (String) m.invoke(b);
-                
+                String val = String.valueOf(m.invoke(b));
+                            
                 stmt.setString(1, val);
             }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -155,7 +155,6 @@ public class BlocoDao {
             stmt.execute();
             
             con.close();
-            System.out.println(get(b,"id").getCodigo());
             return true;
             
         } catch(SQLException e){

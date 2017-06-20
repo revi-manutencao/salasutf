@@ -160,6 +160,9 @@
               <Dimension value="[70, 23]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jjbAlterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jbSigla">
           <Properties>
@@ -227,17 +230,15 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbDepartamento">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Departamento"/>
-                <StringItem index="1" value="DACOM"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(arrDepto)" type="code"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDepartamentoActionPerformed"/>
           </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Departamento&gt; dpts = new DepartamentoDao().getAllAtivos();&#xa;Departamento[] arrDepto =  new Departamento[dpts.size()];&#xa;arrDepto = dpts.toArray(arrDepto);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>

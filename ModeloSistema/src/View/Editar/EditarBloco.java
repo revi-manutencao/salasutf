@@ -189,6 +189,7 @@ public class EditarBloco extends javax.swing.JPanel {
         Bloco bloco = (Bloco) jcbBloco.getSelectedItem();
         jtNome.setText(bloco.getCodigo());
         jtNome.setFocusable(true);
+        jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCancelarActionPerformed
@@ -196,16 +197,16 @@ public class EditarBloco extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbCancelarActionPerformed
 
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
-        Bloco bloco = new Bloco();
+        Bloco bloco = (Bloco) jcbBloco.getSelectedItem();
         bloco.setAtivo(!jrDesativar.isSelected());
         bloco.setCodigo(jtNome.getText());
         
         BlocoDao bdao = new BlocoDao();
         if (bdao.update(bloco)) {
-            JOptionPane.showMessageDialog(null, "O bloco foi alterado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "O bloco foi atualizado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
             disposeModal(this);
         } else {
-            JOptionPane.showMessageDialog(null, "Não foi possível alterar o bloco", "Erro", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o bloco", "Erro", JOptionPane.PLAIN_MESSAGE);
             jtNome.requestFocus();
         }
 

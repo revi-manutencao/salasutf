@@ -5,7 +5,11 @@
  */
 package View.Editar;
 
+import Database.DepartamentoDao;
+import Model.Departamento;
 import static Util.Utility.disposeModal;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,6 +71,11 @@ public class EditarDepartamento extends javax.swing.JPanel {
 
         jjbAlterar.setText("Alterar");
         jjbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jjbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jjbAlterarActionPerformed(evt);
+            }
+        });
 
         jbSigla.setText("Sigla");
 
@@ -129,7 +138,10 @@ public class EditarDepartamento extends javax.swing.JPanel {
         jlSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSubTitulo.setText("Selecione o departamento que deseja alterar");
 
-        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Departamento", "DACOM" }));
+        List<Departamento> dpts = new DepartamentoDao().getAllAtivos();
+        Departamento[] arrDepto =  new Departamento[dpts.size()];
+        arrDepto = dpts.toArray(arrDepto);
+        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel(arrDepto));
         jcbDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbDepartamentoActionPerformed(evt);
@@ -191,7 +203,14 @@ public class EditarDepartamento extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-        // TODO add your handling code here:
+        Departamento depto = (Departamento) jcbDepartamento.getSelectedItem();
+        jtNome.setText(depto.getNome());
+        jtSigla.setText(depto.getSigla());
+        
+        jtNome.setFocusable(true);
+        jtSigla.setFocusable(true);
+        
+        jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDepartamentoActionPerformed
@@ -201,6 +220,22 @@ public class EditarDepartamento extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jjbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jjbAlterarActionPerformed
+        Departamento dpto = (Departamento) jcbDepartamento.getSelectedItem();
+        dpto.setAtivo(!jrDesativar.isSelected());
+        dpto.setNome(jtNome.getText());
+        dpto.setSigla(jtSigla.getText());
+        
+        DepartamentoDao dpd = new DepartamentoDao();
+        if(dpd.update(dpto)){
+            JOptionPane.showMessageDialog(null, "O departamento foi atualizado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o departamento", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+    }//GEN-LAST:event_jjbAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

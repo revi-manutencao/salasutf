@@ -153,8 +153,8 @@ public class DepartamentoDao {
             
             stmt.setString(1, d.getNome());
             stmt.setString(2, d.getSigla());
-            stmt.setBoolean(2, d.isAtivo());
-            stmt.setInt(3, d.getId());
+            stmt.setBoolean(3, d.isAtivo());
+            stmt.setInt(4, d.getId());
 
             stmt.execute();
             

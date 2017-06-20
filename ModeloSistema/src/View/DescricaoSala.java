@@ -63,7 +63,7 @@ public class DescricaoSala extends javax.swing.JPanel {
                 matrizValores[i] = new String[]{arrHorarios[i].getId(), null};
             } else {
                 JCheckBox jcTeste = new JCheckBox();
-                matrizValores[i] = new Object[]{arrHorarios[i].getId(), "Oi"};
+                matrizValores[i] = new Object[]{arrHorarios[i].getId(), "Disponível"};
             }
         }
 
