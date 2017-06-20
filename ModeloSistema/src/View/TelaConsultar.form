@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpConsultarSala" pref="437" max="32767" attributes="0"/>
+              <Component id="jpConsultarSala" pref="453" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jpResultadosdaBusca" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -77,14 +77,16 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel1" pref="0" max="32767" attributes="0"/>
-                      <Component id="jCalendar1" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jCalendar1" alignment="0" pref="429" max="32767" attributes="0"/>
                       <Component id="jtDadosdePesquisa" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlSubtituloData" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="211" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jlSubtituloData" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabelDataEscolhida" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -100,10 +102,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jtDadosdePesquisa" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jlSubtituloData" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCalendar1" min="-2" pref="237" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jlSubtituloData" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelDataEscolhida" alignment="3" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jCalendar1" min="-2" pref="237" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -120,6 +125,18 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+          <Properties>
+            <Property name="decorationBackgroundVisible" type="boolean" value="false"/>
+            <Property name="doubleBuffered" type="boolean" value="false"/>
+            <Property name="minSelectableDate" type="java.util.Date" editor="org.netbeans.beaninfo.editors.DateEditor">
+              <SerializedValue value="-84,-19,0,5,115,114,0,14,106,97,118,97,46,117,116,105,108,46,68,97,116,101,104,106,-127,1,75,89,116,25,3,0,0,120,112,119,8,-1,-1,-57,124,-28,99,-92,-24,120"/>
+            </Property>
+            <Property name="nullDateButtonText" type="java.lang.String" value=""/>
+            <Property name="weekOfYearVisible" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jCalendar1PropertyChange"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
@@ -130,6 +147,8 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es da sala que voc&#xea; quer"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelDataEscolhida">
         </Component>
       </SubComponents>
     </Container>

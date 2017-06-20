@@ -7,6 +7,7 @@ package View;
 
 import static Util.Utility.setModal;
 import View.Editar.EditarUsuario;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -40,6 +41,7 @@ public class TelaConsultar extends javax.swing.JPanel {
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabelDataEscolhida = new javax.swing.JLabel();
         jpResultadosdaBusca = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jlistResultadosBusca = new javax.swing.JList<>();
@@ -61,6 +63,17 @@ public class TelaConsultar extends javax.swing.JPanel {
 
         jlSubtituloData.setText("Informe a data");
 
+        jCalendar1.setDecorationBackgroundVisible(false);
+        jCalendar1.setDoubleBuffered(false);
+        jCalendar1.setMinSelectableDate(new java.util.Date(-62135755103000L));
+        jCalendar1.setNullDateButtonText("");
+        jCalendar1.setWeekOfYearVisible(false);
+        jCalendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendar1PropertyChange(evt);
+            }
+        });
+
         jLabel1.setText("<html>Informe o código, o tipo ou uma palavra-chave para encontrar a sala que deseja consultar a disponibilidade. </html>");
 
         jLabel2.setText("Informações da sala que você quer");
@@ -73,13 +86,15 @@ public class TelaConsultar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 429, Short.MAX_VALUE)
                     .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpConsultarSalaLayout.createSequentialGroup()
-                        .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlSubtituloData)
-                            .addComponent(jLabel2))
-                        .addGap(0, 211, Short.MAX_VALUE)))
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpConsultarSalaLayout.createSequentialGroup()
+                        .addComponent(jlSubtituloData)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelDataEscolhida, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpConsultarSalaLayout.setVerticalGroup(
@@ -91,10 +106,12 @@ public class TelaConsultar extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtDadosdePesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jlSubtituloData)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpConsultarSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlSubtituloData)
+                    .addComponent(jLabelDataEscolhida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jpResultadosdaBusca.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "RESULTADOS DA BUSCA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
@@ -148,7 +165,7 @@ public class TelaConsultar extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpConsultarSala, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addComponent(jpConsultarSala, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpResultadosdaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -180,14 +197,23 @@ public class TelaConsultar extends javax.swing.JPanel {
     }//GEN-LAST:event_jlistResultadosBuscaMouseClicked
 
     private void jbuttonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonConsultarActionPerformed
-        // TODO add your handling code here:
+        String dadosSala = jtDadosdePesquisa.getText();
+        String dataEscolhida = new SimpleDateFormat("yyyy-MM-dd").format(jCalendar1.getDate());
+        //System.out.println(dadosSala + "\n" + dataEscolhida);
+        // Fazer a consulta no BD
     }//GEN-LAST:event_jbuttonConsultarActionPerformed
+
+    private void jCalendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendar1PropertyChange
+        String dataEscolhida = new SimpleDateFormat("dd/MM/yyyy").format(jCalendar1.getDate());
+        jLabelDataEscolhida.setText("<html>Data selecionada: <b>" + dataEscolhida + "</b></html>");
+    }//GEN-LAST:event_jCalendar1PropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelDataEscolhida;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbuttonConsultar;
     private javax.swing.JLabel jlSubtituloData;
