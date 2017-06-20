@@ -435,7 +435,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadDepartamentoActionPerformed
 
     private void jmCadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuarioActionPerformed
-        setModal(new CadastrarUsuario(), this, 300, 340, "Cadastrar usuário");
+        setModal(new CadastrarUsuario(), this, 300, 300, "Cadastrar usuário");
     }//GEN-LAST:event_jmCadUsuarioActionPerformed
 
     private void jmEditarTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipoSalaActionPerformed
@@ -472,6 +472,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             // Oculta o menu de gerenciar caso seja do tipo professor
             if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.PROF){
                 jmGerenciar.setVisible(false);
+            } else {
+                jmGerenciar.setVisible(true);
             }
             jpPrincipal.add(telaconsultar).setBounds(0,0,telax,telay);
             telaconsultar.setVisible(true);
