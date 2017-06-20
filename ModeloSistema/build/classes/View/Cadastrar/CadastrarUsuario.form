@@ -103,7 +103,7 @@
                   <Component id="jlEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="8" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>

@@ -182,7 +182,7 @@ public class CadastrarUsuario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlEmail2)
                     .addComponent(jcbDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
                     .addComponent(jbCancelar))
@@ -221,7 +221,7 @@ public class CadastrarUsuario extends javax.swing.JPanel {
        user.setLogin(jtLogin.getText());
        user.setNome(jtNome.getText());
        user.setEmail(jtEmail.getText());
-       user.setSenha(Hash.hashPassword(jPassSenha.getPassword().toString()));
+       user.setSenha(Hash.hashPassword(String.valueOf(jPassSenha.getPassword())));
        
        if(jcbTiposUsuário.getSelectedItem().equals("Professor")){
            user.setTipoUsuario(Model.TipoUsuario.PROF);

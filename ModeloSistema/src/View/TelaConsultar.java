@@ -213,21 +213,27 @@ public class TelaConsultar extends javax.swing.JPanel {
         
         // Fazer a consulta no BD
         SalaDao sld = new SalaDao();
-        List listaSalas = sld.buscaSalas(dadosSala);
-        Sala[] arrSalas = new Sala[listaSalas.size()];
-        listaSalas.toArray(arrSalas);
         
-        DefaultListModel list = new DefaultListModel();
-        
-        if(listaSalas.size() == 0){
-            JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada", null, JOptionPane.PLAIN_MESSAGE);
-        } else {
-            for (int i = 0; i < listaSalas.size(); i++){
-                list.addElement(arrSalas[i]);
+        if(!dadosSala.equals("")){
+            List listaSalas = sld.buscaSalas(dadosSala);
+            Sala[] arrSalas = new Sala[listaSalas.size()];
+            listaSalas.toArray(arrSalas);
+
+            DefaultListModel list = new DefaultListModel();
+
+            if(listaSalas.size() == 0){
+                JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada", null, JOptionPane.PLAIN_MESSAGE);
+            } else {
+                for (int i = 0; i < listaSalas.size(); i++){
+                    list.addElement(arrSalas[i]);
+                }
             }
+
+            jlistResultadosBusca.setModel(list);
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite alguma informação sobre a sala para pesquisar", "", JOptionPane.PLAIN_MESSAGE);
+            jtDadosdePesquisa.requestFocus();
         }
-        
-        jlistResultadosBusca.setModel(list);
         
     }//GEN-LAST:event_jbuttonConsultarActionPerformed
 
