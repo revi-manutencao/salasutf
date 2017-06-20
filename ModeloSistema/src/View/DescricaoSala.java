@@ -8,6 +8,9 @@ package View;
 import Database.ReservaDao;
 import Model.Reserva;
 import Model.Sala;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,9 +32,17 @@ public class DescricaoSala extends javax.swing.JPanel {
         //System.out.println(data);
         ReservaDao resd = new ReservaDao();
         List<Reserva> listaReservas = resd.getBySalaEData(objeto, data);
-        Reserva[] arrReservas = (Reserva[]) listaReservas.toArray();
+        Reserva[] arrReservas = new Reserva[listaReservas.size()];
+        listaReservas.toArray(arrReservas);
         
-        
+        try{
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date newDate = dateFormat.parse(data);
+            String dataEscolhida = new SimpleDateFormat("dd/MM/yyyy").format(newDate);
+            jlHorariosDisponiveis.setText("Reservar para "+dataEscolhida);
+        } catch(Exception e) {
+            System.out.println("erro");
+        }
     }
 
     /**
@@ -45,7 +56,7 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jlNomeSala1 = new javax.swing.JLabel();
         jlDescricao1 = new javax.swing.JLabel();
-        jlHorariosDisponiveis1 = new javax.swing.JLabel();
+        jlHorariosDisponiveis = new javax.swing.JLabel();
         jpResultadoHorarios1 = new java.awt.Panel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jtabHorariosDisponiveis1 = new javax.swing.JTable();
@@ -64,8 +75,8 @@ public class DescricaoSala extends javax.swing.JPanel {
         jlDescricao1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlDescricao1.setText("Descrição da sala selecionada");
 
-        jlHorariosDisponiveis1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jlHorariosDisponiveis1.setText("Reservar esta sala");
+        jlHorariosDisponiveis.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
+        jlHorariosDisponiveis.setText("Reservar esta sala");
 
         jpResultadoHorarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
@@ -138,7 +149,7 @@ public class DescricaoSala extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jldescricaoHorario1)
                         .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlHorariosDisponiveis1)
+                        .addComponent(jlHorariosDisponiveis)
                         .addComponent(jlDescSala, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -152,7 +163,7 @@ public class DescricaoSala extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlDescSala, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jlHorariosDisponiveis1)
+                .addComponent(jlHorariosDisponiveis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jldescricaoHorario1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -173,7 +184,7 @@ public class DescricaoSala extends javax.swing.JPanel {
     private javax.swing.JButton jbReservar1;
     private javax.swing.JLabel jlDescSala;
     private javax.swing.JLabel jlDescricao1;
-    private javax.swing.JLabel jlHorariosDisponiveis1;
+    private javax.swing.JLabel jlHorariosDisponiveis;
     private javax.swing.JLabel jlNomeSala1;
     private javax.swing.JLabel jldescricaoHorario1;
     private java.awt.Panel jpResultadoHorarios1;

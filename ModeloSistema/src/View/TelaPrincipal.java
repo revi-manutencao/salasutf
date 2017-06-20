@@ -1,5 +1,6 @@
 package View;
 
+import Model.TipoUsuario;
 import Util.*;
 import static Util.Utility.setModal;
 import View.Cadastrar.*;
@@ -23,9 +24,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
        // Exibe a tela de acordo com o estado de autenticação do usuário
         if(Auth.autenticaAutomatico()){
             jmenubar.setVisible(true);
-            if(Auth.getLoggedUser().getTipoUsuario() == 0){
+            
+            // Oculta o menu de gerenciar caso seja do tipo professor
+            if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.PROF){
                 jmGerenciar.setVisible(false);
+            } else {
+                jmGerenciar.setVisible(true);
             }
+            
             jpLogin.setVisible(false);
             jpPrincipal.setVisible(true);
         
@@ -451,6 +457,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         InputSenha.setText("");
        
         jmenubar.setVisible(false);
+        
         jpPrincipal.setVisible(false);
         jpLogin.setVisible(true);
         InputLogin.requestFocus();
@@ -462,7 +469,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jpLogin.setVisible(false);
             jpPrincipal.setVisible(true);
             
-        
+            // Oculta o menu de gerenciar caso seja do tipo professor
+            if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.PROF){
+                jmGerenciar.setVisible(false);
+            }
             jpPrincipal.add(telaconsultar).setBounds(0,0,telax,telay);
             telaconsultar.setVisible(true);
             telareservas.setVisible(false);

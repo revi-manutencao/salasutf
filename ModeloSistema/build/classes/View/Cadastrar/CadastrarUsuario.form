@@ -103,7 +103,7 @@
                   <Component id="jlEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -176,6 +176,8 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbTiposUsu&#xe1;rioActionPerformed"/>
       </Events>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.ADMIN)&#xa;    jcbTiposUsu&#xe1;rio.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Professor&quot; }));&#xa;else if(Auth.getLoggedUser().getTipoUsuario() == TipoUsuario.MASTER){"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
