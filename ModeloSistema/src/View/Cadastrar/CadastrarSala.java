@@ -35,19 +35,6 @@ public class CadastrarSala extends javax.swing.JPanel {
             if(usuarios.getTipoUsuario() == 1)
             jcbAdministrador.addItem(usuarios.getNome());
         }*/
-        //Combobox BLOCOS
-        BlocoDao blocodao = new BlocoDao();
-        List<Bloco> blocos =  blocodao.getAllAtivos();
-        for(Bloco bloco : blocos){
-            jbBloco.addItem(bloco.getCodigo());
-        }
-        //Combobox Tipos de sala
-                //Combobox BLOCOS
-        TipoSalaDao tiposaladao = new TipoSalaDao();
-        List<TipoSala> tiposala =  tiposaladao.getAllAtivos();
-        for(TipoSala tiposalas : tiposala){
-            jbTiposdeSala.addItem(tiposalas.getDescricao());
-        }
    }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,6 +81,7 @@ public class CadastrarSala extends javax.swing.JPanel {
         List<TipoSala> tiposSala = new TipoSalaDao().getAllAtivos();
         TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];
         arrTipoSala = tiposSala.toArray(arrTipoSala);
+        jbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel(arrTipoSala));
 
         jlAdministrador.setText("Administrador");
 

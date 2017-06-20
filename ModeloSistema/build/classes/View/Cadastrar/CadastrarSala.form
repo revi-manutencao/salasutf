@@ -124,6 +124,11 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jbTiposdeSala">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel(arrTipoSala)" type="code"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;TipoSala&gt; tiposSala = new TipoSalaDao().getAllAtivos();&#xa;TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];&#xa;arrTipoSala = tiposSala.toArray(arrTipoSala);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
