@@ -5,9 +5,14 @@
  */
 package View;
 
+import Database.SalaDao;
+import Model.Sala;
 import static Util.Utility.setModal;
 import View.Editar.EditarUsuario;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -200,7 +205,21 @@ public class TelaConsultar extends javax.swing.JPanel {
         String dadosSala = jtDadosdePesquisa.getText();
         String dataEscolhida = new SimpleDateFormat("yyyy-MM-dd").format(jCalendar1.getDate());
         //System.out.println(dadosSala + "\n" + dataEscolhida);
+        
         // Fazer a consulta no BD
+        SalaDao sld = new SalaDao();
+        List listaSalas = sld.buscaSalas(dadosSala);
+        Sala[] arrSalas = new Sala[listaSalas.size()];
+        listaSalas.toArray(arrSalas);
+        
+        DefaultListModel list = new DefaultListModel();
+        
+        for (int i = 0; i < listaSalas.size(); i++){
+            list.addElement(arrSalas[i].getCodigo());
+        }
+        
+        jlistResultadosBusca.setModel(list);
+        
     }//GEN-LAST:event_jbuttonConsultarActionPerformed
 
     private void jCalendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendar1PropertyChange

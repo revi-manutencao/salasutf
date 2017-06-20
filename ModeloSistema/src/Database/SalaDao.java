@@ -20,6 +20,42 @@ public class SalaDao {
         this.table = "sala";
     }
     
+    public List<Sala> buscaSalas (String busca) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" WHERE (UPPER(codigo) LIKE UPPER(?) OR UPPER(equipamentos) LIKE UPPER(?)) AND ativo = true";
+            PreparedStatement stmt = con.prepareStatement(query);
+            
+            stmt.setString(1, "%"+busca+"%");
+            stmt.setString(2, "%"+busca+"%");
+
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Sala> salas = new ArrayList<Sala>();
+            
+            while (rs.next()){
+                Sala sala = new Sala();
+                sala.setId(rs.getInt("id"));
+                sala.setCodigo(rs.getString("codigo"));
+                sala.setIdAdministrador(rs.getString("id_administrador"));
+                sala.setIdBloco(rs.getInt("id_bloco"));
+                sala.setIdTipoSala(rs.getInt("id_tipo_de_sala"));
+                sala.setAtivo(rs.getBoolean("ativo"));
+                sala.setEquipamentos(rs.getString("equipamentos"));
+                
+                salas.add(sala);
+            }
+            
+            con.close();
+            return salas;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
     
     /**
     * Funções básicas de CRUD 
@@ -51,7 +87,7 @@ public class SalaDao {
                 sala.setCodigo(rs.getString("codigo"));
                 sala.setIdAdministrador(rs.getString("id_administrador"));
                 sala.setIdBloco(rs.getInt("id_bloco"));
-                sala.setIdTipoSala(rs.getInt("id_tipo_sala"));
+                sala.setIdTipoSala(rs.getInt("id_tipo_de_sala"));
                 sala.setAtivo(rs.getBoolean("ativo"));
                 sala.setEquipamentos(rs.getString("equipamentos"));
             }
@@ -94,7 +130,7 @@ public class SalaDao {
                 sala.setCodigo(rs.getString("codigo"));
                 sala.setIdAdministrador(rs.getString("id_administrador"));
                 sala.setIdBloco(rs.getInt("id_bloco"));
-                sala.setIdTipoSala(rs.getInt("id_tipo_sala"));
+                sala.setIdTipoSala(rs.getInt("id_tipo_de_sala"));
                 sala.setAtivo(rs.getBoolean("ativo"));
                 sala.setEquipamentos(rs.getString("equipamentos"));
                 
