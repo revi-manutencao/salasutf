@@ -66,4 +66,7 @@ public class Sala {
         this.ativo = ativo;
     }
 
+    public String toString() {
+        return this.codigo;
+    }
 }

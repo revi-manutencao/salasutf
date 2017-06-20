@@ -13,13 +13,15 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Renato
  */
 public class TelaConsultar extends javax.swing.JPanel {
-
+    public String dataReserva;
+    
     /**
      * Creates new form TelaReservas
      */
@@ -197,13 +199,16 @@ public class TelaConsultar extends javax.swing.JPanel {
 
     private void jlistResultadosBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistResultadosBuscaMouseClicked
         if(evt.getClickCount()==2){
-            setModal(new DescricaoSala(), null, 367, 565, null);
+            int index = jlistResultadosBusca.getSelectedIndex();
+            Object selecionada = jlistResultadosBusca.getModel().getElementAt(index);
+            Sala sala = (Sala) selecionada;
+            setModal(new DescricaoSala(sala, dataReserva), null, 367, 565, null);
         }
     }//GEN-LAST:event_jlistResultadosBuscaMouseClicked
 
     private void jbuttonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonConsultarActionPerformed
         String dadosSala = jtDadosdePesquisa.getText();
-        String dataEscolhida = new SimpleDateFormat("yyyy-MM-dd").format(jCalendar1.getDate());
+        dataReserva = new SimpleDateFormat("yyyy-MM-dd").format(jCalendar1.getDate());
         //System.out.println(dadosSala + "\n" + dataEscolhida);
         
         // Fazer a consulta no BD
@@ -214,8 +219,12 @@ public class TelaConsultar extends javax.swing.JPanel {
         
         DefaultListModel list = new DefaultListModel();
         
-        for (int i = 0; i < listaSalas.size(); i++){
-            list.addElement(arrSalas[i].getCodigo());
+        if(listaSalas.size() == 0){
+            JOptionPane.showMessageDialog(null, "Nenhuma sala encontrada", null, JOptionPane.PLAIN_MESSAGE);
+        } else {
+            for (int i = 0; i < listaSalas.size(); i++){
+                list.addElement(arrSalas[i]);
+            }
         }
         
         jlistResultadosBusca.setModel(list);

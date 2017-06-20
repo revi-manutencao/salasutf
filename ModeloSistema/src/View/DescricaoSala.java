@@ -5,6 +5,8 @@
  */
 package View;
 
+import Model.Sala;
+
 /**
  *
  * @author vinicius
@@ -14,8 +16,14 @@ public class DescricaoSala extends javax.swing.JPanel {
     /**
      * Creates new form DescSala
      */
-    public DescricaoSala() {
+    public DescricaoSala(Sala objeto, String data) {
         initComponents();
+        
+        jlNomeSala1.setText(objeto.getCodigo());
+        jlDescSala.setText("<html>"+objeto.getEquipamentos()+"<html>");
+        
+        // Buscar os horários disponíveis e mostrar na janela
+        //System.out.println(data);
     }
 
     /**
@@ -35,7 +43,7 @@ public class DescricaoSala extends javax.swing.JPanel {
         jtabHorariosDisponiveis1 = new javax.swing.JTable();
         jbReservar1 = new javax.swing.JButton();
         jldescricaoHorario1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jlDescSala = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(367, 545));
         setMinimumSize(new java.awt.Dimension(367, 545));
@@ -114,7 +122,8 @@ public class DescricaoSala extends javax.swing.JPanel {
         jldescricaoHorario1.setBackground(new java.awt.Color(255, 102, 102));
         jldescricaoHorario1.setText("Selecione um horário disponível");
 
-        jLabel2.setText("<html>X computadores...</html>");
+        jlDescSala.setText("<html>X computadores...</html>");
+        jlDescSala.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -130,7 +139,7 @@ public class DescricaoSala extends javax.swing.JPanel {
                         .addComponent(jldescricaoHorario1)
                         .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jlHorariosDisponiveis1)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
+                        .addComponent(jlDescSala, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,10 +147,10 @@ public class DescricaoSala extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlNomeSala1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addComponent(jlDescricao1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jlDescSala, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jlHorariosDisponiveis1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -160,9 +169,9 @@ public class DescricaoSala extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JButton jbReservar1;
+    private javax.swing.JLabel jlDescSala;
     private javax.swing.JLabel jlDescricao1;
     private javax.swing.JLabel jlHorariosDisponiveis1;
     private javax.swing.JLabel jlNomeSala1;

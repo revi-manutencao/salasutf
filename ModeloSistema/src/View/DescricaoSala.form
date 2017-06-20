@@ -34,7 +34,7 @@
                       <Component id="jldescricaoHorario1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jpResultadoHorarios1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jlHorariosDisponiveis1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" pref="347" max="32767" attributes="0"/>
+                      <Component id="jlDescSala" alignment="0" pref="347" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -46,10 +46,10 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jlNomeSala1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="jlDescricao1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="171" max="-2" attributes="0"/>
+              <Component id="jlDescSala" min="-2" pref="159" max="-2" attributes="0"/>
               <EmptySpace pref="27" max="32767" attributes="0"/>
               <Component id="jlHorariosDisponiveis1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -320,9 +320,10 @@
         <Property name="text" type="java.lang.String" value="Selecione um hor&#xe1;rio dispon&#xed;vel"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jlDescSala">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;X computadores...&lt;/html&gt;"/>
+        <Property name="verticalAlignment" type="int" value="1"/>
       </Properties>
     </Component>
   </SubComponents>
