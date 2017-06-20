@@ -6,12 +6,16 @@
 package View;
 
 import Database.ReservaDao;
+import Database.HorarioDao;
+import Model.Horario;
 import Model.Reserva;
 import Model.Sala;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JCheckBox;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -29,7 +33,6 @@ public class DescricaoSala extends javax.swing.JPanel {
         jlDescSala.setText("<html>"+objeto.getEquipamentos()+"<html>");
         
         // Buscar os horários disponíveis e mostrar na janela
-        //System.out.println(data);
         ReservaDao resd = new ReservaDao();
         List<Reserva> listaReservas = resd.getBySalaEData(objeto, data);
         Reserva[] arrReservas = new Reserva[listaReservas.size()];
@@ -40,9 +43,37 @@ public class DescricaoSala extends javax.swing.JPanel {
             Date newDate = dateFormat.parse(data);
             String dataEscolhida = new SimpleDateFormat("dd/MM/yyyy").format(newDate);
             jlHorariosDisponiveis.setText("Reservar para "+dataEscolhida);
-        } catch(Exception e) {
-            System.out.println("erro");
+        } catch(Exception e) {}
+        
+        HorarioDao hd = new HorarioDao();
+        List<Horario> listHorarios = hd.getAllAtivos();
+        Horario[] arrHorarios = new Horario[listHorarios.size()];
+        listHorarios.toArray(arrHorarios);
+        Object[][] matrizValores = new Object[listHorarios.size()][2];
+        
+        for(int i = 0; i<listHorarios.size(); i++){
+            boolean reservado = false;
+            for(int j = 0; j<listaReservas.size(); j++){
+                if(arrReservas[j].getHorario().equals(arrHorarios[i].getId())){
+                    reservado = true;
+                }
+            }
+            
+            if(reservado){
+                matrizValores[i] = new String[]{arrHorarios[i].getId(), null};
+            } else {
+                JCheckBox jcTeste = new JCheckBox();
+                matrizValores[i] = new Object[]{arrHorarios[i].getId(), "Oi"};
+            }
         }
+
+
+        jtabHorariosDisponiveis1.setModel(new javax.swing.table.DefaultTableModel(
+            matrizValores,
+            new Object [] {
+                "Horário", "Selecionar"
+            }
+        ));        
     }
 
     /**
@@ -59,7 +90,11 @@ public class DescricaoSala extends javax.swing.JPanel {
         jlHorariosDisponiveis = new javax.swing.JLabel();
         jpResultadoHorarios1 = new java.awt.Panel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jtabHorariosDisponiveis1 = new javax.swing.JTable();
+        jtabHorariosDisponiveis1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         jbReservar1 = new javax.swing.JButton();
         jldescricaoHorario1 = new javax.swing.JLabel();
         jlDescSala = new javax.swing.JLabel();
@@ -105,6 +140,11 @@ public class DescricaoSala extends javax.swing.JPanel {
         );
 
         jbReservar1.setText("Reservar");
+        jbReservar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbReservar1MouseClicked(evt);
+            }
+        });
 
         jldescricaoHorario1.setBackground(new java.awt.Color(255, 102, 102));
         jldescricaoHorario1.setText("Selecione um horário disponível");
@@ -153,6 +193,10 @@ public class DescricaoSala extends javax.swing.JPanel {
     private void jtabHorariosDisponiveis1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jtabHorariosDisponiveis1ComponentAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_jtabHorariosDisponiveis1ComponentAdded
+
+    private void jbReservar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbReservar1MouseClicked
+        System.out.println(jtabHorariosDisponiveis1.getSelectedRows());
+    }//GEN-LAST:event_jbReservar1MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

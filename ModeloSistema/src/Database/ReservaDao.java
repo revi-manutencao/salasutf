@@ -43,7 +43,7 @@ public class ReservaDao {
                 res.setDataHoraReserva(rs.getString("data_hora_reserva"));
                 res.setIdSala(rs.getInt("id_sala"));
                 res.setIdProfessor(rs.getString("id_professor"));
-                res.setHorario(rs.getString("horario"));
+                res.setHorario(rs.getString("id_horarios"));
                 res.setAtivo(rs.getBoolean("ativo"));
                 
                 ress.add(res);
@@ -89,7 +89,7 @@ public class ReservaDao {
                 res.setDataHoraReserva(rs.getString("data_hora_reserva"));
                 res.setIdSala(rs.getInt("id_sala"));
                 res.setIdProfessor(rs.getString("id_professor"));
-                res.setHorario(rs.getString("horario"));
+                res.setHorario(rs.getString("id_horarios"));
                 res.setAtivo(rs.getBoolean("ativo"));
             }
             
@@ -132,7 +132,7 @@ public class ReservaDao {
                 res.setDataHoraReserva(rs.getString("data_hora_reserva"));
                 res.setIdSala(rs.getInt("id_sala"));
                 res.setIdProfessor(rs.getString("id_professor"));
-                res.setHorario(rs.getString("horario"));
+                res.setHorario(rs.getString("id_horarios"));
                 res.setAtivo(rs.getBoolean("ativo"));
                 
                 ress.add(res);
@@ -196,7 +196,7 @@ public class ReservaDao {
             Connection con = db.connect();
 
             String query = "UPDATE "+table+" SET data_uso = ?, data_hora_reserva = ?, "
-                    + "id_sala = ?, id_professor = ?, ativo = ?, id_horario = ? WHERE id = ?";
+                    + "id_sala = ?, id_professor = ?, ativo = ?, id_horarios = ? WHERE id = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
             

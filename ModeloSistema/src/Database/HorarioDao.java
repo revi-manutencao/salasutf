@@ -81,7 +81,7 @@ public class HorarioDao {
         try{
             Connection con = db.connect();
 
-            String query = "SELECT * FROM "+table;
+            String query = "SELECT * FROM "+table+" ORDER BY turno, id";
             PreparedStatement stmt = con.prepareStatement(query);
 
             ResultSet rs = stmt.executeQuery();
