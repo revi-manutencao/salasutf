@@ -23,6 +23,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
        // Exibe a tela de acordo com o estado de autenticação do usuário
         if(Auth.autenticaAutomatico()){
             jmenubar.setVisible(true);
+            if(Auth.getLoggedUser().getTipoUsuario() == 0){
+                jmGerenciar.setVisible(false);
+            }
             jpLogin.setVisible(false);
             jpPrincipal.setVisible(true);
         
