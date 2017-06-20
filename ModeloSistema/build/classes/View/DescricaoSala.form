@@ -127,51 +127,20 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="jtabHorariosDisponiveis1">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="2" rowCount="17">
-                    <Column editable="true" title="Hor&#xe1;rio" type="java.lang.Object">
-                      <Data value="M1"/>
-                      <Data value="M2"/>
-                      <Data value="M3"/>
-                      <Data value="M4"/>
-                      <Data value="M5"/>
-                      <Data value="M6"/>
-                      <Data value="T1"/>
-                      <Data value="T2"/>
-                      <Data value="T3"/>
-                      <Data value="T4"/>
-                      <Data value="T5"/>
-                      <Data value="T6"/>
-                      <Data value="N1"/>
-                      <Data value="N2"/>
-                      <Data value="N3"/>
-                      <Data value="N4"/>
-                      <Data value="N5"/>
-                    </Column>
-                    <Column editable="true" title="Selecionar" type="java.lang.Object"/>
-                  </Table>
-                </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
+                  <TableColumnModel selectionModel="0"/>
                 </Property>
+                <Property name="rowSelectionAllowed" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="jtabHorariosDisponiveis1ComponentAdded"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        return false;&#xa;    };&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -181,6 +150,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Reservar"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbReservar1MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jldescricaoHorario1">
       <Properties>
