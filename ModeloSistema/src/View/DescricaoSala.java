@@ -10,31 +10,42 @@ import Database.HorarioDao;
 import Model.Horario;
 import Model.Reserva;
 import Model.Sala;
+import Util.Auth;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author vinicius
  */
 public class DescricaoSala extends javax.swing.JPanel {
-
+    private Sala sala;
+    private String data;
     /**
      * Creates new form DescSala
      */
     public DescricaoSala(Sala objeto, String data) {
         initComponents();
         
+        this.sala = objeto;
+        this.data = data;
+        
         jlNomeSala1.setText(objeto.getCodigo());
         jlDescSala.setText("<html>"+objeto.getEquipamentos()+"<html>");
-        
+
+        constructTable();
+    }
+    
+    private void constructTable () {
         // Buscar os horários disponíveis e mostrar na janela
         ReservaDao resd = new ReservaDao();
-        List<Reserva> listaReservas = resd.getBySalaEData(objeto, data);
+        List<Reserva> listaReservas = resd.getBySalaEData(sala, data);
         Reserva[] arrReservas = new Reserva[listaReservas.size()];
         listaReservas.toArray(arrReservas);
         
@@ -60,7 +71,7 @@ public class DescricaoSala extends javax.swing.JPanel {
             }
             
             if(reservado){
-                matrizValores[i] = new String[]{arrHorarios[i].getId(), null};
+                matrizValores[i] = new String[]{arrHorarios[i].getId(), "Não disponível"};
             } else {
                 JCheckBox jcTeste = new JCheckBox();
                 matrizValores[i] = new Object[]{arrHorarios[i].getId(), "Disponível"};
@@ -115,6 +126,8 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jpResultadoHorarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
+        jtabHorariosDisponiveis1.setShowVerticalLines(false);
+        jtabHorariosDisponiveis1.getTableHeader().setReorderingAllowed(false);
         jtabHorariosDisponiveis1.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 jtabHorariosDisponiveis1ComponentAdded(evt);
@@ -140,14 +153,14 @@ public class DescricaoSala extends javax.swing.JPanel {
         );
 
         jbReservar1.setText("Reservar");
-        jbReservar1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbReservar1MouseClicked(evt);
+        jbReservar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbReservar1ActionPerformed(evt);
             }
         });
 
         jldescricaoHorario1.setBackground(new java.awt.Color(255, 102, 102));
-        jldescricaoHorario1.setText("Selecione um horário disponível");
+        jldescricaoHorario1.setText("<html>Selecione um ou mais horários disponíveis que deseja reservar <i>(Ctrl + Clique sobre a linha da tabela)</i></html>");
 
         jlDescSala.setText("<html>X computadores...</html>");
         jlDescSala.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -156,18 +169,25 @@ public class DescricaoSala extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbReservar1)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlNomeSala1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                    .addComponent(jbReservar1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jldescricaoHorario1)
-                        .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jlHorariosDisponiveis)
-                        .addComponent(jlDescSala, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jlHorariosDisponiveis)
+                            .addComponent(jldescricaoHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jlDescSala, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlNomeSala1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlDescricao1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                            .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +201,7 @@ public class DescricaoSala extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jlHorariosDisponiveis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jldescricaoHorario1)
+                .addComponent(jldescricaoHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -194,9 +214,63 @@ public class DescricaoSala extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtabHorariosDisponiveis1ComponentAdded
 
-    private void jbReservar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbReservar1MouseClicked
-        System.out.println(jtabHorariosDisponiveis1.getSelectedRows());
-    }//GEN-LAST:event_jbReservar1MouseClicked
+    private void jbReservar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReservar1ActionPerformed
+        int[] linhasSelecionadas = jtabHorariosDisponiveis1.getSelectedRows();
+        
+        Horario[] arrSelecao = new Horario[linhasSelecionadas.length];
+        HorarioDao hd = new HorarioDao();
+        
+        for (int i = 0; i < linhasSelecionadas.length; i++){
+            String item = jtabHorariosDisponiveis1.getModel().getValueAt(linhasSelecionadas[i], 0).toString();
+            
+            Horario h = new Horario();
+            h.setId(item);
+            
+            Horario horario = hd.get(h, "id");
+            arrSelecao[i] = horario;
+        }
+        
+        // Obtém a lista de reservas praquela sala naquele dia
+        ReservaDao resd = new ReservaDao();
+        List<Reserva> listaReservas = resd.getBySalaEData(sala, data);
+        Reserva[] arrReservas = new Reserva[listaReservas.size()];
+        listaReservas.toArray(arrReservas);
+        
+        boolean reservado = false;
+        
+        for(int i = 0; i < arrSelecao.length; i++){
+            for(int j = 0; j<listaReservas.size(); j++){
+                if(arrReservas[j].getHorario().equals(arrSelecao[i].getId())){
+                    reservado = true;
+                }
+            }
+        }
+        
+        if(reservado){
+            JOptionPane.showMessageDialog(null, "Não foi possível realizar a reserva. Algum dos horários selecionados não está mais disponível", "Erro", JOptionPane.PLAIN_MESSAGE);
+            constructTable();
+        } else {
+            boolean sucesso = true;
+            for (int i = 0; i < arrSelecao.length; i++){
+                Reserva reserva = new Reserva();
+                reserva.setAtivo(true);
+                reserva.setDataUso(data);
+                reserva.setIdSala(sala.getId());
+                reserva.setIdProfessor(Auth.getLoggedUser().getLogin());
+                reserva.setHorario(arrSelecao[i].getId());
+                if(!resd.insert(reserva))
+                    sucesso = false;
+            }
+            
+            if(sucesso){
+                JOptionPane.showMessageDialog(null, "Suas reservas foram realizadas", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Houve um problema ao realizar suas reservas", "Ero", JOptionPane.PLAIN_MESSAGE);
+            }
+            
+            constructTable();
+        }
+    }//GEN-LAST:event_jbReservar1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

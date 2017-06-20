@@ -24,20 +24,31 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jbReservar1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jlNomeSala1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="jlDescricao1" alignment="0" pref="347" max="32767" attributes="0"/>
-                  <Component id="jbReservar1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jldescricaoHorario1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jpResultadoHorarios1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jlHorariosDisponiveis" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jlDescSala" alignment="0" pref="347" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jlHorariosDisponiveis" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jldescricaoHorario1" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="jlDescSala" alignment="0" pref="347" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlNomeSala1" max="32767" attributes="0"/>
+                          <Component id="jlDescricao1" pref="347" max="32767" attributes="0"/>
+                          <Component id="jpResultadoHorarios1" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -130,7 +141,7 @@
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0"/>
                 </Property>
-                <Property name="rowSelectionAllowed" type="boolean" value="false"/>
+                <Property name="showVerticalLines" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
@@ -151,7 +162,7 @@
         <Property name="text" type="java.lang.String" value="Reservar"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbReservar1MouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbReservar1ActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jldescricaoHorario1">
@@ -159,7 +170,7 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Selecione um hor&#xe1;rio dispon&#xed;vel"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;Selecione um ou mais hor&#xe1;rios dispon&#xed;veis que deseja reservar &lt;i&gt;(Ctrl + Clique sobre a linha da tabela)&lt;/i&gt;&lt;/html&gt;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlDescSala">

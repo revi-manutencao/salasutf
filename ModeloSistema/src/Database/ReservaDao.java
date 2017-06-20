@@ -26,7 +26,7 @@ public class ReservaDao {
         try{
             Connection con = db.connect();
 
-            String query = "SELECT * FROM "+table+" WHERE id_sala = ? AND data_uso = ?";
+            String query = "SELECT * FROM "+table+" WHERE id_sala = ? AND data_uso = ? AND ativo = true";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setInt(1, sala.getId());
@@ -168,7 +168,7 @@ public class ReservaDao {
 
             String query = "INSERT INTO "+table+" (data_uso, data_hora_reserva, "
                     + "id_sala, id_professor, ativo, id_horarios) VALUES "
-                    + "(?, ?, ?, ?, ?)";
+                    + "(?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, r.getDataUso());
