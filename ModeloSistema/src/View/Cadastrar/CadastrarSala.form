@@ -17,56 +17,34 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jlTitulo" alignment="1" max="32767" attributes="0"/>
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jlBloco" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlTipodeSala" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jbBloco" pref="174" max="32767" attributes="0"/>
-                                  <Component id="jbTiposdeSala" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jlCodigodaSala" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jlAdministrador" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jcbAdministrador" min="-2" pref="176" max="-2" attributes="0"/>
-                                  <Component id="jtxtCodSala" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlDescricao" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane2" pref="275" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jlCodigodaSala" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlAdministrador" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlBloco" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlTipodeSala" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jbTiposdeSala" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jcbAdministrador" max="32767" attributes="0"/>
+                          <Component id="jtxtCodSala" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jbBloco" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jlDescricao" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,22 +65,22 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbBloco" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlBloco" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbBloco" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbTiposdeSala" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jlTipodeSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbTiposdeSala" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jlDescricao" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="113" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -146,11 +124,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jbTiposdeSala">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel(arrTipoSala)" type="code"/>
-        </Property>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;TipoSala&gt; tiposSala = new TipoSalaDao().getAllAtivos();&#xa;TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];&#xa;arrTipoSala = tiposSala.toArray(arrTipoSala);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
