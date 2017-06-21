@@ -1,7 +1,9 @@
 package Database;
 
+import Model.Horario;
 import Model.Reserva;
 import Model.Sala;
+import Util.Auth;
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
@@ -51,6 +53,82 @@ public class ReservaDao {
             
             con.close();
             return ress;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public List<Reserva> buscaBySalaEDataDoUsuario (String dadosSala, String data) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" LEFT JOIN sala ON "+table
+                    + ".id_sala = sala.id WHERE (UPPER(sala.id) LIKE UPPER(?) OR "
+                    + "UPPER(sala.equipamentos) LIKE UPPER(?)) AND data_uso = ? "
+                    + "AND reserva.ativo = true AND reserva.id_professor = ? ORDER BY reserva.id_sala, "
+                    + "reserva.id_horarios ";
+            PreparedStatement stmt = con.prepareStatement(query);
+            
+            stmt.setString(1, "%"+dadosSala+"%");
+            stmt.setString(2, "%"+dadosSala+"%");
+            stmt.setString(3, data);
+            stmt.setString(4, Auth.getLoggedUser().getLogin());
+
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Reserva> ress = new ArrayList<Reserva>();
+            
+            while (rs.next()){
+                Reserva res = new Reserva();
+                res.setId(rs.getInt("id"));
+                res.setDataUso(rs.getString("data_uso"));
+                res.setDataHoraReserva(rs.getString("data_hora_reserva"));
+                res.setIdSala(rs.getInt("id_sala"));
+                res.setIdProfessor(rs.getString("id_professor"));
+                res.setHorario(rs.getString("id_horarios"));
+                res.setAtivo(rs.getBoolean("ativo"));
+                
+                ress.add(res);
+            }
+            
+            con.close();
+            return ress;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public Reserva getBySalaDataHorario (Sala sala, String data, Horario horario) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" WHERE id_sala = ? AND data_uso = ? AND id_horarios = ? AND ativo = true";
+            PreparedStatement stmt = con.prepareStatement(query);
+            
+            stmt.setInt(1, sala.getId());
+            stmt.setString(2, data);
+            stmt.setString(3, horario.getId());
+
+            ResultSet rs = stmt.executeQuery();
+            
+            Reserva res = new Reserva();
+            
+            while (rs.next()){
+                res.setId(rs.getInt("id"));
+                res.setDataUso(rs.getString("data_uso"));
+                res.setDataHoraReserva(rs.getString("data_hora_reserva"));
+                res.setIdSala(rs.getInt("id_sala"));
+                res.setIdProfessor(rs.getString("id_professor"));
+                res.setHorario(rs.getString("id_horarios"));
+                res.setAtivo(rs.getBoolean("ativo"));
+            }
+            
+            con.close();
+            return res;
             
         } catch(SQLException e){
             System.out.println(e);

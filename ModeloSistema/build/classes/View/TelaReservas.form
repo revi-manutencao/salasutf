@@ -103,9 +103,38 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="jtabHist&#xf3;ricodeReservas">
                   <Properties>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Sala" type="java.lang.String"/>
+                        <Column editable="true" title="Hor&#xe1;rio" type="java.lang.String"/>
+                        <Column editable="true" title="Data" type="java.lang.String"/>
+                        <Column editable="true" title="A&#xe7;&#xe3;o" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
                     <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="2"/>
+                      <TableColumnModel selectionModel="2">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Cursor Padr&#xe3;o"/>
@@ -117,6 +146,12 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtabHist&#xf3;ricodeReservasMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        return false;&#xa;    };&#xa;}"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -145,12 +180,13 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlDigiteCod" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jlDigiteCod" alignment="1" pref="411" max="32767" attributes="0"/>
                                   <Component id="jCalendarConsulta" alignment="1" pref="0" max="32767" attributes="0"/>
                                   <Component id="jtCodigo" alignment="1" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlDataReserva" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="314" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jLabelDataEscolhida" min="-2" pref="210" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -167,7 +203,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jtCodigo" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="jlDataReserva" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jlDataReserva" max="32767" attributes="0"/>
+                          <Component id="jLabelDataEscolhida" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jCalendarConsulta" pref="233" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -180,7 +219,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jlDigiteCod">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Digite o C&#xf3;digo da sala ou preencha a data da reserva"/>
+                <Property name="text" type="java.lang.String" value="Digite o c&#xf3;digo da sala ou preencha a data da reserva"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="jtCodigo">
@@ -197,11 +236,19 @@
               </Properties>
             </Component>
             <Component class="com.toedter.calendar.JCalendar" name="jCalendarConsulta">
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jCalendarConsultaPropertyChange"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbConsultar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbConsultarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelDataEscolhida">
             </Component>
           </SubComponents>
         </Container>

@@ -44,6 +44,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jpLogin.setVisible(true);
             jpPrincipal.setVisible(false);
         }
+        
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
        
     }
 
@@ -375,11 +378,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmCadSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadSalaActionPerformed
-        setModal(new CadastrarSala(), this, 300, 390, "Cadastrar sala");
+        setModal(new CadastrarSala(), this, 300, 390, "Cadastrar sala");        
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadSalaActionPerformed
 
     private void jmEditarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalaActionPerformed
         setModal(new EditarSala(), this, 287, 424, "Editar sala");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarSalaActionPerformed
 
     private void jmGerenciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmGerenciarActionPerformed
@@ -394,7 +401,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }else{
             System.out.println("Tela já aberta");
         }
-
+        telareservas.limpaConsulta();
     }//GEN-LAST:event_jmConsultarMouseClicked
 
     private void jmReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmReservasMouseClicked
@@ -405,47 +412,68 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }else{
             System.out.println("Tela já aberta");
         }
+        telaconsultar.limpaConsulta();
 
     }//GEN-LAST:event_jmReservasMouseClicked
 
     private void jmEditarBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarBlocoActionPerformed
         setModal(new EditarBloco(), this, 259, 312, "Editar bloco");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarBlocoActionPerformed
 
     private void jmEditarDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarDepartamentoActionPerformed
         setModal(new EditarDepartamento(), this, 308, 333, "Editar departamento");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarDepartamentoActionPerformed
 
     private void jmEditarHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarHorarioActionPerformed
         setModal(new EditarHorario(), this, 272, 387, "Editar horário");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarHorarioActionPerformed
 
     private void jmCadBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadBlocoActionPerformed
         setModal(new CadastrarBloco(), this, 304, 150, "Cadastrar bloco");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadBlocoActionPerformed
 
     private void jmCadTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadTipoSalaActionPerformed
         setModal(new CadastrarTipoSala(), this, 350, 140, "Cadastrar tipo de sala");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadTipoSalaActionPerformed
 
     private void jmCadHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadHorarioActionPerformed
         setModal(new CadastrarHorario(), this, 300, 277, "Cadastrar horário");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadHorarioActionPerformed
 
     private void jmCadDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadDepartamentoActionPerformed
         setModal(new CadastrarDepartamento(), this, 300, 185, "Cadastrar departamento");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadDepartamentoActionPerformed
 
     private void jmCadUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCadUsuarioActionPerformed
         setModal(new CadastrarUsuario(), this, 300, 300, "Cadastrar usuário");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmCadUsuarioActionPerformed
 
     private void jmEditarTipoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarTipoSalaActionPerformed
         setModal(new EditarTipoSala(), this, 304, 305, "Editar tipo de sala");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarTipoSalaActionPerformed
 
     private void jmEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarUsuarioActionPerformed
         setModal(new EditarUsuario(), this, 305, 490, "Editar usuário");
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarUsuarioActionPerformed
 
     private void jmSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmSairMouseClicked
@@ -459,6 +487,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpPrincipal.setVisible(false);
         jpLogin.setVisible(true);
         InputLogin.requestFocus();
+        
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmSairMouseClicked
 
     private void InputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputSenhaActionPerformed
@@ -486,6 +517,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //            InputSenha.setText("");
             InputLogin.requestFocus();
         }
+        telareservas.limpaConsulta();
+        telaconsultar.limpaConsulta();
     }//GEN-LAST:event_BtnEntrarMouseClicked
 
     /**

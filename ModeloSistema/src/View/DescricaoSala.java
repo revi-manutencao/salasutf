@@ -15,10 +15,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -73,7 +70,6 @@ public class DescricaoSala extends javax.swing.JPanel {
             if(reservado){
                 matrizValores[i] = new String[]{arrHorarios[i].getId(), "Não disponível"};
             } else {
-                JCheckBox jcTeste = new JCheckBox();
                 matrizValores[i] = new Object[]{arrHorarios[i].getId(), "Disponível"};
             }
         }
@@ -81,7 +77,7 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jtabHorariosDisponiveis1.setModel(new javax.swing.table.DefaultTableModel(
             matrizValores,
-            new Object [] {
+            new String [] {
                 "Horário", "Selecionar"
             }
         ));        

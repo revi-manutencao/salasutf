@@ -11,9 +11,11 @@ import static Util.Utility.setModal;
 import View.Editar.EditarUsuario;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,10 +29,22 @@ public class TelaConsultar extends javax.swing.JPanel {
      */
     public TelaConsultar() {
            initComponents();
+           jlistResultadosBusca.setModel(new DefaultListModel());
     }
     
     public void focusInput() {
         jtDadosdePesquisa.requestFocus();
+    }
+    
+    public void limpaResults() {
+        DefaultListModel listModel = (DefaultListModel) jlistResultadosBusca.getModel();
+        listModel.removeAllElements();
+    }
+    
+    public void limpaConsulta() {
+        jtDadosdePesquisa.setText("");
+        jCalendar1.setDate(new Date());
+        limpaResults();
     }
 
     /**

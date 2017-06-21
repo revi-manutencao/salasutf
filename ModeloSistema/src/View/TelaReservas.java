@@ -5,17 +5,85 @@
  */
 package View;
 
+import Database.HorarioDao;
+import Database.ReservaDao;
+import Database.SalaDao;
+import Model.Horario;
+import Model.Reserva;
+import Model.Sala;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultListModel;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Renato
  */
 public class TelaReservas extends javax.swing.JPanel {
-
+    public String dataReserva;
+    public String dadosSala;
+    
     /**
      * Creates new form TelaReservas
      */
     public TelaReservas() {
         initComponents();
+    }
+    
+    public void limpaTabela() {
+        DefaultTableModel model = (DefaultTableModel) jtabHistóricodeReservas.getModel();
+        model.setRowCount(0);
+    }
+    
+    public void limpaConsulta() {
+        jtCodigo.setText("");
+        jCalendarConsulta.setDate(new Date());
+        limpaTabela();
+    }
+    
+    public void constructTable(){
+        // Fazer a consulta no BD
+        ReservaDao resd = new ReservaDao();
+        
+        List listaReservas = resd.buscaBySalaEDataDoUsuario(dadosSala, dataReserva);
+        Reserva[] arrReservas = new Reserva[listaReservas.size()];
+        listaReservas.toArray(arrReservas);
+
+
+        if(listaReservas.size() == 0){
+            JOptionPane.showMessageDialog(null, "Nenhuma reserva encontrada", null, JOptionPane.PLAIN_MESSAGE);
+            limpaTabela();
+        } else {
+
+            Object[][] matrizValores = new Object[listaReservas.size()][2];
+
+            for(int i = 0; i<listaReservas.size(); i++){
+                Sala s = new Sala();
+                s.setId(arrReservas[i].getIdSala());
+                Sala sala = new SalaDao().get(s, "id");
+                String dataUso = "";
+                try{
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date newDate = dateFormat.parse(arrReservas[i].getDataUso());
+                    dataUso = new SimpleDateFormat("dd/MM/yyyy").format(newDate);
+                } catch(Exception e) {}
+                matrizValores[i] = new String[]{sala.getCodigo(), arrReservas[i].getHorario(), dataUso, "Cancelar"};
+            }
+
+
+            jtabHistóricodeReservas.setModel(new javax.swing.table.DefaultTableModel(
+                matrizValores,
+                new String [] {
+                    "Sala", "Horário", "Data", "Ação"
+                }
+            ));        
+        }
     }
 
     /**
@@ -30,21 +98,47 @@ public class TelaReservas extends javax.swing.JPanel {
         jpConsultar = new javax.swing.JPanel();
         jpHistoricodeReservas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtabHistóricodeReservas = new javax.swing.JTable();
+        jtabHistóricodeReservas = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         jpConsultarReservas = new javax.swing.JPanel();
         jlDigiteCod = new javax.swing.JLabel();
         jtCodigo = new javax.swing.JTextField();
         jlDataReserva = new javax.swing.JLabel();
         jCalendarConsulta = new com.toedter.calendar.JCalendar();
         jbConsultar = new javax.swing.JButton();
+        jLabelDataEscolhida = new javax.swing.JLabel();
 
         setMaximumSize(new java.awt.Dimension(700, 430));
 
         jpHistoricodeReservas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HISTÓRICO DE RESERVAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
+        jtabHistóricodeReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Sala", "Horário", "Data", "Ação"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jtabHistóricodeReservas.setCellSelectionEnabled(true);
         jtabHistóricodeReservas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtabHistóricodeReservas.setDropMode(javax.swing.DropMode.ON);
+        jtabHistóricodeReservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtabHistóricodeReservasMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jtabHistóricodeReservas);
         jtabHistóricodeReservas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
@@ -67,7 +161,7 @@ public class TelaReservas extends javax.swing.JPanel {
 
         jpConsultarReservas.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CONSULTAR RESERVAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
-        jlDigiteCod.setText("Digite o Código da sala ou preencha a data da reserva");
+        jlDigiteCod.setText("Digite o código da sala ou preencha a data da reserva");
 
         jtCodigo.setToolTipText("Dados da sala");
         jtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +172,18 @@ public class TelaReservas extends javax.swing.JPanel {
 
         jlDataReserva.setText("Data da reserva");
 
+        jCalendarConsulta.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendarConsultaPropertyChange(evt);
+            }
+        });
+
         jbConsultar.setText("Consultar");
+        jbConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpConsultarReservasLayout = new javax.swing.GroupLayout(jpConsultarReservas);
         jpConsultarReservas.setLayout(jpConsultarReservasLayout);
@@ -92,12 +197,13 @@ public class TelaReservas extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpConsultarReservasLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jpConsultarReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlDigiteCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jlDigiteCod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                             .addComponent(jCalendarConsulta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jtCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jpConsultarReservasLayout.createSequentialGroup()
                                 .addComponent(jlDataReserva)
-                                .addGap(0, 314, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelDataEscolhida, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jpConsultarReservasLayout.setVerticalGroup(
@@ -108,7 +214,9 @@ public class TelaReservas extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jlDataReserva)
+                .addGroup(jpConsultarReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlDataReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelDataEscolhida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCalendarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -155,9 +263,68 @@ public class TelaReservas extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCodigoActionPerformed
 
+    private void jbConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConsultarActionPerformed
+        dadosSala = jtCodigo.getText();
+        dataReserva = new SimpleDateFormat("yyyy-MM-dd").format(jCalendarConsulta.getDate());
+        
+        constructTable();
+    }//GEN-LAST:event_jbConsultarActionPerformed
+
+    private void jCalendarConsultaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendarConsultaPropertyChange
+        String dataEscolhida = new SimpleDateFormat("dd/MM/yyyy").format(jCalendarConsulta.getDate());
+        jLabelDataEscolhida.setText("<html>Data selecionada: <b>" + dataEscolhida + "</b></html>");
+    }//GEN-LAST:event_jCalendarConsultaPropertyChange
+
+    private void jtabHistóricodeReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabHistóricodeReservasMouseClicked
+        JTable target = (JTable) evt.getSource();
+        int row = target.getSelectedRow();
+        int column = target.getSelectedColumn();
+        
+        if(column == 3){
+            // Obtém tudo que precisa para chegar até a reserva selecionada
+            String codSala = jtabHistóricodeReservas.getModel().getValueAt(row, 0).toString();
+            String idHorario = jtabHistóricodeReservas.getModel().getValueAt(row, 1).toString();
+            String data = jtabHistóricodeReservas.getModel().getValueAt(row, 2).toString();
+            
+            ReservaDao resd = new ReservaDao();
+            SalaDao sd = new SalaDao();
+            HorarioDao hd = new HorarioDao();
+            
+            Sala s = new Sala();
+            s.setCodigo(codSala);
+            Sala sala = sd.get(s, "codigo");
+            
+            Horario h = new Horario();
+            h.setId(idHorario);
+            Horario horario = hd.get(h, "id");
+            
+            String dataUso = "";
+            try{
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date newDate = dateFormat.parse(data);
+                dataUso = new SimpleDateFormat("yyyy-MM-dd").format(newDate);
+            } catch(Exception e) {}
+            
+            Reserva r = resd.getBySalaDataHorario(sala, dataUso, horario);
+            
+            
+            int result = JOptionPane.showConfirmDialog(null, "Tem certeza de que deseja cancelar esta reserva?", "Confirmação", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+            
+            if(result == JOptionPane.YES_OPTION){
+                if(!resd.disable(r)){
+                    JOptionPane.showMessageDialog(null, "Não foi possível cancelar sua reserva", "Erro", JOptionPane.PLAIN_MESSAGE);
+                }
+                
+            }
+            
+            constructTable();
+        }
+    }//GEN-LAST:event_jtabHistóricodeReservasMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar jCalendarConsulta;
+    private javax.swing.JLabel jLabelDataEscolhida;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton jbConsultar;
     private javax.swing.JLabel jlDataReserva;
