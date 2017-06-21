@@ -188,6 +188,7 @@ public class EditarBloco extends javax.swing.JPanel {
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
         Bloco bloco = (Bloco) jcbBloco.getSelectedItem();
         jtNome.setText(bloco.getCodigo());
+        jrDesativar.setSelected(!bloco.isAtivo());
         jtNome.setFocusable(true);
         jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarActionPerformed

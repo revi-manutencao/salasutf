@@ -206,6 +206,7 @@ public class EditarDepartamento extends javax.swing.JPanel {
         Departamento depto = (Departamento) jcbDepartamento.getSelectedItem();
         jtNome.setText(depto.getNome());
         jtSigla.setText(depto.getSigla());
+        jrDesativar.setSelected(!depto.isAtivo());
         
         jtNome.setFocusable(true);
         jtSigla.setFocusable(true);

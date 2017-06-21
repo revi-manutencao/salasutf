@@ -5,7 +5,12 @@
  */
 package View.Editar;
 
+import Database.BlocoDao;
+import Database.HorarioDao;
+import Model.Bloco;
+import Model.Horario;
 import static Util.Utility.disposeModal;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -219,11 +224,27 @@ public class EditarHorario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarjButton1ActionPerformed
-        // TODO add your handling code here:
+                     
     }//GEN-LAST:event_jbConfirmarjButton1ActionPerformed
 
     private void jcbHorariojComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHorariojComboBox1ActionPerformed
-        // TODO add your handling code here:
+        Horario horario = (Horario) jcbHorario.getSelectedItem();
+        horario.setAtivo(!jrDesativar.isSelected());
+        horario.setDescricao(jtNome.getText());
+        horario.setHorarioInicio(jtInicio.getText());
+        horario.setHorarioFim(jtFim.getText());
+        
+        HorarioDao hdao = new HorarioDao();
+        if (hdao.update(horario)) {
+            JOptionPane.showMessageDialog(null, "O horário foi atualizado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o horário", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+
+
+
     }//GEN-LAST:event_jcbHorariojComboBox1ActionPerformed
 
     private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
