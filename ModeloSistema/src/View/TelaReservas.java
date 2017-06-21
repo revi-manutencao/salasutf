@@ -73,7 +73,7 @@ public class TelaReservas extends javax.swing.JPanel {
                     Date newDate = dateFormat.parse(arrReservas[i].getDataUso());
                     dataUso = new SimpleDateFormat("dd/MM/yyyy").format(newDate);
                 } catch(Exception e) {}
-                matrizValores[i] = new String[]{sala.getCodigo(), arrReservas[i].getHorario(), dataUso, "Cancelar"};
+                matrizValores[i] = new String[]{sala.getCodigo(), arrReservas[i].getHorario(), dataUso, "<html><font color='red'>Cancelar</font></html>"};
             }
 
 
