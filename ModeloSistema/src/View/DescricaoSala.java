@@ -106,8 +106,8 @@ public class DescricaoSala extends javax.swing.JPanel {
         jldescricaoHorario1 = new javax.swing.JLabel();
         jlDescSala = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(367, 545));
-        setMinimumSize(new java.awt.Dimension(367, 545));
+        setMaximumSize(new java.awt.Dimension(367, 571));
+        setMinimumSize(new java.awt.Dimension(367, 571));
 
         jlNomeSala1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jlNomeSala1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,6 +122,7 @@ public class DescricaoSala extends javax.swing.JPanel {
 
         jpResultadoHorarios1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
 
+        jtabHorariosDisponiveis1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jtabHorariosDisponiveis1.setShowVerticalLines(false);
         jtabHorariosDisponiveis1.getTableHeader().setReorderingAllowed(false);
         jtabHorariosDisponiveis1.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -190,19 +191,19 @@ public class DescricaoSala extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlNomeSala1)
-                .addGap(24, 24, 24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlDescricao1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlDescSala, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jlHorariosDisponiveis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlHorariosDisponiveis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jldescricaoHorario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpResultadoHorarios1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbReservar1)
-                .addContainerGap())
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

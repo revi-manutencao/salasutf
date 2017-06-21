@@ -43,7 +43,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jtLogin" alignment="0" max="32767" attributes="0"/>
                           <Component id="jtNome" max="32767" attributes="0"/>
-                          <Component id="jPassSenha" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPassSenha" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -68,7 +68,7 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                       <Component id="jbCancelar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jbCadastrar" min="-2" max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                   <Component id="jlEmail2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jcbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jbCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jbCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
