@@ -4,8 +4,6 @@ package Database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import Model.*;
-import java.sql.PreparedStatement;
 
 
 
