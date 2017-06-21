@@ -55,11 +55,14 @@ public class EditarDepartamento extends javax.swing.JPanel {
 
         jlNome.setText("Nome");
 
+        jtNome.setEnabled(false);
         jtNome.setFocusable(false);
 
+        jtSigla.setEnabled(false);
         jtSigla.setFocusable(false);
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
         jbCancelar.setText("Cancelar");
         jbCancelar.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -210,6 +213,10 @@ public class EditarDepartamento extends javax.swing.JPanel {
         
         jtNome.setFocusable(true);
         jtSigla.setFocusable(true);
+        
+        jtNome.setEnabled(true);
+        jtSigla.setEnabled(true);
+        jrDesativar.setEnabled(true);
         
         jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarActionPerformed

@@ -24,7 +24,12 @@ public class SalaDao {
         try{
             Connection con = db.connect();
 
-            String query = "SELECT * FROM "+table+" WHERE (UPPER(codigo) LIKE UPPER(?) OR UPPER(equipamentos) LIKE UPPER(?)) AND ativo = true";
+            String query = "SELECT * FROM "+table+" s LEFT JOIN bloco b ON s "
+                    + ".id_bloco = b.id LEFT JOIN tipo_de_sala ts ON s"
+                    + ".id_tipo_de_sala = ts.id "
+                    + "WHERE (UPPER(s.codigo) LIKE UPPER(?) OR "
+                    + "UPPER(s.equipamentos) LIKE UPPER(?)) AND s.ativo "
+                    + "= true AND b.ativo = true AND ts.ativo = true";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, "%"+busca+"%");
@@ -148,14 +153,40 @@ public class SalaDao {
     
     // Obter todos os objetos ATIVOS
     public List<Sala> getAllAtivos () {
-        List<Sala> salas = getAll();  
-        List<Sala> ativos = new ArrayList<Sala>();
-        for (Sala sala : salas){
-            if(sala.isAtivo() == true)
-                ativos.add(sala);
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" LEFT JOIN blocos ON "+table
+                    + ".id_bloco = bloco.id LEFT JOIN tipo_de_sala ts ON "+table
+                    + ".id_tipo_de_sala = ts.id WHERE "+table+".ativo = true "
+                    + "AND bloco.ativo = true AND ts.ativo = true";
+            
+            PreparedStatement stmt = con.prepareStatement(query);
+
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Sala> salas = new ArrayList<Sala>();
+            
+            while (rs.next()){
+                Sala sala = new Sala();
+                sala.setId(rs.getInt("id"));
+                sala.setCodigo(rs.getString("codigo"));
+                sala.setIdAdministrador(rs.getString("id_administrador"));
+                sala.setIdBloco(rs.getInt("id_bloco"));
+                sala.setIdTipoSala(rs.getInt("id_tipo_de_sala"));
+                sala.setAtivo(rs.getBoolean("ativo"));
+                sala.setEquipamentos(rs.getString("equipamentos"));
+                
+                salas.add(sala);
+            }
+            
+            con.close();
+            return salas;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
         }
-        
-        return ativos;
     }
     
     

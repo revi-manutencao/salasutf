@@ -110,7 +110,9 @@ public class EditarBloco extends javax.swing.JPanel {
         jlNome.setText("Nome");
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
+        jtNome.setEnabled(false);
         jtNome.setFocusable(false);
 
         jbAlterar.setText("Alterar");
@@ -143,7 +145,7 @@ public class EditarBloco extends javax.swing.JPanel {
         jpAlterarLayout.setVerticalGroup(
             jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNome)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,8 +170,8 @@ public class EditarBloco extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                    .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                    .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,7 +192,9 @@ public class EditarBloco extends javax.swing.JPanel {
         jtNome.setText(bloco.getCodigo());
         jrDesativar.setSelected(!bloco.isAtivo());
         jtNome.setFocusable(true);
+        jtNome.setEnabled(true);
         jtNome.requestFocus();
+        jrDesativar.setEnabled(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCancelarActionPerformed

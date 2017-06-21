@@ -129,17 +129,20 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtNome">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jtSigla">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrDesativar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desativar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jbCancelar">

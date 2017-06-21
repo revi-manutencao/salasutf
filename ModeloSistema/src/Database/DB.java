@@ -8,10 +8,10 @@ import java.sql.SQLException;
 
 
 public class DB {
-    String host = "localhost";
-    String database = "salasutf";
-    String user = "root";
-    String password = "";
+    String host = "sql10.freemysqlhosting.net";
+    String database = "sql10181452";
+    String user = "sql10181452";
+    String password = "ibRYhyb2Ia";
     
     public Connection connect(){
         try{
