@@ -20,9 +20,51 @@ public class UsuarioDao {
         this.table = "usuario";
     }
     
+    // Busca um usuário com base nos dados de uma busca passada
+    public List<Usuario> buscaUsuario (String s) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" WHERE UPPER(login) LIKE "
+                    + "UPPER(?) OR UPPER(nome) LIKE UPPER(?) OR UPPER(email) "
+                    + "LIKE UPPER(?)";
+            PreparedStatement stmt = con.prepareStatement(query);
+
+            stmt.setString(1, "%"+s+"%");
+            stmt.setString(2, "%"+s+"%");
+            stmt.setString(3, "%"+s+"%");
+            
+            ResultSet rs = stmt.executeQuery();            
+            
+            List<Usuario> listUsers = new ArrayList<Usuario>();
+            
+            while (rs.next()){
+                Usuario user = new Usuario();
+                user.setNome(rs.getString("nome"));
+                user.setLogin(rs.getString("login"));
+                user.setSenha(rs.getString("senha"));
+                user.setEmail(rs.getString("email"));
+                user.setTipoUsuario(rs.getInt("tipo_usuario"));
+                user.setIdDepartamento(rs.getInt("id_departamento"));
+                user.setDataHoraCadastro(rs.getString("data_hora_cadastro"));
+                user.setDataHoraAtualizacao(rs.getString("data_hora_atualizacao"));
+                user.setAceito(rs.getBoolean("aceito"));
+                user.setAtivo(rs.getBoolean("ativo"));
+                
+                listUsers.add(user);
+            }
+            
+            con.close();
+            return listUsers;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
     
     
-    // Obter um objeto com base na coluna dada
+    // Obter o usuário com base nos dados de acesso salvos
     public Usuario getAuth (Usuario u) {
         try{
             Connection con = db.connect();
@@ -248,7 +290,7 @@ public class UsuarioDao {
             String query = "UPDATE "+table+" SET nome = ?, "
                     + "senha = ?, email = ?, tipo_usuario = ?, "
                     + "id_departamento = ?, data_hora_cadastro = ?, "
-                    + "data_hora_alteracao = ?, aceito = ?, ativo = ? WHERE login = ?";
+                    + "data_hora_atualizacao = ?, aceito = ?, ativo = ? WHERE login = ?";
             PreparedStatement stmt = con.prepareStatement(query);
             
             stmt.setString(1, u.getNome());
@@ -260,6 +302,7 @@ public class UsuarioDao {
             stmt.setString(7, u.getDataHoraAtualizacao());
             stmt.setBoolean(8, u.isAceito());
             stmt.setBoolean(9, u.isAtivo());
+            stmt.setString(10, u.getLogin());
 
             stmt.execute();
             

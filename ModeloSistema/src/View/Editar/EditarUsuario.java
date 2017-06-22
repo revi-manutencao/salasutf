@@ -5,19 +5,33 @@
  */
 package View.Editar;
 
+import Database.DepartamentoDao;
+import Database.UsuarioDao;
+import Model.Departamento;
+import Model.TipoUsuario;
+import Model.Usuario;
 import static Util.Utility.disposeModal;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author vinicius
  */
 public class EditarUsuario extends javax.swing.JPanel {
-
+    int selectedRow;
     /**
      * Creates new form EditarUsuario
      */
     public EditarUsuario() {
         initComponents();
+    }
+    
+    public void limpaTabela() {
+        DefaultTableModel model = (DefaultTableModel) jtUsuario.getModel();
+        model.setRowCount(0);
     }
 
     /**
@@ -34,7 +48,11 @@ public class EditarUsuario extends javax.swing.JPanel {
         jbPesquisar = new javax.swing.JButton();
         jlSubTitulo = new javax.swing.JLabel();
         jscrollUsuario = new javax.swing.JScrollPane();
-        jtUsuario = new javax.swing.JTable();
+        jtUsuario = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            };
+        };
         jtNome = new javax.swing.JTextField();
         jpAlterar = new javax.swing.JPanel();
         jbCancelar = new javax.swing.JButton();
@@ -66,21 +84,27 @@ public class EditarUsuario extends javax.swing.JPanel {
 
         jtUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Champinho", "Administrador"},
-                {"Cleiton", "Professor"},
-                {"Cristiano", "Professor"},
-                {"Vinicius", "Professor"},
-                {"Ronaldo", "Professor"},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Usuário", "Tipo de usuário"
+
             }
         ));
+        jtUsuario.setShowVerticalLines(false);
+        jtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtUsuarioMouseClicked(evt);
+            }
+        });
         jscrollUsuario.setViewportView(jtUsuario);
 
         jtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -132,11 +156,22 @@ public class EditarUsuario extends javax.swing.JPanel {
         jlDepartamento.setText("Departamento");
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
         jbAlterar.setText("Alterar");
+        jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
-        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "DACOM" }));
+        List<Departamento> dpts = new DepartamentoDao().getAllAtivos();
+        Departamento[] arrDepto =  new Departamento[dpts.size()];
+        arrDepto = dpts.toArray(arrDepto);
+        jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel(arrDepto));
+        jcbDepartamento.setEnabled(false);
 
         javax.swing.GroupLayout jpAlterarLayout = new javax.swing.GroupLayout(jpAlterar);
         jpAlterar.setLayout(jpAlterarLayout);
@@ -201,7 +236,43 @@ public class EditarUsuario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        // TODO add your handling code here:
+        // Fazer a consulta no BD
+        UsuarioDao ud = new UsuarioDao();
+        List listaUsuarios = ud.buscaUsuario(jtNome.getText());
+        
+        
+        Usuario[] arrUsuarios = new Usuario[listaUsuarios.size()];
+        listaUsuarios.toArray(arrUsuarios);
+
+
+        if(listaUsuarios.size() == 0){
+            JOptionPane.showMessageDialog(null, "Nenhum usuário encontrado", null, JOptionPane.PLAIN_MESSAGE);
+            limpaTabela();
+        } else {
+
+            Object[][] matrizValores = new Object[listaUsuarios.size()][2];
+
+            for(int i = 0; i<listaUsuarios.size(); i++){
+                TipoUsuario tipo = new TipoUsuario();
+                String stu = "";
+                if(tipo.PROF == arrUsuarios[i].getTipoUsuario()){
+                    stu = "Professor";
+                } else if(tipo.ADMIN == arrUsuarios[i].getTipoUsuario()){
+                    stu = "Administrador do Sistema";
+                } else if (tipo.MASTER == arrUsuarios[i].getTipoUsuario()){
+                    stu = "Master";
+                }
+                matrizValores[i] = new Object[]{arrUsuarios[i].getLogin(), arrUsuarios[i], stu};
+            }
+
+
+            jtUsuario.setModel(new javax.swing.table.DefaultTableModel(
+                matrizValores,
+                new String [] {
+                    "Login", "Nome", "Tipo"
+                }
+            ));        
+        }
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
@@ -211,6 +282,59 @@ public class EditarUsuario extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtUsuarioMouseClicked
+        if (evt.getClickCount() == 2) {
+            JTable target = (JTable) evt.getSource();
+            int row = target.getSelectedRow();
+            int column = target.getSelectedColumn();
+            selectedRow = row;
+
+            Usuario u = (Usuario) jtUsuario.getModel().getValueAt(row, 1);
+            DepartamentoDao dd = new DepartamentoDao();
+            
+            List listaDeptos = dd.getAllAtivos();
+            Departamento[] arrDeptos = new Departamento[listaDeptos.size()];
+            listaDeptos.toArray(arrDeptos);
+            
+            
+            Departamento d = new Departamento();
+            d.setId(u.getIdDepartamento());
+            Departamento dep = dd.get(d, "id");
+            
+            int indice = -1;
+            for(int i = 0; i < arrDeptos.length; i++){
+                if(arrDeptos[i].getNome().equals(dep.getNome())){
+                    indice = i;
+                }
+            }
+            
+            jcbDepartamento.setSelectedIndex(indice);
+            jrDesativar.setSelected(!u.isAtivo());
+            
+            jcbDepartamento.setEnabled(true);
+            jrDesativar.setEnabled(true);
+            jbAlterar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jtUsuarioMouseClicked
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        Usuario u = (Usuario) jtUsuario.getModel().getValueAt(selectedRow, 1);
+        UsuarioDao ud = new UsuarioDao();
+        
+        Departamento d = (Departamento) jcbDepartamento.getSelectedItem();
+        
+        u.setIdDepartamento(d.getId());
+        u.setAtivo(!jrDesativar.isSelected());
+        
+        if (ud.update(u)) {
+            JOptionPane.showMessageDialog(null, "O usuário foi atualizado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o usuário", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

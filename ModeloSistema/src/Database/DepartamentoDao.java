@@ -35,7 +35,7 @@ public class DepartamentoDao {
 
             try{
                 Method m = d.getClass().getMethod("get" + capitalize(column));
-                String val = (String) m.invoke(d);
+                String val = String.valueOf(m.invoke(d));
                 
                 stmt.setString(1, val);
             }catch(Exception e){
