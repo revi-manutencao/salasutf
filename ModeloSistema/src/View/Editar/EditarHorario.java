@@ -10,6 +10,7 @@ import Database.HorarioDao;
 import Model.Bloco;
 import Model.Horario;
 import static Util.Utility.disposeModal;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -73,7 +74,10 @@ public class EditarHorario extends javax.swing.JPanel {
         jbSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jbSubTitulo.setText("Selecione o horáriosque deseja alterar");
 
-        jcbHorario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Horário", "M1", "M2", "M3", "M4", "M5" }));
+        List<Horario> horarios = new HorarioDao().getAll();
+        Horario[] arrHorarios =  new Horario[horarios.size()];
+        arrHorarios = horarios.toArray(arrHorarios);
+        jcbHorario.setModel(new javax.swing.DefaultComboBoxModel(arrHorarios));
         jcbHorario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbHorariojComboBox1ActionPerformed(evt);
@@ -108,6 +112,7 @@ public class EditarHorario extends javax.swing.JPanel {
 
         jlNome.setText("Nome");
 
+        jtNome.setEnabled(false);
         jtNome.setFocusable(false);
         jtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,15 +120,18 @@ public class EditarHorario extends javax.swing.JPanel {
             }
         });
 
+        jtInicio.setEnabled(false);
         jtInicio.setFocusable(false);
 
         jlInicio.setText("Início");
 
         jlFim.setText("Fim");
 
+        jtFim.setEnabled(false);
         jtFim.setFocusable(false);
 
-        jcbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Manhã", "Tarde", "Noite" }));
+        jcbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Manhã", "Tarde", "Noite" }));
+        jcbTurno.setEnabled(false);
 
         jbCancelar.setText("Cancelar");
         jbCancelar.setPreferredSize(new java.awt.Dimension(70, 23));
@@ -137,6 +145,7 @@ public class EditarHorario extends javax.swing.JPanel {
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
         jlTurno.setText("Turno");
 

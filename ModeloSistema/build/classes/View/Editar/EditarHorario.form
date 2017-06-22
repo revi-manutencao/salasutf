@@ -118,21 +118,15 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbHorario">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="Hor&#xe1;rio"/>
-                <StringItem index="1" value="M1"/>
-                <StringItem index="2" value="M2"/>
-                <StringItem index="3" value="M3"/>
-                <StringItem index="4" value="M4"/>
-                <StringItem index="5" value="M5"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(arrHorarios)" type="code"/>
             </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbHorariojComboBox1ActionPerformed"/>
           </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Horario&gt; horarios = new HorarioDao().getAll();&#xa;Horario[] arrHorarios =  new Horario[horarios.size()];&#xa;arrHorarios = horarios.toArray(arrHorarios);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
@@ -231,6 +225,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtNome">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -239,6 +234,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtInicio">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -254,19 +250,16 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtFim">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbTurno">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Selecione"/>
-                <StringItem index="1" value="Manh&#xe3;"/>
-                <StringItem index="2" value="Tarde"/>
-                <StringItem index="3" value="Noite"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Manh&#xe3;&quot;, &quot;Tarde&quot;, &quot;Noite&quot; })" type="code"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -294,6 +287,7 @@
         <Component class="javax.swing.JRadioButton" name="jrDesativar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desativar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlTurno">
