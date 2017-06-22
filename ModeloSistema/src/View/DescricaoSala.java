@@ -34,7 +34,7 @@ public class DescricaoSala extends javax.swing.JPanel {
         this.data = data;
         
         jlNomeSala1.setText(objeto.getCodigo());
-        jlDescSala.setText("<html>"+objeto.getEquipamentos()+"<html>");
+        jlDescSala.setText("<html>"+objeto.getEquipamentos().replace("\n", "<br />\n")+"<html>");
 
         constructTable();
     }
