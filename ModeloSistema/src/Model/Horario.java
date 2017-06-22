@@ -58,6 +58,6 @@ public class Horario {
     }
 
     public String toString() {
-        return this.descricao;
+        return this.id;
     }
 }

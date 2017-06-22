@@ -20,7 +20,6 @@ public class HorarioDao {
         this.table = "horarios";
     }
     
-    
     /**
     * Funções básicas de CRUD 
     */

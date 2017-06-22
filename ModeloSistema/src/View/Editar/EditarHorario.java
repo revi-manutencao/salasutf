@@ -143,6 +143,11 @@ public class EditarHorario extends javax.swing.JPanel {
 
         jbAlterar.setText("Alterar");
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         jrDesativar.setText("Desativar");
         jrDesativar.setEnabled(false);
@@ -233,10 +238,45 @@ public class EditarHorario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarjButton1ActionPerformed
-                     
+        Horario horario = (Horario) jcbHorario.getSelectedItem();
+        jtNome.setText(horario.getId());
+        jtInicio.setText(horario.getHorarioInicio());
+        jtFim.setText(horario.getHorarioFim());
+        String turno = "";
+        switch (horario.getTurno()){
+            case "0":
+                turno = "Manhã";
+                break;
+            case "1":
+                turno = "Tarde";
+                break;
+            case "2":
+                turno = "Noite";
+                break;
+        }
+        jcbTurno.setSelectedItem(turno);
+        jrDesativar.setSelected(!horario.isAtivo());
+        
+        jtNome.setEnabled(true);
+        jtInicio.setEnabled(true);
+        jtFim.setEnabled(true);
+        jcbTurno.setEnabled(true);
+        jrDesativar.setEnabled(true);
     }//GEN-LAST:event_jbConfirmarjButton1ActionPerformed
 
     private void jcbHorariojComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHorariojComboBox1ActionPerformed
+        
+    }//GEN-LAST:event_jcbHorariojComboBox1ActionPerformed
+
+    private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtNomeActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        disposeModal(this);
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         Horario horario = (Horario) jcbHorario.getSelectedItem();
         horario.setAtivo(!jrDesativar.isSelected());
         horario.setDescricao(jtNome.getText());
@@ -250,19 +290,8 @@ public class EditarHorario extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(null, "Não foi possível atualizar o horário", "Erro", JOptionPane.PLAIN_MESSAGE);
             jtNome.requestFocus();
-        }
-
-
-
-    }//GEN-LAST:event_jcbHorariojComboBox1ActionPerformed
-
-    private void jtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtNomeActionPerformed
-
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        disposeModal(this);
-    }//GEN-LAST:event_jbCancelarActionPerformed
+        } 
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
