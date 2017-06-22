@@ -46,6 +46,7 @@ public class TelaConsultar extends javax.swing.JPanel {
     public void limpaConsulta() {
         jtDadosdePesquisa.setText("");
         jCalendar1.setDate(new Date());
+        jlQuantHorariosDisponiveis.setText("");
         limpaResults();
     }
 
@@ -249,7 +250,7 @@ public class TelaConsultar extends javax.swing.JPanel {
     private void jbuttonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonConsultarActionPerformed
         String dadosSala = jtDadosdePesquisa.getText();
         dataReserva = new SimpleDateFormat("yyyy-MM-dd").format(jCalendar1.getDate());
-        //System.out.println(dadosSala + "\n" + dataEscolhida);
+        jlQuantHorariosDisponiveis.setText("");
         
         // Fazer a consulta no BD
         SalaDao sld = new SalaDao();
