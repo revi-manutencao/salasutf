@@ -82,6 +82,11 @@ public class CadastrarSala extends javax.swing.JPanel {
         TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];
         arrTipoSala = tiposSala.toArray(arrTipoSala);
         jbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel(arrTipoSala));
+        jbTiposdeSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbTiposdeSalaActionPerformed(evt);
+            }
+        });
 
         jlAdministrador.setText("Administrador");
 
@@ -208,6 +213,10 @@ public class CadastrarSala extends javax.swing.JPanel {
     private void jbBlocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBlocoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbBlocoActionPerformed
+
+    private void jbTiposdeSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTiposdeSalaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbTiposdeSalaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

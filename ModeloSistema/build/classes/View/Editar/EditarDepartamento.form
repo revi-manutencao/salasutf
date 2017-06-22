@@ -159,6 +159,7 @@
         <Component class="javax.swing.JButton" name="jjbAlterar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alterar"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[70, 23]"/>
             </Property>
@@ -241,7 +242,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDepartamentoActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Departamento&gt; dpts = new DepartamentoDao().getAllAtivos();&#xa;Departamento[] arrDepto =  new Departamento[dpts.size()];&#xa;arrDepto = dpts.toArray(arrDepto);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Departamento&gt; dpts = new DepartamentoDao().getAll();&#xa;Departamento[] arrDepto =  new Departamento[dpts.size()];&#xa;arrDepto = dpts.toArray(arrDepto);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>

@@ -5,7 +5,11 @@
  */
 package View.Editar;
 
+import Database.TipoSalaDao;
+import Model.TipoSala;
 import static Util.Utility.disposeModal;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,11 +63,18 @@ public class EditarTipoSala extends javax.swing.JPanel {
         jlNome.setText("Nome");
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
-        jtNome.setFocusable(false);
+        jtNome.setEnabled(false);
 
         jbAlterar.setText("Alterar");
+        jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpAlterarLayout = new javax.swing.GroupLayout(jpAlterar);
         jpAlterar.setLayout(jpAlterarLayout);
@@ -90,7 +101,7 @@ public class EditarTipoSala extends javax.swing.JPanel {
         jpAlterarLayout.setVerticalGroup(
             jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNome)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -117,7 +128,10 @@ public class EditarTipoSala extends javax.swing.JPanel {
         jlSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSubTitulo.setText("Selecione o tipo de sala que deseja alterar");
 
-        jcbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de sala", "Laboratório" }));
+        List<TipoSala> tiposSala = new TipoSalaDao().getAll();
+        TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];
+        arrTipoSala = tiposSala.toArray(arrTipoSala);
+        jcbTiposdeSala.setModel(new javax.swing.DefaultComboBoxModel (arrTipoSala));
         jcbTiposdeSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbTiposdeSalaActionPerformed(evt);
@@ -160,8 +174,8 @@ public class EditarTipoSala extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE))
+                    .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -178,7 +192,15 @@ public class EditarTipoSala extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-        // TODO add your handling code here:
+        TipoSala tiposala = (TipoSala) jcbTiposdeSala.getSelectedItem();
+        jtNome.setText(tiposala.getDescricao());
+        jrDesativar.setSelected(!tiposala.isAtivo());
+        
+        jtNome.setEnabled(true);
+        jrDesativar.setEnabled(true);
+        jbAlterar.setEnabled(true);
+        jtNome.requestFocus();
+
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbTiposdeSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTiposdeSalaActionPerformed
@@ -188,6 +210,21 @@ public class EditarTipoSala extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        TipoSala tpsala = (TipoSala) jcbTiposdeSala.getSelectedItem();
+        tpsala.setAtivo(!jrDesativar.isSelected());
+        tpsala.setDescricao(jtNome.getText());
+        
+        TipoSalaDao tpsaladao = new TipoSalaDao();
+        if(tpsaladao.update(tpsala)){
+            JOptionPane.showMessageDialog(null, "O tipo de sala foi atualizado", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar o tipo de sala", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtNome.requestFocus();
+        }
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
