@@ -382,7 +382,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmCadSalaActionPerformed
 
     private void jmEditarSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmEditarSalaActionPerformed
-        setModal(new EditarSala(), this, 287, 424, "Editar sala");
+        setModal(new EditarSala(), this, 305, 546, "Editar sala");
         telareservas.limpaConsulta();
         telaconsultar.limpaConsulta();
     }//GEN-LAST:event_jmEditarSalaActionPerformed

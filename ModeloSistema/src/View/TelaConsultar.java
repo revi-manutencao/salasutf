@@ -5,6 +5,8 @@
  */
 package View;
 
+import Database.HorarioDao;
+import Database.ReservaDao;
 import Database.SalaDao;
 import Model.Sala;
 import static Util.Utility.setModal;
@@ -70,7 +72,7 @@ public class TelaConsultar extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jlistResultadosBusca = new javax.swing.JList<>();
         jbuttonConsultar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jlQuantHorariosDisponiveis = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -168,7 +170,7 @@ public class TelaConsultar extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Horários disponíveis para a sala <sala> :  X");
+        jlQuantHorariosDisponiveis.setText(" ");
 
         javax.swing.GroupLayout jpResultadosdaBuscaLayout = new javax.swing.GroupLayout(jpResultadosdaBusca);
         jpResultadosdaBusca.setLayout(jpResultadosdaBuscaLayout);
@@ -179,7 +181,7 @@ public class TelaConsultar extends javax.swing.JPanel {
                 .addGroup(jpResultadosdaBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jbuttonConsultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
+                    .addComponent(jlQuantHorariosDisponiveis, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpResultadosdaBuscaLayout.setVerticalGroup(
@@ -188,7 +190,7 @@ public class TelaConsultar extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(jlQuantHorariosDisponiveis)
                 .addGap(11, 11, 11)
                 .addComponent(jbuttonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -226,11 +228,21 @@ public class TelaConsultar extends javax.swing.JPanel {
     }//GEN-LAST:event_jlistResultadosBuscaValueChanged
 
     private void jlistResultadosBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlistResultadosBuscaMouseClicked
+        int index = jlistResultadosBusca.getSelectedIndex();
+        Object selecionada = jlistResultadosBusca.getModel().getElementAt(index);
+        Sala sala = (Sala) selecionada;
+        
         if(evt.getClickCount()==2){
-            int index = jlistResultadosBusca.getSelectedIndex();
-            Object selecionada = jlistResultadosBusca.getModel().getElementAt(index);
-            Sala sala = (Sala) selecionada;
             setModal(new DescricaoSala(sala, dataReserva), null, 367, 565, null);
+        }
+        else if (evt.getClickCount()==1){
+            // Exibe o número de horários disponíveis para a sala selecionada
+            List listaHorarios = new HorarioDao().getAllAtivos();
+            List listaReservas = new ReservaDao().getBySalaEData(sala, dataReserva);
+            
+            int quant = listaHorarios.size() - listaReservas.size();
+            
+            jlQuantHorariosDisponiveis.setText("Horários disponíveis para a sala "+sala.getCodigo()+": "+quant);
         }
     }//GEN-LAST:event_jlistResultadosBuscaMouseClicked
 
@@ -275,13 +287,13 @@ public class TelaConsultar extends javax.swing.JPanel {
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelDataEscolhida;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbuttonConsultar;
+    private javax.swing.JLabel jlQuantHorariosDisponiveis;
     private javax.swing.JLabel jlSubtituloData;
     private javax.swing.JList<String> jlistResultadosBusca;
     private javax.swing.JPanel jpConsultarSala;

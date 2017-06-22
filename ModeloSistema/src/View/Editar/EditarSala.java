@@ -69,6 +69,9 @@ public class EditarSala extends javax.swing.JPanel {
         jlBloco = new javax.swing.JLabel();
         jlTipodeSala = new javax.swing.JLabel();
         jlAdministrador = new javax.swing.JLabel();
+        jlEquipamentos = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtEquipamentos = new javax.swing.JTextArea();
 
         setMaximumSize(new java.awt.Dimension(287, 404));
         setMinimumSize(new java.awt.Dimension(287, 404));
@@ -217,6 +220,14 @@ public class EditarSala extends javax.swing.JPanel {
 
         jlAdministrador.setText("Administrador");
 
+        jlEquipamentos.setText("Equipamentos");
+
+        jtEquipamentos.setColumns(20);
+        jtEquipamentos.setLineWrap(true);
+        jtEquipamentos.setRows(5);
+        jtEquipamentos.setEnabled(false);
+        jScrollPane2.setViewportView(jtEquipamentos);
+
         javax.swing.GroupLayout jpAlterarLayout = new javax.swing.GroupLayout(jpAlterar);
         jpAlterar.setLayout(jpAlterarLayout);
         jpAlterarLayout.setHorizontalGroup(
@@ -225,26 +236,38 @@ public class EditarSala extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpAlterarLayout.createSequentialGroup()
-                        .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jlBloco)
-                                .addComponent(jlCodigo))
-                            .addComponent(jlAdministrador)
-                            .addComponent(jlTipodeSala, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jrDesativar)
-                            .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jcbBlocoAlt, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jtCodigo, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jcbTipodeSala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbAdministrador, 0, 156, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
+                        .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jpAlterarLayout.createSequentialGroup()
+                                .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpAlterarLayout.createSequentialGroup()
+                                        .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jlBloco)
+                                            .addComponent(jlCodigo))
+                                        .addGap(6, 6, 6))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
+                                        .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jlAdministrador)
+                                            .addComponent(jlTipodeSala))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jcbAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpAlterarLayout.createSequentialGroup()
+                                        .addComponent(jrDesativar)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(jcbTipodeSala, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jcbBlocoAlt, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jtCodigo)))
+                            .addGroup(jpAlterarLayout.createSequentialGroup()
+                                .addComponent(jlEquipamentos)
+                                .addGap(3, 3, 3)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(7, 7, 7)))
                 .addContainerGap())
         );
         jpAlterarLayout.setVerticalGroup(
@@ -267,8 +290,12 @@ public class EditarSala extends javax.swing.JPanel {
                     .addComponent(jcbAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlAdministrador))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlEquipamentos)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jrDesativar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -279,11 +306,11 @@ public class EditarSala extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+            .addComponent(jlTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -295,7 +322,7 @@ public class EditarSala extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -304,6 +331,7 @@ public class EditarSala extends javax.swing.JPanel {
         Sala sala = (Sala) jcbSala.getSelectedItem();
         
         jtCodigo.setText(sala.getCodigo());
+        jtEquipamentos.setText(sala.getEquipamentos());
         
         Bloco b = new Bloco();
         b.setId(sala.getIdBloco());
@@ -360,6 +388,7 @@ public class EditarSala extends javax.swing.JPanel {
         jcbTipodeSala.setEnabled(true);
         jcbAdministrador.setEnabled(true);
         jrDesativar.setEnabled(true);
+        jtEquipamentos.setEnabled(true);
         jbAlterar.setEnabled(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
@@ -371,36 +400,25 @@ public class EditarSala extends javax.swing.JPanel {
         fillSalasDoBloco();
     }//GEN-LAST:event_jcbBlocoPesqActionPerformed
 
-    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtCodigoActionPerformed
-
     private void jcbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAdministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbAdministradorActionPerformed
 
-    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        disposeModal(this);
-    }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jcbBlocoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbBlocoAltActionPerformed
-
     private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
         Sala sala = (Sala) jcbSala.getSelectedItem();
         sala.setCodigo(jtCodigo.getText());
+        sala.setEquipamentos(jtEquipamentos.getText());
         sala.setAtivo(!jrDesativar.isSelected());
-        
+
         Usuario admin = (Usuario) jcbAdministrador.getSelectedItem();
         sala.setIdAdministrador(admin.getLogin());
-        
+
         TipoSala ts = (TipoSala) jcbTipodeSala.getSelectedItem();
         sala.setIdTipoSala(ts.getId());
-        
+
         Bloco b = (Bloco) jcbBlocoAlt.getSelectedItem();
         sala.setIdBloco(b.getId());
-        
+
         SalaDao sd = new SalaDao();
         if (sd.update(sala)) {
             JOptionPane.showMessageDialog(null, "A sala foi atualizada", "Sucesso", JOptionPane.PLAIN_MESSAGE);
@@ -411,8 +429,21 @@ public class EditarSala extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jbAlterarActionPerformed
 
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        disposeModal(this);
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jcbBlocoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoAltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbBlocoAltActionPerformed
+
+    private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtCodigoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel jSubTituloBloco;
     private javax.swing.JButton jbAlterar;
     private javax.swing.JButton jbCancelar;
@@ -425,6 +456,7 @@ public class EditarSala extends javax.swing.JPanel {
     private javax.swing.JLabel jlAdministrador;
     private javax.swing.JLabel jlBloco;
     private javax.swing.JLabel jlCodigo;
+    private javax.swing.JLabel jlEquipamentos;
     private javax.swing.JLabel jlSubTituloSala;
     private javax.swing.JLabel jlTipodeSala;
     private javax.swing.JLabel jlTitulo;
@@ -432,5 +464,6 @@ public class EditarSala extends javax.swing.JPanel {
     private javax.swing.JPanel jpPesquisar;
     private javax.swing.JRadioButton jrDesativar;
     private javax.swing.JTextField jtCodigo;
+    private javax.swing.JTextArea jtEquipamentos;
     // End of variables declaration//GEN-END:variables
 }

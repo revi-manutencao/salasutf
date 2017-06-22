@@ -48,7 +48,7 @@ public class CadastrarSala extends javax.swing.JPanel {
         jlTitulo = new javax.swing.JLabel();
         jtxtCodSala = new javax.swing.JTextField();
         jlCodigodaSala = new javax.swing.JLabel();
-        jlDescricao = new javax.swing.JLabel();
+        jEquipamentos = new javax.swing.JLabel();
         jbBloco = new javax.swing.JComboBox<>();
         jbTiposdeSala = new javax.swing.JComboBox<>();
         jlAdministrador = new javax.swing.JLabel();
@@ -58,7 +58,7 @@ public class CadastrarSala extends javax.swing.JPanel {
         jbCancelar = new javax.swing.JButton();
         jcbAdministrador = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jtDescricao = new javax.swing.JTextArea();
+        jtEquipamentos = new javax.swing.JTextArea();
 
         jlTitulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jlTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,7 +66,7 @@ public class CadastrarSala extends javax.swing.JPanel {
 
         jlCodigodaSala.setText("Código da sala");
 
-        jlDescricao.setText("Descrição");
+        jEquipamentos.setText("Equipamentos");
 
         List<Bloco> blocos = new BlocoDao().getAllAtivos();
         Bloco[] arrBlocos =  new Bloco[blocos.size()];
@@ -113,10 +113,10 @@ public class CadastrarSala extends javax.swing.JPanel {
         arrAdmin = admins.toArray(arrAdmin);
         jcbAdministrador.setModel(new javax.swing.DefaultComboBoxModel(arrAdmin));
 
-        jtDescricao.setColumns(20);
-        jtDescricao.setLineWrap(true);
-        jtDescricao.setRows(5);
-        jScrollPane2.setViewportView(jtDescricao);
+        jtEquipamentos.setColumns(20);
+        jtEquipamentos.setLineWrap(true);
+        jtEquipamentos.setRows(5);
+        jScrollPane2.setViewportView(jtEquipamentos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -144,7 +144,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                             .addComponent(jcbAdministrador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jtxtCodSala)
                             .addComponent(jbBloco, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jlDescricao))
+                    .addComponent(jEquipamentos))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -169,7 +169,7 @@ public class CadastrarSala extends javax.swing.JPanel {
                     .addComponent(jlTipodeSala)
                     .addComponent(jbTiposdeSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jlDescricao)
+                .addComponent(jEquipamentos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,7 +198,7 @@ public class CadastrarSala extends javax.swing.JPanel {
         
         TipoSala tiposala = (TipoSala) jbTiposdeSala.getSelectedItem();
         sala.setIdTipoSala(tiposala.getId());
-        sala.setEquipamentos(jtDescricao.getText());
+        sala.setEquipamentos(jtEquipamentos.getText());
         
         SalaDao sd = new SalaDao();
         if(sd.insert(sala)){
@@ -220,6 +220,7 @@ public class CadastrarSala extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jEquipamentos;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> jbBloco;
     private javax.swing.JButton jbCadastrar;
@@ -229,10 +230,9 @@ public class CadastrarSala extends javax.swing.JPanel {
     private javax.swing.JLabel jlAdministrador;
     private javax.swing.JLabel jlBloco;
     private javax.swing.JLabel jlCodigodaSala;
-    private javax.swing.JLabel jlDescricao;
     private javax.swing.JLabel jlTipodeSala;
     private javax.swing.JLabel jlTitulo;
-    private javax.swing.JTextArea jtDescricao;
+    private javax.swing.JTextArea jtEquipamentos;
     private javax.swing.JTextField jtxtCodSala;
     // End of variables declaration//GEN-END:variables
 }
