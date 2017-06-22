@@ -1,7 +1,6 @@
 package Database;
 
 import Model.ObservacaoSala;
-import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +33,7 @@ public class ObservacaoSalaDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = obs.getClass().getMethod("get" + capitalize(column));
+                Method m = obs.getClass().getMethod("get" + Util.Utility.upperCaseFirst(column));
                 String val = (String) m.invoke(obs);
                 
                 stmt.setString(1, val);

@@ -1,7 +1,6 @@
 package Database;
 
 import Model.TipoSala;
-import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class TipoSalaDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = s.getClass().getMethod("get" + capitalize(column));
+                Method m = s.getClass().getMethod("get" + Util.Utility.upperCaseFirst(column));
                 String val = String.valueOf(m.invoke(s));
                 
                 stmt.setString(1, val);

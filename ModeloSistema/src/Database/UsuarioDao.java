@@ -1,7 +1,6 @@
 package Database;
 
 import Model.Usuario;
-import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -151,7 +150,7 @@ public class UsuarioDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = u.getClass().getMethod("get" + capitalize(column));
+                Method m = u.getClass().getMethod("get" + Util.Utility.upperCaseFirst(column));
                 String val = (String) m.invoke(u);
                 
                 stmt.setString(1, val);

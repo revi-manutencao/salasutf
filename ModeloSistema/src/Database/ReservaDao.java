@@ -4,7 +4,6 @@ import Model.Horario;
 import Model.Reserva;
 import Model.Sala;
 import Util.Auth;
-import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -149,7 +148,7 @@ public class ReservaDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = r.getClass().getMethod("get" + capitalize(column));
+                Method m = r.getClass().getMethod("get" + Util.Utility.upperCaseFirst(column));
                 String val = (String) m.invoke(r);
                 
                 stmt.setString(1, val);

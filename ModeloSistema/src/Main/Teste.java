@@ -20,6 +20,8 @@ public class Teste {
         
         BlocoDao bdao = new BlocoDao();
         
+//        System.out.println(Util.Utility.upperCaseFirst("abacaxi"));
+        
 //        Bloco b = new Bloco();
 //        b.setCodigo("I");
 //        b.setAtivo(true);

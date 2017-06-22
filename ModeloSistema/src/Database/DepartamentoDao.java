@@ -1,7 +1,6 @@
 package Database;
 
 import Model.Departamento;
-import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -34,7 +33,7 @@ public class DepartamentoDao {
             PreparedStatement stmt = con.prepareStatement(query);
 
             try{
-                Method m = d.getClass().getMethod("get" + capitalize(column));
+                Method m = d.getClass().getMethod("get" + Util.Utility.upperCaseFirst(column));
                 String val = String.valueOf(m.invoke(d));
                 
                 stmt.setString(1, val);
