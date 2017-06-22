@@ -128,12 +128,8 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbSala">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="Sala"/>
-                <StringItem index="1" value="001"/>
-                <StringItem index="2" value="002"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { })" type="code"/>
             </Property>
           </Properties>
           <Events>
@@ -267,6 +263,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtCodigo">
           <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -275,19 +272,16 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbBlocoAlt">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Selecione"/>
-                <StringItem index="1" value="A"/>
-                <StringItem index="2" value="B"/>
-                <StringItem index="3" value="C"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(arrBlocosAtivos)" type="code"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbBlocoAltActionPerformed"/>
           </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Bloco&gt; blocosAtivos = new BlocoDao().getAllAtivos();&#xa;Bloco[] arrBlocosAtivos =  new Bloco[blocosAtivos.size()];&#xa;arrBlocosAtivos = blocosAtivos.toArray(arrBlocosAtivos);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
@@ -310,38 +304,41 @@
               <Dimension value="[70, 23]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAlterarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrDesativar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Desativar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbTipodeSala">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
-                <StringItem index="0" value="Selecione"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(arrTSala)" type="code"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;TipoSala&gt; ts = new TipoSalaDao().getAllAtivos();&#xa;TipoSala[] arrTSala =  new TipoSala[ts.size()];&#xa;arrTSala = ts.toArray(arrTSala);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="jcbAdministrador">
           <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Selecione"/>
-                <StringItem index="1" value="Champinho"/>
-              </StringArray>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(arrAdmins)" type="code"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Selecione o administrador respons&#xe1;vel por esta sala"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbAdministradorActionPerformed"/>
           </Events>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;Usuario&gt; admins = new UsuarioDao().getAllAdmins();&#xa;Usuario[] arrAdmins =  new Usuario[admins.size()];&#xa;arrAdmins = admins.toArray(arrAdmins);"/>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>

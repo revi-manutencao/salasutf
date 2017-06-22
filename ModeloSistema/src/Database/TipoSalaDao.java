@@ -34,7 +34,7 @@ public class TipoSalaDao {
 
             try{
                 Method m = s.getClass().getMethod("get" + capitalize(column));
-                String val = (String) m.invoke(s);
+                String val = String.valueOf(m.invoke(s));
                 
                 stmt.setString(1, val);
             }catch(Exception e){

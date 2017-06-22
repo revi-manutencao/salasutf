@@ -6,9 +6,16 @@
 package View.Editar;
 
 import Database.BlocoDao;
+import Database.SalaDao;
+import Database.TipoSalaDao;
+import Database.UsuarioDao;
 import Model.Bloco;
+import Model.Sala;
+import Model.TipoSala;
+import Model.Usuario;
 import static Util.Utility.disposeModal;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,6 +28,17 @@ public class EditarSala extends javax.swing.JPanel {
      */
     public EditarSala() {
         initComponents();
+        fillSalasDoBloco();
+    }
+    
+    public void fillSalasDoBloco() {
+        Bloco b = (Bloco) jcbBlocoPesq.getSelectedItem();
+        
+        SalaDao sd = new SalaDao();
+        List listaSalas = sd.buscaSalasDoBloco(b);
+        Sala[] arrSalas = new Sala[listaSalas.size()];
+        listaSalas.toArray(arrSalas);
+        jcbSala.setModel(new javax.swing.DefaultComboBoxModel (arrSalas));
     }
 
     /**
@@ -69,7 +87,7 @@ public class EditarSala extends javax.swing.JPanel {
         jlSubTituloSala.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSubTituloSala.setText("Selecione  a sala que deseja alterar");
 
-        jcbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sala", "001", "002" }));
+        jcbSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
         jcbSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbSalaActionPerformed(evt);
@@ -136,6 +154,7 @@ public class EditarSala extends javax.swing.JPanel {
 
         jlCodigo.setText("Nome/Código");
 
+        jtCodigo.setEnabled(false);
         jtCodigo.setFocusable(false);
         jtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +162,11 @@ public class EditarSala extends javax.swing.JPanel {
             }
         });
 
-        jcbBlocoAlt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "A", "B", "C" }));
+        List<Bloco> blocosAtivos = new BlocoDao().getAllAtivos();
+        Bloco[] arrBlocosAtivos =  new Bloco[blocosAtivos.size()];
+        arrBlocosAtivos = blocosAtivos.toArray(arrBlocosAtivos);
+        jcbBlocoAlt.setModel(new javax.swing.DefaultComboBoxModel(arrBlocosAtivos));
+        jcbBlocoAlt.setEnabled(false);
         jcbBlocoAlt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbBlocoAltActionPerformed(evt);
@@ -161,13 +184,27 @@ public class EditarSala extends javax.swing.JPanel {
         jbAlterar.setText("Alterar");
         jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
+        jbAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAlterarActionPerformed(evt);
+            }
+        });
 
         jrDesativar.setText("Desativar");
+        jrDesativar.setEnabled(false);
 
-        jcbTipodeSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione" }));
+        List<TipoSala> ts = new TipoSalaDao().getAllAtivos();
+        TipoSala[] arrTSala =  new TipoSala[ts.size()];
+        arrTSala = ts.toArray(arrTSala);
+        jcbTipodeSala.setModel(new javax.swing.DefaultComboBoxModel(arrTSala));
+        jcbTipodeSala.setEnabled(false);
 
-        jcbAdministrador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Champinho" }));
+        List<Usuario> admins = new UsuarioDao().getAllAdmins();
+        Usuario[] arrAdmins =  new Usuario[admins.size()];
+        arrAdmins = admins.toArray(arrAdmins);
+        jcbAdministrador.setModel(new javax.swing.DefaultComboBoxModel(arrAdmins));
         jcbAdministrador.setToolTipText("Selecione o administrador responsável por esta sala");
+        jcbAdministrador.setEnabled(false);
         jcbAdministrador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbAdministradorActionPerformed(evt);
@@ -246,7 +283,7 @@ public class EditarSala extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -264,7 +301,66 @@ public class EditarSala extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
-        // TODO add your handling code here:
+        Sala sala = (Sala) jcbSala.getSelectedItem();
+        
+        jtCodigo.setText(sala.getCodigo());
+        
+        Bloco b = new Bloco();
+        b.setId(sala.getIdBloco());
+        Bloco bloco = new BlocoDao().get(b, "id");
+        List listaBlocos = new BlocoDao().getAllAtivos();
+        Bloco[] arrBlocos = new Bloco[listaBlocos.size()];
+        listaBlocos.toArray(arrBlocos);
+        
+        int indiceB = -1;
+        for(int i = 0; i < arrBlocos.length; i++){
+            if(arrBlocos[i].getCodigo().equals(bloco.getCodigo())){
+                indiceB = i;
+            }
+        }
+        jcbBlocoAlt.setSelectedIndex(indiceB);
+        
+        
+        TipoSala t = new TipoSala();
+        t.setId(sala.getIdTipoSala());
+        TipoSala ts = new TipoSalaDao().get(t, "id");
+        List listaTipoSala = new TipoSalaDao().getAllAtivos();
+        TipoSala[] arrTSala = new TipoSala[listaTipoSala.size()];
+        listaTipoSala.toArray(arrTSala);
+            
+        int indiceTS = -1;
+        for(int i = 0; i < arrTSala.length; i++){
+            if(arrTSala[i].getDescricao().equals(ts.getDescricao())){
+                indiceTS = i;
+            }
+        }
+        jcbTipodeSala.setSelectedIndex(indiceTS);
+        
+        
+        Usuario a = new Usuario();
+        a.setLogin(sala.getIdAdministrador());
+        Usuario admin = new UsuarioDao().get(a, "login");
+        List listaAdmins = new UsuarioDao().getAllAdmins();
+        Usuario[] arrAdmins = new Usuario[listaAdmins.size()];
+        listaAdmins.toArray(arrAdmins);
+        
+        int indiceA = -1;
+        for(int i = 0; i < arrAdmins.length; i++){
+            if(arrAdmins[i].getLogin().equals(admin.getLogin())){
+                indiceA = i;
+            }
+        }
+        jcbAdministrador.setSelectedIndex(indiceA);
+        
+        jrDesativar.setSelected(!sala.isAtivo());
+        
+        jtCodigo.setEnabled(true);
+        jtCodigo.setFocusable(true);
+        jcbBlocoAlt.setEnabled(true);
+        jcbTipodeSala.setEnabled(true);
+        jcbAdministrador.setEnabled(true);
+        jrDesativar.setEnabled(true);
+        jbAlterar.setEnabled(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSalaActionPerformed
@@ -272,7 +368,7 @@ public class EditarSala extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbSalaActionPerformed
 
     private void jcbBlocoPesqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoPesqActionPerformed
-        // TODO add your handling code here:
+        fillSalasDoBloco();
     }//GEN-LAST:event_jcbBlocoPesqActionPerformed
 
     private void jtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtCodigoActionPerformed
@@ -290,6 +386,30 @@ public class EditarSala extends javax.swing.JPanel {
     private void jcbBlocoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoAltActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbBlocoAltActionPerformed
+
+    private void jbAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAlterarActionPerformed
+        Sala sala = (Sala) jcbSala.getSelectedItem();
+        sala.setCodigo(jtCodigo.getText());
+        sala.setAtivo(!jrDesativar.isSelected());
+        
+        Usuario admin = (Usuario) jcbAdministrador.getSelectedItem();
+        sala.setIdAdministrador(admin.getLogin());
+        
+        TipoSala ts = (TipoSala) jcbTipodeSala.getSelectedItem();
+        sala.setIdTipoSala(ts.getId());
+        
+        Bloco b = (Bloco) jcbBlocoAlt.getSelectedItem();
+        sala.setIdBloco(b.getId());
+        
+        SalaDao sd = new SalaDao();
+        if (sd.update(sala)) {
+            JOptionPane.showMessageDialog(null, "A sala foi atualizada", "Sucesso", JOptionPane.PLAIN_MESSAGE);
+            disposeModal(this);
+        } else {
+            JOptionPane.showMessageDialog(null, "Não foi possível atualizar a sala", "Erro", JOptionPane.PLAIN_MESSAGE);
+            jtCodigo.requestFocus();
+        }
+    }//GEN-LAST:event_jbAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

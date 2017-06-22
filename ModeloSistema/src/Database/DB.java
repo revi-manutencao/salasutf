@@ -18,7 +18,7 @@ public class DB {
     String host = "localhost";
     String database = "salasutf";
     String user = "root";
-    String password = "";
+    String password = "root";
     
     public Connection connect(){
         try{

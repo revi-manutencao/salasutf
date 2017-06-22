@@ -1,5 +1,6 @@
 package Database;
 
+import Model.Bloco;
 import Model.Sala;
 import static com.sun.xml.internal.ws.util.StringUtils.capitalize;
 import java.lang.reflect.Method;
@@ -34,6 +35,44 @@ public class SalaDao {
             
             stmt.setString(1, "%"+busca+"%");
             stmt.setString(2, "%"+busca+"%");
+
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Sala> salas = new ArrayList<Sala>();
+            
+            while (rs.next()){
+                Sala sala = new Sala();
+                sala.setId(rs.getInt("id"));
+                sala.setCodigo(rs.getString("codigo"));
+                sala.setIdAdministrador(rs.getString("id_administrador"));
+                sala.setIdBloco(rs.getInt("id_bloco"));
+                sala.setIdTipoSala(rs.getInt("id_tipo_de_sala"));
+                sala.setAtivo(rs.getBoolean("ativo"));
+                sala.setEquipamentos(rs.getString("equipamentos"));
+                
+                salas.add(sala);
+            }
+            
+            con.close();
+            return salas;
+            
+        } catch(SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    public List<Sala> buscaSalasDoBloco (Bloco b) {
+        try{
+            Connection con = db.connect();
+
+            String query = "SELECT * FROM "+table+" s LEFT JOIN bloco b ON s "
+                    + ".id_bloco = b.id LEFT JOIN tipo_de_sala ts ON s"
+                    + ".id_tipo_de_sala = ts.id "
+                    + "WHERE s.id_bloco = ?";
+            PreparedStatement stmt = con.prepareStatement(query);
+            
+            stmt.setInt(1, b.getId());
 
             ResultSet rs = stmt.executeQuery();
             
@@ -236,7 +275,8 @@ public class SalaDao {
             stmt.setInt(3, s.getIdTipoSala());
             stmt.setString(4, s.getIdAdministrador());
             stmt.setString(5, s.getEquipamentos());
-            stmt.setBoolean(5, s.isAtivo());
+            stmt.setBoolean(6, s.isAtivo());
+            stmt.setInt(7, s.getId());
 
             stmt.execute();
             
