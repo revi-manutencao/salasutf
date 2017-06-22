@@ -5,7 +5,10 @@
  */
 package View.Editar;
 
+import Database.BlocoDao;
+import Model.Bloco;
 import static Util.Utility.disposeModal;
+import java.util.List;
 
 /**
  *
@@ -76,7 +79,10 @@ public class EditarSala extends javax.swing.JPanel {
         jSubTituloBloco.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jSubTituloBloco.setText("Selecione o Bloco da sala");
 
-        jcbBlocoPesq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bloco", "A", "B", "C", "D", "E" }));
+        List<Bloco> blocos = new BlocoDao().getAll();
+        Bloco[] arrBlocos =  new Bloco[blocos.size()];
+        arrBlocos = blocos.toArray(arrBlocos);
+        jcbBlocoPesq.setModel(new javax.swing.DefaultComboBoxModel (arrBlocos));
         jcbBlocoPesq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbBlocoPesqActionPerformed(evt);
@@ -153,6 +159,7 @@ public class EditarSala extends javax.swing.JPanel {
         });
 
         jbAlterar.setText("Alterar");
+        jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
 
         jrDesativar.setText("Desativar");
@@ -239,7 +246,7 @@ public class EditarSala extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jpAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
+                    .addComponent(jpAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                     .addComponent(jpPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -272,10 +279,6 @@ public class EditarSala extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtCodigoActionPerformed
 
-    private void jcbBlocoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoAltActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbBlocoAltActionPerformed
-
     private void jcbAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbAdministradorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbAdministradorActionPerformed
@@ -283,6 +286,10 @@ public class EditarSala extends javax.swing.JPanel {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         disposeModal(this);
     }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jcbBlocoAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbBlocoAltActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbBlocoAltActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -129,6 +129,9 @@
           <Connection code="new javax.swing.DefaultComboBoxModel(arrTipoSala)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbTiposdeSalaActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="List&lt;TipoSala&gt; tiposSala = new TipoSalaDao().getAllAtivos();&#xa;TipoSala[] arrTipoSala =  new TipoSala[tiposSala.size()];&#xa;arrTipoSala = tiposSala.toArray(arrTipoSala);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

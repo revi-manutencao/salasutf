@@ -142,6 +142,7 @@ public class EditarHorario extends javax.swing.JPanel {
         });
 
         jbAlterar.setText("Alterar");
+        jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
         jbAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +263,8 @@ public class EditarHorario extends javax.swing.JPanel {
         jtFim.setEnabled(true);
         jcbTurno.setEnabled(true);
         jrDesativar.setEnabled(true);
+        jbAlterar.setEnabled(true);
+        jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarjButton1ActionPerformed
 
     private void jcbHorariojComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHorariojComboBox1ActionPerformed

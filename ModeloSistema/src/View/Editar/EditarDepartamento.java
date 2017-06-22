@@ -73,6 +73,7 @@ public class EditarDepartamento extends javax.swing.JPanel {
         });
 
         jjbAlterar.setText("Alterar");
+        jjbAlterar.setEnabled(false);
         jjbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
         jjbAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +142,7 @@ public class EditarDepartamento extends javax.swing.JPanel {
         jlSubTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlSubTitulo.setText("Selecione o departamento que deseja alterar");
 
-        List<Departamento> dpts = new DepartamentoDao().getAllAtivos();
+        List<Departamento> dpts = new DepartamentoDao().getAll();
         Departamento[] arrDepto =  new Departamento[dpts.size()];
         arrDepto = dpts.toArray(arrDepto);
         jcbDepartamento.setModel(new javax.swing.DefaultComboBoxModel(arrDepto));
@@ -217,7 +218,7 @@ public class EditarDepartamento extends javax.swing.JPanel {
         jtNome.setEnabled(true);
         jtSigla.setEnabled(true);
         jrDesativar.setEnabled(true);
-        
+        jjbAlterar.setEnabled(true);
         jtNome.requestFocus();
     }//GEN-LAST:event_jbConfirmarActionPerformed
 

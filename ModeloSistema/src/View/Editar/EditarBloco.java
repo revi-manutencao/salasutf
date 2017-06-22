@@ -116,6 +116,7 @@ public class EditarBloco extends javax.swing.JPanel {
         jtNome.setFocusable(false);
 
         jbAlterar.setText("Alterar");
+        jbAlterar.setEnabled(false);
         jbAlterar.setPreferredSize(new java.awt.Dimension(70, 23));
         jbAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,7 +146,7 @@ public class EditarBloco extends javax.swing.JPanel {
         jpAlterarLayout.setVerticalGroup(
             jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAlterarLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jpAlterarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNome)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,6 +196,7 @@ public class EditarBloco extends javax.swing.JPanel {
         jtNome.setEnabled(true);
         jtNome.requestFocus();
         jrDesativar.setEnabled(true);
+        jbAlterar.setEnabled(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jcbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCancelarActionPerformed

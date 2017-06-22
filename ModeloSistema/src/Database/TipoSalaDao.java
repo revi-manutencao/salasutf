@@ -151,6 +151,7 @@ public class TipoSalaDao {
             
             stmt.setString(1, s.getDescricao());
             stmt.setBoolean(2, s.isAtivo());
+            stmt.setInt(3,s.getId());
 
             stmt.execute();
             
